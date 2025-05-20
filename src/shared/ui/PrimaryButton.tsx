@@ -21,7 +21,7 @@ export const PrimaryButton = ({ children, className, direction = 'none', ...prop
   return (
     <button
       className={cn(
-        'group border-primary font-primary-button hover:bg-primary text-primary flex-align-center rounded-small cursor-pointer gap-3 border transition-all hover:text-white',
+        'group border-primary font-primary-button hover:bg-primary text-primary flex-align-center rounded-small gap-3 border transition-all hover:text-white',
         directionClassMap[direction],
         className,
       )}
