@@ -1,0 +1,10 @@
+@layer base {
+  input,
+  textarea {
+    @apply w-full border border-[#E5E6E6] bg-transparent px-6 py-5 outline-none;
+  }
+  input:focus,
+  textarea:focus {
+    @apply border border-[#A9A9AC] bg-transparent outline-none;
+  }
+}

@@ -1,0 +1,109 @@
+@utility font-logo {
+  @apply text-[3rem] font-bold;
+}
+@utility font-navigation {
+  @apply text-[1.5rem] font-bold;
+}
+@utility font-pagination {
+  @apply text-[2rem] font-bold;
+}
+@utility font-search {
+  @apply text-[1.5rem] font-bold;
+}
+@utility font-filter {
+  @apply text-[2rem] font-bold;
+}
+@utility font-step {
+  @apply text-[2rem] font-bold;
+}
+@utility font-dropdown {
+  @apply text-[1.25rem] font-normal;
+}
+
+/* 페이지 */
+@utility font-page-title {
+  @apply text-[5.75rem] font-bold;
+}
+@utility font-page-description {
+  @apply text-[1.25rem] font-medium;
+}
+
+/* 버튼 */
+@utility font-primary-button {
+  @apply text-[1.75rem] font-bold;
+}
+@utility font-secondary-button {
+  @apply text-[1.5rem] font-bold;
+}
+@utility font-action-button {
+  @apply text-[1.75rem] font-bold;
+}
+
+/* 입력 */
+@utility font-input-label {
+  @apply text-[1.75rem] font-bold;
+}
+@utility font-input-value {
+  @apply text-[1.5rem] font-normal;
+}
+
+/* 인기 폰트 */
+@utility font-popular-example {
+  @apply text-[2.25rem] leading-[3.6875rem] font-normal;
+}
+@utility font-popular-writer {
+  @apply text-[1.5rem] font-normal;
+}
+
+/* 제작 현황 */
+@utility font-progress-label {
+  @apply text-[1.75rem] font-bold;
+}
+@utility font-progress-value {
+  @apply text-[1.75rem] font-normal;
+}
+
+/* 메인 화면 */
+@utility font-main-title {
+  @apply text-[12.5rem] font-bold;
+}
+@utility font-main-subtitle {
+  @apply text-[5rem] font-bold;
+}
+@utility font-main-description {
+  @apply text-[2rem] font-bold;
+}
+@utility font-main-card-title {
+  @apply text-[1.75rem] font-bold;
+}
+@utility font-main-card-description {
+  @apply text-[1.25rem] font-bold;
+}
+@utility font-main-more {
+  @apply text-[2rem] font-bold;
+}
+
+/* 폰트 상세페이지 */
+@utility font-detail-title {
+  @apply text-[5rem] font-bold;
+}
+@utility font-detail-writer {
+  @apply text-[2.5rem] font-bold;
+}
+@utility font-detail-label {
+  @apply text-[2.5rem] font-bold;
+}
+@utility font-detail-meta-label {
+  @apply text-[1.5rem] font-medium;
+}
+@utility font-detail-meta-value {
+  @apply text-[0.75rem] font-bold;
+}
+
+/* 약관 및 설명 */
+@utility font-term-check {
+  @apply text-[1.75rem] font-normal;
+}
+@utility font-term-description {
+  @apply text-[1.75rem] font-normal;
+}
