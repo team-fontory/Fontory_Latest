@@ -31,6 +31,7 @@
   html {
     font-family: Pretendard;
     font-weight: normal;
+    color: var(--color-black);
   }
 }
 
@@ -101,7 +102,7 @@
 
 /* 메인 화면 */
 @utility font-main-title {
-  @apply text-[12.5rem] font-bold;
+  @apply text-[5.5rem] font-bold;
 }
 @utility font-main-subtitle {
   @apply text-[5rem] font-bold;
