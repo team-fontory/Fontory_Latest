@@ -17,12 +17,21 @@ const directionClassMap: Record<Direction, string> = {
   none: 'p-5',
 }
 
-export const PrimaryButton = ({ children, className, direction = 'none', ...props }: Props) => {
+export const PrimaryButton = ({
+  children,
+  className,
+  disabled,
+  direction = 'none',
+  ...props
+}: Props) => {
   return (
     <button
       className={cn(
-        'group border-primary font-primary-button hover:bg-primary text-primary flex-align-center rounded-small gap-3 border transition-all hover:text-white',
+        'group font-primary-button flex-align-center rounded-small gap-3 border transition-all',
         directionClassMap[direction],
+        disabled
+          ? 'border-darkgrey text-darkgrey'
+          : 'border-primary text-primary hover:bg-primary hover:text-white',
         className,
       )}
       {...props}
@@ -34,7 +43,7 @@ export const PrimaryButton = ({ children, className, direction = 'none', ...prop
           size={32}
           className={cn(
             direction === 'left' ? 'rotate-180' : '',
-            'text-primary group-hover:text-white',
+            disabled ? 'text-darkgrey' : 'text-primary group-hover:text-white',
           )}
         />
       )}
