@@ -1,7 +1,13 @@
-import { AppRouter } from './app/router/AppRouter'
+import { AppRouter } from './app/router'
+import { NavigationBar } from './shared/ui'
 
 function App() {
-  return <AppRouter />
+  return (
+    <div className="overflow-x-hidden">
+      <NavigationBar />
+      <AppRouter />
+    </div>
+  )
 }
 
 export default App
