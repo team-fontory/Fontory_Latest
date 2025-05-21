@@ -30,7 +30,7 @@ export const PrimaryButton = ({ children, className, direction = 'none', ...prop
       {children}
       {direction !== 'none' && (
         <Icon
-          name="arrow-right"
+          name="caret-right"
           size={32}
           className={cn(
             direction === 'left' ? 'rotate-180' : '',

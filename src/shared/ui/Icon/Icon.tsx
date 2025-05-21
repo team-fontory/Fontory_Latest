@@ -1,5 +1,3 @@
-import { Suspense } from 'react'
-
 import { type IconComponent, iconMap, type IconName } from './iconMap'
 
 type IconProps = {
@@ -24,9 +22,5 @@ export const Icon = ({ name, size, className = '', ...props }: IconProps) => {
     return null
   }
 
-  return (
-    <Suspense fallback={null}>
-      <SvgIcon width={size} height={size} className={className} {...props} />
-    </Suspense>
-  )
+  return <SvgIcon width={size} height={size} className={className} {...props} />
 }
