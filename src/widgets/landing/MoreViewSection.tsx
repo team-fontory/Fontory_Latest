@@ -14,7 +14,7 @@ export const MoreViewSection = () => {
         to={'https://www.google.com'}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-align-center hover:bg-primary rounded-small group w-fit gap-4 self-end py-3 pr-3 pl-4 hover:text-white"
+        className="flex-align-center hover:bg-primary rounded-small group w-fit gap-4 self-end py-3 pr-3 pl-4 transition-all hover:text-white"
       >
         <span className="font-main-more">MORE VIEW</span>
         <Icon name={'arrow-right'} size={'3.25rem'} className="group-hover:text-white" />
