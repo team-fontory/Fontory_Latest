@@ -43,7 +43,7 @@ export const GenderRadioGroup = ({ section }: Props) => {
                 type="radio"
                 value={value}
                 {...register(section, { required: true })}
-                className="absolute opacity-0"
+                className="absolute h-0 w-0 opacity-0"
               />
               <span className="font-secondary-button">{label}</span>
             </label>
