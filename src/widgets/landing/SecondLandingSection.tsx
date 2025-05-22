@@ -1,10 +1,8 @@
-import { useRef } from 'react'
 import { motion } from 'framer-motion'
 
 import greenBg from '@/shared/assets/main-card/green.png'
 import yellowBg from '@/shared/assets/main-card/yellow.png'
-import { useScrollScale } from '@/shared/hooks'
-import { getDirectionAnimation } from '@/shared/lib'
+import { getDirectionAnimation, getScaleInViewAnimation } from '@/shared/lib'
 
 import { FeatureCard } from './FeatureCard'
 
@@ -26,16 +24,16 @@ const SECOND_SECTION_FEATURES = [
 ] as const
 
 export const SecondLandingSection = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-  const scale = useScrollScale({ ref: sectionRef, range: [1, 2.5] })
-
   return (
-    <section ref={sectionRef} className="relative h-screen">
+    <section className="relative h-screen">
       <h4 className="font-main-description pt-[20.3vh] text-center">
         단 48자만으로 완성되는 전체 폰트
       </h4>
 
-      <motion.h3 style={{ scale }} className="font-main-title text-primary text-center">
+      <motion.h3
+        {...getScaleInViewAnimation()}
+        className="font-main-title text-primary text-center"
+      >
         Create more with less
       </motion.h3>
 

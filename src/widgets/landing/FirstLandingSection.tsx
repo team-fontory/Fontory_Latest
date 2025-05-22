@@ -1,10 +1,8 @@
-import { useRef } from 'react'
 import { motion } from 'framer-motion'
 
 import blueBg from '@/shared/assets/main-card/blue.png'
 import redBg from '@/shared/assets/main-card/red.png'
-import { useScrollScale } from '@/shared/hooks'
-import { getDirectionAnimation } from '@/shared/lib'
+import { getDirectionAnimation, getScaleInViewAnimation } from '@/shared/lib'
 
 import { FeatureCard } from './FeatureCard'
 
@@ -26,16 +24,16 @@ const FIRST_SECTION_FEATURES = [
 ] as const
 
 export const FirstLandingSection = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-  const scale = useScrollScale({ ref: sectionRef, range: [1, 2.5] })
-
   return (
-    <section ref={sectionRef} className="relative h-screen">
+    <section className="relative h-screen">
       <h4 className="font-main-description pt-[20.3vh] text-center">
         단 10분만에 제작되는 손글씨 폰트
       </h4>
 
-      <motion.h3 style={{ scale }} className="font-main-title text-primary text-center">
+      <motion.h3
+        {...getScaleInViewAnimation()}
+        className="font-main-title text-primary text-center"
+      >
         Create in a snap
       </motion.h3>
 
