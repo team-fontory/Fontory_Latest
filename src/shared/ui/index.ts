@@ -1,4 +1,6 @@
+export * from './GenderRadioGroup'
 export * from './Icon/Icon'
+export * from './Input'
 export * from './NavigationBar'
 export * from './PrimaryButton'
 export * from './SecondaryButton'

@@ -1,6 +1,6 @@
 import { Icon } from '@/shared/ui'
 
-import { TERMS } from '../config/terms.constant'
+import { TERMS } from '../config/signup.constant'
 
 type Props = {
   checkedTerms: boolean[]

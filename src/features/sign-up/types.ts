@@ -1,3 +1,7 @@
+import type z from 'zod'
+
+import type { signupSchema } from './config/signup.schema'
+
 export type GenderType = 'MALE' | 'FEMALE' | null
 
 export type SignupFieldsType = {
@@ -6,7 +10,6 @@ export type SignupFieldsType = {
   gender: GenderType
 }
 
-export type SignupForm = {
-  agreedTerms: boolean
-  fields: SignupFieldsType
+export type SignupFormType = z.infer<typeof signupSchema> & {
+  file: File | null
 }

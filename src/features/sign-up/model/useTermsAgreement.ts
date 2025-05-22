@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { TERMS } from '../config/terms.constant'
+import { TERMS } from '../config/signup.constant'
 
 /**
  * 약관 동의 상태를 관리하는 커스텀 훅

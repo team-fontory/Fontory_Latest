@@ -4,7 +4,7 @@ import { ROUTES } from '@/app/router'
 
 export const NavigationBar = () => {
   return (
-    <nav className="flex-between-center fixed z-10 w-full px-[85px] py-[29px]">
+    <nav className="flex-between-center fixed z-10 w-screen px-[85px] py-[29px]">
       <Link to={ROUTES.HOME}>
         <h1 className="font-logo">Fontory</h1>
       </Link>
