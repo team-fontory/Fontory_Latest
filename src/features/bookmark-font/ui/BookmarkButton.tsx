@@ -56,7 +56,7 @@ const Label = ({ isBookmarked }: Props) => {
       <BaseComponent>
         <div className={cn('bg-primary', commonStyle)}>
           <span>북마크 해제</span>
-          <Icon name="unfilled-bookmark" size={40} className="text-white" />
+          <Icon name="unfilled-bookmark" size={35} className="text-white" />
         </div>
       </BaseComponent>
     )
@@ -65,7 +65,7 @@ const Label = ({ isBookmarked }: Props) => {
     <BaseComponent>
       <div className={cn('bg-darkgrey', commonStyle)}>
         <span>북마크</span>
-        <Icon name="unfilled-bookmark" size={40} className="text-white" />
+        <Icon name="unfilled-bookmark" size={35} className="text-white" />
       </div>
     </BaseComponent>
   )
