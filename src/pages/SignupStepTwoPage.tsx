@@ -31,12 +31,8 @@ const SignupStepTwoPage = () => {
             이전 단계
           </PrimaryButton>
 
-          <PrimaryButton
-            direction="right"
-            onClick={formMethods.handleSubmit(onSubmit)}
-            // disabled={!isAllAgreed}
-          >
-            다음 단계
+          <PrimaryButton direction="none" onClick={formMethods.handleSubmit(onSubmit)}>
+            가입하기
           </PrimaryButton>
         </div>
       </FormProvider>
