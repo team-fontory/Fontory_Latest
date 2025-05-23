@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 
-import type { SignupFieldsType } from '../types'
+import type { UserFieldsType } from '@/entity/user'
 
 type Actions = {
   setSignupInfo: (data: Omit<SignupStore, 'agreedTerms' | 'actions'>) => void
   reset: () => void
 }
 
-type SignupStore = SignupFieldsType & {
+type SignupStore = UserFieldsType & {
   actions: Actions
 }
 

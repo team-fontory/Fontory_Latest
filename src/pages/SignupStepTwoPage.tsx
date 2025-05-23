@@ -1,19 +1,20 @@
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { SignupForm, type SignupFormType, signupSchema } from '@/features/sign-up'
+import { type UserFormType, userSchema } from '@/entity/user'
+import { SignupForm } from '@/features/sign-up'
 import { useCustomForm } from '@/shared/hooks'
 import { PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
 
 const SignupStepTwoPage = () => {
   const navigate = useNavigate()
-  const formMethods = useCustomForm<SignupFormType>(signupSchema)
+  const formMethods = useCustomForm<UserFormType>(userSchema)
 
   const goToPrevStep = () => {
     navigate(-1)
   }
 
-  const onSubmit = (formData: SignupFormType) => {
+  const onSubmit = (formData: UserFormType) => {
     console.log('submit')
     console.log(formData)
   }
