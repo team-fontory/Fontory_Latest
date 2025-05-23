@@ -14,9 +14,16 @@ const variantClassMap: Record<Variant, string> = {
   outlined: 'bg-white text-secondary border-2 border-secondary hover:bg-secondary hover:text-white',
 }
 
-export const SecondaryButton = ({ className, children, variant = 'filled', ...props }: Props) => {
+export const SecondaryButton = ({
+  type = 'button',
+  className,
+  children,
+  variant = 'filled',
+  ...props
+}: Props) => {
   return (
     <button
+      type={type}
       className={cn(
         'rounded-small font-secondary-button px-7 py-5 text-center transition-colors',
         variantClassMap[variant],

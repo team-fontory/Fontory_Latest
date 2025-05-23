@@ -1,12 +1,15 @@
 import { AppRouter } from './app/router'
-import { NavigationBar } from './shared/ui'
+import { CustomToast, NavigationBar } from './shared/ui'
 
 function App() {
   return (
-    <div className="overflow-x-hidden">
-      <NavigationBar />
-      <AppRouter />
-    </div>
+    <>
+      <CustomToast />
+      <div className="overflow-x-hidden">
+        <NavigationBar />
+        <AppRouter />
+      </div>
+    </>
   )
 }
 

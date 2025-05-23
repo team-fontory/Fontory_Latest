@@ -18,6 +18,7 @@ const directionClassMap: Record<Direction, string> = {
 }
 
 export const PrimaryButton = ({
+  type = 'button',
   children,
   className,
   disabled,
@@ -26,6 +27,7 @@ export const PrimaryButton = ({
 }: Props) => {
   return (
     <button
+      type={type}
       className={cn(
         'group font-primary-button flex-align-center rounded-small gap-3 border transition-all',
         directionClassMap[direction],

@@ -9,7 +9,7 @@ const BaseComponent = ({ children }: PropsWithChildren) => {
 const DownloadIcon = () => {
   return (
     <BaseComponent>
-      <Icon name="download" size={40} />
+      <Icon name="download" size={40} className="text-secondary" />
     </BaseComponent>
   )
 }

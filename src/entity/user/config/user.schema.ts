@@ -35,9 +35,10 @@ export const userSchema = z.object({
     .min(1, { message: '닉네임을 입력해주세요.' })
     .max(8, { message: '닉네임은 8자 이내로 입력해주세요.' }),
 
-  gender: z.enum(['MALE', 'FEMALE'], {
-    required_error: '성별을 선택해주세요.',
-  }),
+  gender: z
+    .enum(['MALE', 'FEMALE'])
+    .nullable()
+    .refine((val) => val !== null, { message: '성별을 선택해주세요.' }),
 
   birth: z.string().min(1, { message: '생년월일을 입력해주세요.' }),
 })
