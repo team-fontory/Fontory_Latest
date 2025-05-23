@@ -142,7 +142,7 @@
   @apply text-[1.5rem] font-medium;
 }
 @utility font-detail-meta-value {
-  @apply text-[0.75rem] font-bold;
+  @apply text-[1.5rem] font-bold;
 }
 
 /* 약관 및 설명 */
