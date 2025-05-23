@@ -1,6 +1,6 @@
 import { FontPreviewCard } from '@/shared/ui'
 
-export const FontPreviewCardList = () => {
+export const ExploreFontPreviewCardList = () => {
   return (
     <div className="flex-column">
       <FontPreviewCard />

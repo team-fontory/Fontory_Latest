@@ -8,6 +8,7 @@ const LoginPage = lazy(() => import('@/pages/LoginPage'))
 const SignupStepOnePage = lazy(() => import('@/pages/SignupStepOnePage'))
 const SignupStepTwoPage = lazy(() => import('@/pages/SignupStepTwoPage'))
 const ExplorePage = lazy(() => import('@/pages/ExplorePage'))
+const BookmarkPage = lazy(() => import('@/pages/BookmarkPage'))
 
 export const routes: RouteObject[] = [
   { path: ROUTES.HOME, element: <HomePage /> },
@@ -15,4 +16,5 @@ export const routes: RouteObject[] = [
   { path: ROUTES.SIGN_UP_STEP_ONE, element: <SignupStepOnePage /> },
   { path: ROUTES.SIGN_UP_STEP_TWO, element: <SignupStepTwoPage /> },
   { path: ROUTES.EXPLORE, element: <ExplorePage /> },
+  { path: ROUTES.BOOKMARK, element: <BookmarkPage /> },
 ]
