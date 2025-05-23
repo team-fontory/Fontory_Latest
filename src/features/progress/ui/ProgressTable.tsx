@@ -17,16 +17,20 @@ export const ProgressTable = () => {
   return (
     <table className="border-b-secondary w-full border-b-[3px]">
       <thead className="border-y-secondary font-progress-label border-y-[3px]">
-        <th className={tableCommonStyle}>제작 중인 폰트 이름</th>
-        <th className={tableCommonStyle}>제작 요청 시간</th>
+        <tr>
+          <th className={tableCommonStyle}>제작 중인 폰트 이름</th>
+          <th className={tableCommonStyle}>제작 요청 시간</th>
+        </tr>
       </thead>
 
-      {progress.map(({ id, name, createdAt }) => (
-        <tr key={id} className="font-progress-value">
-          <td className={tableCommonStyle}>{name}</td>
-          <td className={tableCommonStyle}>{createdAt}</td>
-        </tr>
-      ))}
+      <tbody>
+        {progress.map(({ id, name, createdAt }) => (
+          <tr key={id} className="font-progress-value">
+            <td className={tableCommonStyle}>{name}</td>
+            <td className={tableCommonStyle}>{createdAt}</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }
