@@ -57,6 +57,14 @@
   @apply text-[1.25rem] font-normal;
 }
 
+/* 폰트 */
+@utility font-preview {
+  @apply text-[3rem];
+}
+@utility font-preview-metadata {
+  @apply text-[1.75rem] font-bold;
+}
+
 /* 페이지 */
 @utility font-page-title {
   @apply text-[5.75rem] font-bold;
