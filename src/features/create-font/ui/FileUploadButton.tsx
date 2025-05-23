@@ -12,9 +12,7 @@ export const FileUploadButton = () => {
   const { handleSubmit } = useFormContext()
 
   const onSubmit = () => {
-    if (file) {
-      navigate(ROUTES.CREATE_FONT_STEP_TWO)
-    }
+    navigate(ROUTES.CREATE_FONT_STEP_TWO)
   }
 
   return (
