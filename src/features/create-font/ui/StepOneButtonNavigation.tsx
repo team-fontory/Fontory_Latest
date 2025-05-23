@@ -5,7 +5,7 @@ import { ROUTES } from '@/app/router'
 import { fontAttribute } from '@/entity/font'
 import { PrimaryButton } from '@/shared/ui'
 
-export const FileUploadButton = () => {
+export const StepOneButtonNavigation = () => {
   const navigate = useNavigate()
   const file = useWatch({ name: fontAttribute.file.section })
 

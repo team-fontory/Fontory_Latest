@@ -9,7 +9,7 @@ export const fontAttribute = {
   engName: {
     section: 'engName',
     label: '폰트 영어 이름',
-    input: { placeholder: '영어 이름을 입력해주세요.' },
+    placeholder: '영어 이름을 입력해주세요.',
   },
   example: {
     section: 'example',
@@ -47,3 +47,5 @@ export const fontSchema = z.object({
 })
 
 export const createFontStepOneSchema = fontSchema.pick({ file: true })
+export const createFontStepTwoSchema = fontSchema.pick({ name: true, engName: true, example: true })
+export const createFontStepThreeSchema = fontSchema.pick({ phoneNumber: true })
