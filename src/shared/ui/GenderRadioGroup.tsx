@@ -1,3 +1,4 @@
+import type { InputHTMLAttributes } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { cn } from '@/shared/lib'
@@ -6,13 +7,13 @@ import { GENDER } from '../config'
 
 type Props = {
   section: string
-}
+} & InputHTMLAttributes<HTMLInputElement>
 
 /**
  * 성별 선택 라디오 버튼 그룹 (남자 / 여자)
  */
 
-export const GenderRadioGroup = ({ section }: Props) => {
+export const GenderRadioGroup = ({ section, ...rest }: Props) => {
   const { register, watch } = useFormContext()
   const selectedGender = watch(section)
 
@@ -44,6 +45,7 @@ export const GenderRadioGroup = ({ section }: Props) => {
                 value={value}
                 {...register(section, { required: true })}
                 className="absolute h-0 w-0 opacity-0"
+                {...rest}
               />
               <span className="font-secondary-button">{label}</span>
             </label>
