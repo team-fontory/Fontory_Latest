@@ -1,4 +1,5 @@
 export * from './cn'
+export * from './downloadFile'
 export * from './formatDateInput'
 export * from './getDirectionAnimation'
 export * from './getScaleInViewAnimation'

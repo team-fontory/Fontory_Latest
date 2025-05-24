@@ -1,17 +1,30 @@
+import { Link } from 'react-router-dom'
+
+import { ROUTES } from '@/app/router'
+import type { FontDetailType } from '@/entity/font'
 import { BookmarkButton } from '@/features/bookmark-font'
 import { DownloadButton } from '@/features/download-font'
+import { useDynamicFont } from '@/shared/hooks'
 
-export const PopularFontCard = () => {
+type Props = Omit<FontDetailType, 'downloadCount' | 'bookmarkCount'>
+
+export const PopularFontCard = ({ fontId, fontName, example, isBookmarked, woff }: Props) => {
+  const { fontFamily, isLoaded } = useDynamicFont(woff, fontId)
+
   return (
-    <div className="shadow-popular-font rounded-medium flex-column gap-[1.8rem] bg-white p-8">
-      <p className="font-popular-example">이것은 모노그래피이니라. 미리보기 냠냠</p>
+    <Link
+      to={ROUTES.DETAIL(fontId)}
+      className="shadow-popular-font rounded-medium flex-column cursor-pointer gap-[1.8rem] bg-white p-8"
+      style={isLoaded ? { fontFamily: fontFamily } : undefined}
+    >
+      <p className="font-popular-example">{example}</p>
       <div className="flex-between-center">
-        <span className="font-popular-writer text-darkgrey grow">휴먼둥둥체</span>
+        <span className="font-popular-writer text-darkgrey grow">{fontName}</span>
         <div className="flex gap-4">
-          <BookmarkButton.Icon isBookmarked={true} />
-          <DownloadButton.Icon />
+          <BookmarkButton.Icon fontId={fontId} isBookmarked={isBookmarked} />
+          <DownloadButton.Icon name={fontName} link={woff} />
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
