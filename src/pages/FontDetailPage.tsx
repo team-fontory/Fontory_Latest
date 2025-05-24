@@ -23,7 +23,7 @@ const FontDetailPage = () => {
         <FontDetailOtherFonts recommendList={recommendList} />
       </section>
 
-      <FloatingButtonGroup isBookmarked={true} />
+      <FloatingButtonGroup {...fontDetail} />
     </div>
   )
 }
