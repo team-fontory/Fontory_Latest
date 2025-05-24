@@ -15,6 +15,7 @@ const AccountEditPage = lazy(() => import('@/pages/AccountEditPage'))
 const FontDetailPage = lazy(() => import('@/pages/FontDetailPage'))
 const CreateFontStepOnePage = lazy(() => import('@/pages/CreateFontStepOnePage'))
 const CreateFontStepTwoPage = lazy(() => import('@/pages/CreateFontStepTwoPage'))
+const CreateFontStepThreePage = lazy(() => import('@/pages/CreateFontStepThreePage'))
 
 export const routes: RouteObject[] = [
   { path: ROUTES.HOME, element: <HomePage /> },
@@ -29,4 +30,5 @@ export const routes: RouteObject[] = [
   { path: ROUTES.DETAIL(), element: <FontDetailPage /> },
   { path: ROUTES.CREATE_FONT_STEP_ONE, element: <CreateFontStepOnePage /> },
   { path: ROUTES.CREATE_FONT_STEP_TWO, element: <CreateFontStepTwoPage /> },
+  { path: ROUTES.CREATE_FONT_STEP_THREE, element: <CreateFontStepThreePage /> },
 ]
