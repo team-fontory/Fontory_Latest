@@ -17,7 +17,7 @@ export const PopularFontCard = ({ fontId, fontName, example, isBookmarked, woff 
       className="shadow-popular-font rounded-medium flex-column cursor-pointer gap-[1.8rem] bg-white p-8"
       style={isLoaded ? { fontFamily: fontFamily } : undefined}
     >
-      <p className="font-popular-example">{example}</p>
+      <p className="font-popular-example grow">{example}</p>
       <div className="flex-between-center">
         <span className="font-popular-writer text-darkgrey grow">{fontName}</span>
         <div className="flex gap-4">

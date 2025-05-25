@@ -16,7 +16,7 @@ export const PopularFontCardList = () => {
     }[count] ?? 'grid-cols-3'
 
   return (
-    <div className={cn('-ml-48 grid w-screen justify-center p-12', columnClass)}>
+    <div className={cn('-ml-48 grid w-screen justify-center gap-12 p-12', columnClass)}>
       {fontList.map((font) => (
         <PopularFontCard key={font.fontId} {...font} />
       ))}
