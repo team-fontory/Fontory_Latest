@@ -2,19 +2,20 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { ROUTES } from '@/app/router'
-import type { CreateFontFormType } from '@/entity/font'
 
 import { useCreateFont } from '../api/createFont.mutation'
 
 import { useCreateFontValues } from './createFont.store'
 
-const prepareFormData = (formData: CreateFontFormType) => {
+const usePrepareFormData = () => {
   const sendForm = new FormData()
+  const formData = useCreateFontValues()
 
   sendForm.append(
     'fontCreateDTO',
     JSON.stringify({
       name: formData.name,
+      engName: formData.engName,
       example: formData.example,
       phone: formData.phoneNumber || '',
     }),
@@ -32,7 +33,7 @@ const prepareFormData = (formData: CreateFontFormType) => {
 
 export const useCreateFontForm = () => {
   const navigate = useNavigate()
-  const formData = useCreateFontValues()
+  const sendForm = usePrepareFormData()
 
   const { mutate: createFont } = useCreateFont()
 
@@ -46,8 +47,6 @@ export const useCreateFontForm = () => {
   }
 
   const handleSubmitForm = () => {
-    const sendForm = prepareFormData(formData)
-
     createFont(sendForm, { onSuccess: handleSuccess, onError: handleError })
   }
 

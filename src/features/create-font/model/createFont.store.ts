@@ -7,7 +7,7 @@ type CreateFontStore = {
   actions: {
     uploadFile: (file: File | null) => void
     setFontInformation: (data: Pick<CreateFontFormType, 'name' | 'engName' | 'example'>) => void
-    setPhoneNumber: (phone: string) => void
+    setPhoneNumber: (phoneNumber: string) => void
     reset: () => void
   }
 }
