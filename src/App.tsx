@@ -1,5 +1,6 @@
 import { AppRouter } from './app/router'
-import { CustomToast, NavigationBar } from './shared/ui'
+import { CustomToast } from './shared/ui'
+import { NavigationBar } from './widgets'
 
 function App() {
   return (

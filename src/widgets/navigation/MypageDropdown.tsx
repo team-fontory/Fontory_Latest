@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
-
-import { cn } from '../lib'
+import { LogoutButton } from '@/features/auth'
+import { cn } from '@/shared/lib'
 
 const MYPAGE_LIST = [
   { label: '회원정보', to: ROUTES.ACCOUNT_INFO },
@@ -31,9 +31,7 @@ export const MypageDropdown = ({ className }: Props) => {
         </li>
       ))}
 
-      <button className="font-dropdown rounded-small block w-full py-3 hover:bg-gray-100">
-        로그아웃
-      </button>
+      <LogoutButton />
     </ul>
   )
 }
