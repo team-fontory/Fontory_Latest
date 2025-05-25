@@ -18,9 +18,9 @@ export const fontAttribute = {
   },
   phoneNumber: {
     section: 'phoneNumber',
-    label: '전화번호 (선택)',
+    label: '전화번호',
     maxLength: 11,
-    placeholder: '문자 알림이 필요하신 경우 전화번호를 입력해주세요.',
+    placeholder: '전화번호를 입력해주세요.',
   },
   file: {
     section: 'file',

@@ -23,12 +23,12 @@ const initialValues = {
 export const useCreateFontStore = create<CreateFontStore>((set) => ({
   form: initialValues,
   actions: {
-    uploadFile: (file) => set((state) => ({ ...state, file })),
+    uploadFile: (file) => set((state) => ({ form: { ...state.form, file } })),
     setFontInformation: (information) =>
       set((state) => ({
         form: { ...information, phoneNumber: state.form.phoneNumber, file: state.form.file },
       })),
-    setPhoneNumber: (phoneNumber) => set((state) => ({ ...state, phoneNumber })),
+    setPhoneNumber: (phoneNumber) => set((state) => ({ form: { ...state.form, phoneNumber } })),
     reset: () => set({ form: initialValues }),
   },
 }))
