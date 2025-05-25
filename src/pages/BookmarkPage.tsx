@@ -1,6 +1,7 @@
-import { BookmarkFontPreviewCardList, useBookmarkFontList } from '@/features/bookmark'
+import { useBookmarkFontList } from '@/features/bookmark'
 import { useFontFilterParams } from '@/shared/hooks'
 import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
+import { FontPreviewCardList } from '@/shared/ui/FontPreviewCardList'
 import { Layout } from '@/widgets'
 
 const BookmarkPage = () => {
@@ -20,7 +21,7 @@ const BookmarkPage = () => {
           <SearchBar onSearch={(keyword) => setFilterParams({ keyword, page: 1 })} />
         </div>
 
-        <BookmarkFontPreviewCardList fontList={content} />
+        <FontPreviewCardList fontList={content} />
 
         <nav className="mt-[8.75rem]">
           <Pagination

@@ -19,10 +19,12 @@ const FontDetailPage = () => {
         <FontDetail {...fontDetail} />
       </section>
 
-      <section className="mt-60">
-        <SectionHeader title="OTHER FONTS" />
-        <FontDetailOtherFonts recommendList={recommendList} />
-      </section>
+      {recommendList && (
+        <section className="mt-60">
+          <SectionHeader title="OTHER FONTS" />
+          <FontDetailOtherFonts recommendList={recommendList} />
+        </section>
+      )}
 
       <FloatingButtonGroup {...fontDetail} />
     </Layout>

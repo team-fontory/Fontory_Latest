@@ -1,7 +1,9 @@
-import { ExploreFontPreviewCardList, useExploreList } from '@/features/explore'
+import { useExploreList } from '@/features/explore'
 import { PopularFontCardList } from '@/features/popular-fonts'
+import { EMPTY_MESSAGE } from '@/shared/config'
 import { useFontFilterParams } from '@/shared/hooks'
 import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
+import { FontPreviewCardList } from '@/shared/ui/FontPreviewCardList'
 import { Layout } from '@/widgets'
 
 const ExplorePage = () => {
@@ -26,7 +28,10 @@ const ExplorePage = () => {
           <SearchBar onSearch={(keyword) => setFilterParams({ keyword, page: 1 })} />
         </div>
 
-        <ExploreFontPreviewCardList fontList={content} />
+        <FontPreviewCardList
+          fontList={content}
+          emptyMessage={keyword ? EMPTY_MESSAGE.noSearchData : undefined}
+        />
 
         <nav className="mt-[8.75rem]">
           <Pagination
