@@ -1,30 +1,37 @@
 import { FormProvider } from 'react-hook-form'
 import { type To, useNavigate } from 'react-router-dom'
 
+import { ROUTES } from '@/app/router'
 import { type UserFormType, userSchema } from '@/entity/user'
 import { AccountEditForm } from '@/features/account'
+import { useMyProfile } from '@/features/auth'
 import { useCustomForm } from '@/shared/hooks'
 import { PrimaryButton, SectionHeader } from '@/shared/ui'
 import { Layout } from '@/widgets'
 
-const defaultValues = {
-  nickname: '고로케',
-  birth: '2020-12-12',
-  gender: 'MALE',
-} as const
-
 const AccountEditPage = () => {
   const navigate = useNavigate()
-  const formMethods = useCustomForm<UserFormType>(userSchema, { defaultValues })
+  const { data: accountInfo, isError, isPending } = useMyProfile()
+
+  const formMethods = useCustomForm<UserFormType>(userSchema, { defaultValues: { ...accountInfo } })
 
   const onComplete = () => {
     // 폼 제출, 폼 초기화, 이동
+    formMethods.reset()
     navigate(-1 as To, { replace: true })
   }
 
   const onCancel = () => {
-    // 폼 초기화
+    formMethods.reset()
     navigate(-1 as To, { replace: true })
+  }
+
+  if (isError || !accountInfo) {
+    navigate(ROUTES.LOGIN, { replace: true })
+  }
+
+  if (isPending) {
+    return null
   }
 
   return (
@@ -37,7 +44,7 @@ const AccountEditPage = () => {
         </FormProvider>
 
         <div className="mt-[6.25rem] flex justify-end gap-9">
-          <PrimaryButton direction="none" onClick={onComplete}>
+          <PrimaryButton direction="none" onClick={formMethods.handleSubmit(onComplete)}>
             수정완료
           </PrimaryButton>
 

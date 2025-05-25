@@ -3,19 +3,16 @@ import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
 import { userAttribute, type UserFormType, userSchema } from '@/entity/user'
+import { useMyProfile } from '@/features/auth'
 import { useCustomForm } from '@/shared/hooks'
 import { GenderRadioGroup, Input, PrimaryButton, SectionHeader } from '@/shared/ui'
 import { Layout } from '@/widgets'
 
-const defaultValues = {
-  nickname: '고로케',
-  birth: '2020-12-12',
-  gender: 'MALE',
-} as const
-
 const AccountInfoPage = () => {
   const navigate = useNavigate()
-  const formMethods = useCustomForm<UserFormType>(userSchema, { defaultValues })
+  const { data: accountInfo, isError, isPending } = useMyProfile()
+
+  const formMethods = useCustomForm<UserFormType>(userSchema, { defaultValues: { ...accountInfo } })
 
   const onEdit = () => {
     navigate(ROUTES.ACCOUNT_EDIT)
@@ -23,6 +20,14 @@ const AccountInfoPage = () => {
 
   const onDelete = () => {
     console.log('탈퇴하기')
+  }
+
+  if (isError || !accountInfo) {
+    navigate(ROUTES.LOGIN, { replace: true })
+  }
+
+  if (isPending) {
+    return null
   }
 
   return (
