@@ -1,18 +1,13 @@
-import { useState } from 'react'
-
-import { BookmarkFontPreviewCardList } from '@/features/bookmark'
-import {
-  Pagination,
-  SearchBar,
-  SectionHeader,
-  SORT_OPTIONS,
-  type SortLabel,
-  SortTab,
-} from '@/shared/ui'
+import { BookmarkFontPreviewCardList, useBookmarkFontList } from '@/features/bookmark'
+import { useFontFilterParams } from '@/shared/hooks'
+import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
 
 const BookmarkPage = () => {
-  const [value, setValue] = useState<SortLabel>(SORT_OPTIONS.all)
-  const [page, setPage] = useState(1)
+  const { page, sortBy, keyword, setFilterParams } = useFontFilterParams()
+
+  const {
+    data: { content, currentPage, totalPages },
+  } = useBookmarkFontList({ page, sortBy, keyword })
 
   return (
     <div>
@@ -20,14 +15,18 @@ const BookmarkPage = () => {
         <SectionHeader title="BOOKMARKED" />
 
         <div className="mb-[4.5rem] grid grid-cols-2">
-          <SortTab value={value} onChange={setValue} />
-          <SearchBar onSearch={() => {}} />
+          <SortTab value={sortBy} onChange={(sortBy) => setFilterParams({ sortBy })} />
+          <SearchBar onSearch={(keyword) => setFilterParams({ keyword, page: 1 })} />
         </div>
 
-        <BookmarkFontPreviewCardList />
+        <BookmarkFontPreviewCardList fontList={content} />
 
         <nav className="mt-[8.75rem]">
-          <Pagination currentPage={page} totalPages={8} onPageChange={setPage} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={(page) => setFilterParams({ page })}
+          />
         </nav>
       </section>
     </div>
