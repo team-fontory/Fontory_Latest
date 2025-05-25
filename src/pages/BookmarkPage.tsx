@@ -1,6 +1,7 @@
 import { BookmarkFontPreviewCardList, useBookmarkFontList } from '@/features/bookmark'
 import { useFontFilterParams } from '@/shared/hooks'
 import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
+import { Layout } from '@/widgets'
 
 const BookmarkPage = () => {
   const { page, sortBy, keyword, setFilterParams } = useFontFilterParams()
@@ -10,7 +11,7 @@ const BookmarkPage = () => {
   } = useBookmarkFontList({ page, sortBy, keyword })
 
   return (
-    <div className="my-[16.63rem] min-h-screen px-48">
+    <Layout hasPadding>
       <section>
         <SectionHeader title="BOOKMARKED" />
 
@@ -29,7 +30,7 @@ const BookmarkPage = () => {
           />
         </nav>
       </section>
-    </div>
+    </Layout>
   )
 }
 

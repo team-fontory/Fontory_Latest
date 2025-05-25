@@ -2,8 +2,13 @@ import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
 import { useMyProfile } from '@/features/auth'
+import { cn } from '@/shared/lib'
 
 import { MypageDropdown } from './MypageDropdown'
+
+type Props = {
+  isTransparent?: boolean
+}
 
 const NAV_LINKS = [
   { label: '둘러보기', to: ROUTES.EXPLORE },
@@ -33,9 +38,14 @@ const AuthItem = () => {
   )
 }
 
-export const NavigationBar = () => {
+export const NavigationBar = ({ isTransparent = false }: Props) => {
   return (
-    <nav className="flex-between-center fixed z-10 w-screen px-[85px] py-[29px]">
+    <nav
+      className={cn(
+        'flex-between-center fixed z-10 w-screen px-[85px] py-[29px]',
+        isTransparent ? 'bg-transparent' : 'bg-white/60 backdrop-blur-md',
+      )}
+    >
       <Link to={ROUTES.HOME}>
         <h1 className="font-logo">Fontory</h1>
       </Link>

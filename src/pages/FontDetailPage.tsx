@@ -6,13 +6,14 @@ import {
 } from '@/features/font-detail'
 import { useParamFontId } from '@/shared/hooks'
 import { SectionHeader } from '@/shared/ui'
+import { Layout } from '@/widgets'
 
 const FontDetailPage = () => {
   const fontId = useParamFontId()
   const { fontDetail, recommendList } = useFontDetail(fontId)
 
   return (
-    <div className="my-[16.63rem] min-h-screen px-48">
+    <Layout hasPadding>
       <section>
         <SectionHeader title="FONT" />
         <FontDetail {...fontDetail} />
@@ -24,7 +25,7 @@ const FontDetailPage = () => {
       </section>
 
       <FloatingButtonGroup {...fontDetail} />
-    </div>
+    </Layout>
   )
 }
 

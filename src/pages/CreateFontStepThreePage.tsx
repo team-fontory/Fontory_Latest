@@ -9,6 +9,7 @@ import {
 import { CreateFontButton } from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { Input, PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
+import { Layout } from '@/widgets'
 
 const CreateFontStepThreePage = () => {
   const navigate = useNavigate()
@@ -19,7 +20,7 @@ const CreateFontStepThreePage = () => {
   }
 
   return (
-    <div className="my-[16.63rem] min-h-screen px-48">
+    <Layout hasPadding>
       <SectionHeader title="CREATION" />
       <StepProgressBar currentStep={3} totalSteps={3} label="전화번호를 입력해주세요. (선택)" />
 
@@ -40,7 +41,7 @@ const CreateFontStepThreePage = () => {
           <CreateFontButton />
         </div>
       </FormProvider>
-    </div>
+    </Layout>
   )
 }
 

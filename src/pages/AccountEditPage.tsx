@@ -5,6 +5,7 @@ import { type UserFormType, userSchema } from '@/entity/user'
 import { AccountEditForm } from '@/features/account'
 import { useCustomForm } from '@/shared/hooks'
 import { PrimaryButton, SectionHeader } from '@/shared/ui'
+import { Layout } from '@/widgets'
 
 const defaultValues = {
   nickname: '고로케',
@@ -27,23 +28,25 @@ const AccountEditPage = () => {
   }
 
   return (
-    <section className="my-[16.63rem] px-48">
-      <SectionHeader title="ACCOUNT INFO" />
+    <Layout hasPadding>
+      <section>
+        <SectionHeader title="ACCOUNT INFO" />
 
-      <FormProvider {...formMethods}>
-        <AccountEditForm />
-      </FormProvider>
+        <FormProvider {...formMethods}>
+          <AccountEditForm />
+        </FormProvider>
 
-      <div className="mt-[6.25rem] flex justify-end gap-9">
-        <PrimaryButton direction="none" onClick={onComplete}>
-          수정완료
-        </PrimaryButton>
+        <div className="mt-[6.25rem] flex justify-end gap-9">
+          <PrimaryButton direction="none" onClick={onComplete}>
+            수정완료
+          </PrimaryButton>
 
-        <PrimaryButton direction="none" onClick={onCancel}>
-          취소하기
-        </PrimaryButton>
-      </div>
-    </section>
+          <PrimaryButton direction="none" onClick={onCancel}>
+            취소하기
+          </PrimaryButton>
+        </div>
+      </section>
+    </Layout>
   )
 }
 

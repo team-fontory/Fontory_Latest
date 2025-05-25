@@ -5,6 +5,7 @@ import { ROUTES } from '@/app/router'
 import { userAttribute, type UserFormType, userSchema } from '@/entity/user'
 import { useCustomForm } from '@/shared/hooks'
 import { GenderRadioGroup, Input, PrimaryButton, SectionHeader } from '@/shared/ui'
+import { Layout } from '@/widgets'
 
 const defaultValues = {
   nickname: '고로케',
@@ -25,30 +26,32 @@ const AccountInfoPage = () => {
   }
 
   return (
-    <section className="my-[16.63rem] min-h-screen px-48">
-      <SectionHeader title="ACCOUNT INFO" />
+    <Layout hasPadding>
+      <section>
+        <SectionHeader title="ACCOUNT INFO" />
 
-      <FormProvider {...formMethods}>
-        <form className="flex-column mt-[6.25rem] gap-[3.75rem]">
-          <div className="grid grid-cols-2 gap-6">
-            <Input {...userAttribute.nickname} disabled />
-            <Input {...userAttribute.birth} disabled />
-          </div>
+        <FormProvider {...formMethods}>
+          <form className="flex-column mt-[6.25rem] gap-[3.75rem]">
+            <div className="grid grid-cols-2 gap-6">
+              <Input {...userAttribute.nickname} disabled />
+              <Input {...userAttribute.birth} disabled />
+            </div>
 
-          <GenderRadioGroup section={userAttribute.gender.section} disabled />
-        </form>
-      </FormProvider>
+            <GenderRadioGroup section={userAttribute.gender.section} disabled />
+          </form>
+        </FormProvider>
 
-      <div className="mt-[6.25rem] flex justify-end gap-9">
-        <PrimaryButton direction="none" onClick={onEdit}>
-          수정하기
-        </PrimaryButton>
+        <div className="mt-[6.25rem] flex justify-end gap-9">
+          <PrimaryButton direction="none" onClick={onEdit}>
+            수정하기
+          </PrimaryButton>
 
-        <PrimaryButton direction="none" onClick={onDelete}>
-          탈퇴하기
-        </PrimaryButton>
-      </div>
-    </section>
+          <PrimaryButton direction="none" onClick={onDelete}>
+            탈퇴하기
+          </PrimaryButton>
+        </div>
+      </section>
+    </Layout>
   )
 }
 

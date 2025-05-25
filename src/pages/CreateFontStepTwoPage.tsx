@@ -9,12 +9,13 @@ import { CheckFontNameDuplicate } from '@/features/check-font-name-duplicate'
 import { StepTwoButtonNavigation } from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { Input, SectionHeader, StepProgressBar, Textarea } from '@/shared/ui'
+import { Layout } from '@/widgets'
 
 const CreateFontStepTwoPage = () => {
   const formMethods = useCustomForm<CreateFontStepTwoFormType>(createFontStepTwoSchema)
 
   return (
-    <div className="my-[16.63rem] min-h-screen px-48">
+    <Layout hasPadding>
       <SectionHeader title="CREATION" />
       <StepProgressBar currentStep={2} totalSteps={3} label="폰트 정보를 입력해주세요." />
 
@@ -30,7 +31,7 @@ const CreateFontStepTwoPage = () => {
 
         <StepTwoButtonNavigation />
       </FormProvider>
-    </div>
+    </Layout>
   )
 }
 

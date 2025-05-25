@@ -6,6 +6,7 @@ import { MyFontPreviewCardList, ProgressTable, useMyFontList } from '@/features/
 import { useQueryParam } from '@/shared/hooks'
 import { toQueryString } from '@/shared/lib'
 import { Pagination, SectionHeader } from '@/shared/ui'
+import { Layout } from '@/widgets'
 
 const MyFontPage = () => {
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ const MyFontPage = () => {
   }
 
   return (
-    <div className="my-[16.63rem] min-h-screen px-48">
+    <Layout hasPadding>
       <section>
         <SectionHeader title="IN PROGRESS" />
         <ProgressTable />
@@ -39,7 +40,7 @@ const MyFontPage = () => {
           />
         </nav>
       </section>
-    </div>
+    </Layout>
   )
 }
 
