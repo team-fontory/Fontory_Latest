@@ -5,7 +5,7 @@ import { ROUTES } from '@/app/router'
 
 import { useCreateFont } from '../api/createFont.mutation'
 
-import { useCreateFontValues } from './createFont.store'
+import { useCreateFontActions, useCreateFontValues } from './createFont.store'
 
 const usePrepareFormData = () => {
   const sendForm = new FormData()
@@ -36,9 +36,11 @@ export const useCreateFontForm = () => {
   const sendForm = usePrepareFormData()
 
   const { mutate: createFont } = useCreateFont()
+  const { reset } = useCreateFontActions()
 
   const handleSuccess = () => {
     toast.success('폰트 제작 요청이 되었습니다.')
+    reset()
     navigate(ROUTES.MY_FONT)
   }
 
