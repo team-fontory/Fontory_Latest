@@ -30,7 +30,7 @@ type DefaultSuspenseQueryOptions<
 export const useAxiosQuery = <TData, TQueryFnData = TData>(
   queryKey: readonly unknown[],
   queryFn: () => Promise<TQueryFnData>,
-  options?: DefaultQueryOptions<TData, TQueryFnData>,
+  options?: Omit<DefaultQueryOptions<TData, TQueryFnData>, 'queryKey' | 'queryFn'>,
 ) => {
   return useQuery<TQueryFnData, AxiosError, TData>({
     queryKey,
@@ -44,7 +44,7 @@ export const useAxiosQuery = <TData, TQueryFnData = TData>(
  */
 export const useAxiosMutation = <TData, TVariables>(
   mutationFn: (variables: TVariables) => Promise<TData>,
-  options?: DefaultMutationOptions<TData, TVariables>,
+  options?: Omit<DefaultMutationOptions<TData, TVariables>, 'mutationFn'>,
 ) => {
   return useMutation<TData, AxiosError, TVariables>({
     mutationFn,

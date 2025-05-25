@@ -1,19 +1,14 @@
-import { useState } from 'react'
-
-import { ExploreFontPreviewCardList } from '@/features/explore'
+import { ExploreFontPreviewCardList, useExploreList } from '@/features/explore'
 import { PopularFontCardList } from '@/features/popular-fonts'
-import {
-  Pagination,
-  SearchBar,
-  SectionHeader,
-  SORT_OPTIONS,
-  type SortLabel,
-  SortTab,
-} from '@/shared/ui'
+import { useFontFilterParams } from '@/shared/hooks'
+import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
 
 const ExplorePage = () => {
-  const [value, setValue] = useState<SortLabel>(SORT_OPTIONS.all)
-  const [page, setPage] = useState(1)
+  const { page, sortBy, keyword, setFilterParams } = useFontFilterParams()
+
+  const {
+    data: { content, currentPage, totalPages },
+  } = useExploreList({ page, sortBy, keyword })
 
   return (
     <div className="my-[16.63rem] min-h-screen px-48">
@@ -26,14 +21,18 @@ const ExplorePage = () => {
         <SectionHeader title="ALL FONTS" />
 
         <div className="mb-[4.5rem] grid grid-cols-2">
-          <SortTab value={value} onChange={setValue} />
-          <SearchBar onSearch={() => {}} />
+          <SortTab value={sortBy} onChange={(sortBy) => setFilterParams({ sortBy })} />
+          <SearchBar onSearch={(keyword) => setFilterParams({ keyword, page: 1 })} />
         </div>
 
-        <ExploreFontPreviewCardList />
+        <ExploreFontPreviewCardList fontList={content} />
 
         <nav className="mt-[8.75rem]">
-          <Pagination currentPage={page} totalPages={8} onPageChange={setPage} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={(page) => setFilterParams({ page })}
+          />
         </nav>
       </section>
     </div>

@@ -1,5 +1,7 @@
 import type z from 'zod'
 
+import type { SortLabel } from '@/shared/ui'
+
 import type {
   createFontStepOneSchema,
   createFontStepThreeSchema,
@@ -33,3 +35,21 @@ export type FontDetailType = Omit<Font, 'id' | 'name' | 'bookmarked'> & {
   fontName: string
   isBookmarked: boolean
 } & FontMetadata
+
+export type FontFilter = {
+  page: number
+  sortBy: SortLabel
+  keyword: string | null
+}
+
+export type FontArrayResponse = {
+  content: FontDetailResponse[]
+  number: number
+  totalPages: number
+}
+
+export type CustomFontArray = {
+  content: FontDetailType[]
+  currentPage: number
+  totalPages: number
+}
