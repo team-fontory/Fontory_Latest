@@ -1,4 +1,11 @@
 @font-face {
+  font-family: Okticon;
+  src: url('/fonts/okticon.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+  font-weight: bold;
+}
+@font-face {
   font-family: Pretendard;
   src: url('/fonts/Pretendard-Black.woff2') format('woff2');
   font-style: normal;
@@ -39,7 +46,8 @@
   font-family: Pretendard;
 }
 @utility font-logo {
-  @apply text-[3rem] font-bold;
+  font-family: Okticon;
+  @apply text-primary text-[3rem] font-bold;
 }
 @utility font-navigation {
   @apply text-[1.5rem] font-bold;
