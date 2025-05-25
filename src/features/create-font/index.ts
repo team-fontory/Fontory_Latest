@@ -1,4 +1,5 @@
 export * from './model/createFont.store'
+export * from './model/createFontStep.store'
 export * from './ui/CreateFontButton'
 export * from './ui/DownloadTemplate'
 export * from './ui/StepOneButtonNavigation'

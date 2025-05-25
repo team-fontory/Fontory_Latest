@@ -1,21 +1,37 @@
+import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
+import { ROUTES } from '@/app/router'
 import {
   type CreateFontStepThreeFormType,
   createFontStepThreeSchema,
   fontAttribute,
 } from '@/entity/font'
-import { CreateFontButton } from '@/features/create-font'
+import {
+  CreateFontButton,
+  useCreateFontStep2Done,
+  useCreateFontStepActions,
+} from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { Input, PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
 import { Layout } from '@/widgets'
 
 const CreateFontStepThreePage = () => {
   const navigate = useNavigate()
+  const isStep2Completed = useCreateFontStep2Done()
   const formMethods = useCustomForm<CreateFontStepThreeFormType>(createFontStepThreeSchema)
 
+  const { cancelStep2 } = useCreateFontStepActions()
+
+  useEffect(() => {
+    if (!isStep2Completed) {
+      navigate(ROUTES.CREATE_FONT_STEP_ONE)
+    }
+  }, [isStep2Completed, navigate])
+
   const goToPrevStep = () => {
+    cancelStep2()
     navigate(-1)
   }
 

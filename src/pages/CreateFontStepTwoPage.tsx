@@ -1,18 +1,29 @@
+import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
+import { ROUTES } from '@/app/router'
 import {
   type CreateFontStepTwoFormType,
   createFontStepTwoSchema,
   fontAttribute,
 } from '@/entity/font'
 import { CheckFontNameDuplicate } from '@/features/check-font-name-duplicate'
-import { StepTwoButtonNavigation } from '@/features/create-font'
+import { StepTwoButtonNavigation, useCreateFontStep1Done } from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { Input, SectionHeader, StepProgressBar, Textarea } from '@/shared/ui'
 import { Layout } from '@/widgets'
 
 const CreateFontStepTwoPage = () => {
+  const navigate = useNavigate()
+  const isStep1Completed = useCreateFontStep1Done()
   const formMethods = useCustomForm<CreateFontStepTwoFormType>(createFontStepTwoSchema)
+
+  useEffect(() => {
+    if (!isStep1Completed) {
+      navigate(ROUTES.CREATE_FONT_STEP_ONE)
+    }
+  }, [isStep1Completed, navigate])
 
   return (
     <Layout hasPadding>
