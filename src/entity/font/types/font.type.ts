@@ -53,3 +53,8 @@ export type CustomFontArray = {
   currentPage: number
   totalPages: number
 }
+
+export type FontProgress = Pick<Font, 'id' | 'name'> & {
+  createdAt: string
+  status: string
+}

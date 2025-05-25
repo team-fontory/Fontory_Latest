@@ -1,17 +1,7 @@
-const progress = [
-  {
-    id: 0,
-    name: '휴먼휴먼 둥글체',
-    createdAt: '2025-12-13 12:00',
-  },
-  {
-    id: 1,
-    name: '휴먼휴먼 둥글체',
-    createdAt: '2025-12-13 12:00',
-  },
-]
+import { useProgressFontList } from '../api/myFont.query'
 
 export const ProgressTable = () => {
+  const { data: progressList } = useProgressFontList()
   const tableCommonStyle = 'py-6 text-center'
 
   return (
@@ -24,7 +14,7 @@ export const ProgressTable = () => {
       </thead>
 
       <tbody>
-        {progress.map(({ id, name, createdAt }) => (
+        {progressList.map(({ id, name, createdAt }) => (
           <tr key={id} className="font-progress-value">
             <td className={tableCommonStyle}>{name}</td>
             <td className={tableCommonStyle}>{createdAt}</td>

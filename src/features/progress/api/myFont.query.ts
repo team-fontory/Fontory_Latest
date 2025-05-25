@@ -1,5 +1,5 @@
 import { apiClient, FONT_QUERY_KEY } from '@/app/api'
-import type { CustomFontArray, FontArrayResponse, FontFilter } from '@/entity/font'
+import type { CustomFontArray, FontArrayResponse, FontFilter, FontProgress } from '@/entity/font'
 import { useAxiosSuspenseQuery } from '@/shared/hooks'
 
 type MyFontListType = Pick<FontFilter, 'page'>
@@ -16,16 +16,23 @@ const endpoints = {
 } as const
 
 export const useProgressFontList = () =>
-  useAxiosSuspenseQuery(myFontKeys.progress(), () => apiClient.get(endpoints.progress), {
-    staleTime: 60000,
-    gcTime: 60000 * 5,
-  })
+  useAxiosSuspenseQuery<FontProgress[]>(
+    myFontKeys.progress(),
+    () => apiClient.get(endpoints.progress),
+    {
+      staleTime: 60000,
+      gcTime: 60000 * 5,
+      select: (data) => data.filter((font) => font.status === 'PROGRESS'),
+    },
+  )
 
 export const useMyFontList = ({ page }: MyFontListType) =>
   useAxiosSuspenseQuery<CustomFontArray, FontArrayResponse>(
     myFontKeys.list({ page }),
     () => apiClient.get(endpoints.list, { params: { page: page - 1 } }),
     {
+      staleTime: 60000,
+      gcTime: 60000 * 5,
       select: ({ content, number, totalPages }) => {
         const array = content.map(({ id, name, bookmarked, ...rest }) => ({
           fontId: id,
