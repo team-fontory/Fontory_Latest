@@ -1,6 +1,7 @@
 export * from './cn'
 export * from './downloadFile'
 export * from './formatDateInput'
+export * from './formatIsoToDateTime'
 export * from './getDirectionAnimation'
 export * from './getScaleInViewAnimation'
 export * from './toQueryString'

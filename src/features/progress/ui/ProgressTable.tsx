@@ -1,7 +1,10 @@
+import { formatIsoToDateTime } from '@/shared/lib'
+
 import { useProgressFontList } from '../api/myFont.query'
 
 export const ProgressTable = () => {
   const { data: progressList } = useProgressFontList()
+
   const tableCommonStyle = 'py-6 text-center'
 
   return (
@@ -17,7 +20,7 @@ export const ProgressTable = () => {
         {progressList.map(({ id, name, createdAt }) => (
           <tr key={id} className="font-progress-value">
             <td className={tableCommonStyle}>{name}</td>
-            <td className={tableCommonStyle}>{createdAt}</td>
+            <td className={tableCommonStyle}>{formatIsoToDateTime(createdAt)}</td>
           </tr>
         ))}
       </tbody>
