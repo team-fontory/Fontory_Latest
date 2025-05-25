@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
+import { useMyProfile } from '@/features/auth'
 
 import { MypageDropdown } from './MypageDropdown'
 
@@ -10,10 +11,9 @@ const NAV_LINKS = [
 ]
 
 const AuthItem = () => {
-  // const { data: profile, isError } = useMyProfile()
+  const { data: profile, isError } = useMyProfile()
 
-  if (true)
-    // if (!isError && profile)
+  if (!isError && profile)
     return (
       <li className="group relative">
         <Link to={ROUTES.ACCOUNT_INFO} className="hover:text-primary">
