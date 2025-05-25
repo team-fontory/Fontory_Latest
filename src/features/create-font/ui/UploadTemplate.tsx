@@ -18,7 +18,7 @@ export const UploadTemplate = () => {
         <img
           src={URL.createObjectURL(file)}
           alt="업로드된 템플릿 미리보기"
-          className="rounded-large h-[28.4375rem] w-[28.4375rem] object-contain"
+          className="rounded-large border-grey h-[28.4375rem] w-[28.4375rem] border object-contain"
         />
       ) : (
         <div className="flex-center rounded-large bg-grey h-[28.4375rem] w-[28.4375rem]">
