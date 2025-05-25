@@ -20,10 +20,11 @@ const AuthItem = ({ isTransparent = false }: Props) => {
 
   if (!isError && profile)
     return (
-      <li
-        className={cn('group relative', isTransparent ? 'hover:text-white' : 'hover:text-primary')}
-      >
-        <Link to={ROUTES.ACCOUNT_INFO} className="hover:text-primary">
+      <li className="group relative">
+        <Link
+          to={ROUTES.ACCOUNT_INFO}
+          className={isTransparent ? 'hover:text-white' : 'hover:text-primary'}
+        >
           마이페이지
         </Link>
 
