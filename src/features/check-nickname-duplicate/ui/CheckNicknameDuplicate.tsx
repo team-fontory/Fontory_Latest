@@ -1,4 +1,9 @@
+import { userAttribute } from '@/entity/user'
 import { Input, SecondaryButton } from '@/shared/ui'
+
+import { useVerificationCheckingState } from '../model/nicknameVerification.store'
+import { useNicknameDuplicateCheck } from '../model/useNicknameDuplicateCheck'
+import { useNicknameVerificationWatcher } from '../model/useNicknameVerificationWatcher'
 
 type Props = {
   section: string
@@ -12,6 +17,17 @@ type Props = {
  */
 
 export const CheckNicknameDuplicate = ({ section, label, placeholder, className }: Props) => {
+  const fieldName = userAttribute.nickname.section
+  const isChecking = useVerificationCheckingState()
+
+  const { checkNicknameDuplicate } = useNicknameDuplicateCheck(fieldName)
+  const { markAsVerified } = useNicknameVerificationWatcher(fieldName)
+
+  const handleCheckDuplicate = () => {
+    checkNicknameDuplicate()
+    markAsVerified()
+  }
+
   return (
     <div className="flex items-end gap-4">
       <Input
@@ -20,7 +36,9 @@ export const CheckNicknameDuplicate = ({ section, label, placeholder, className 
         placeholder={placeholder}
         className={className ?? 'w-full'}
       />
-      <SecondaryButton className="shrink-0">중복 검사</SecondaryButton>
+      <SecondaryButton className="shrink-0" disabled={isChecking} onClick={handleCheckDuplicate}>
+        중복 검사
+      </SecondaryButton>
     </div>
   )
 }
