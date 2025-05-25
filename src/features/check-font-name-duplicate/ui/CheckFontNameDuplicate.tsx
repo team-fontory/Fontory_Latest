@@ -39,7 +39,8 @@ export const CheckFontNameDuplicate = ({ section, label, hint, placeholder, clas
         section={section}
         label={label}
         placeholder={placeholder}
-        hint={successMessage || hint}
+        hint={hint}
+        successMessage={successMessage || undefined}
         className={className ?? 'w-full'}
       />
       <SecondaryButton className="shrink-0" disabled={isChecking} onClick={handleCheckDuplicate}>

@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
 import { useFormContext } from 'react-hook-form'
-import type { AxiosError } from 'axios'
 
 import { useValidateFontName } from '../api/checkFontNameDuplicate.mutation'
 
@@ -21,21 +20,29 @@ export const useFontNameDuplicateCheck = (section: string) => {
   const { updateVerificationStatus, setVerificationMessage, startChecking, completeChecking } =
     useVerificationActions()
 
-  const handleSuccess = useCallback(() => {
-    updateVerificationStatus({ isDirty: false, isVerified: true })
-    setVerificationMessage('사용 가능한 이름입니다.')
-  }, [setVerificationMessage, updateVerificationStatus])
+  const handleSuccess = useCallback(
+    (result: boolean) => {
+      if (result) {
+        updateVerificationStatus({ isDirty: false, isVerified: true })
+        setVerificationMessage('사용 가능한 이름입니다.')
+      } else {
+        const message = '이미 사용 중인 이름입니다.'
+
+        updateVerificationStatus({ isDirty: false, isVerified: false })
+        setVerificationMessage(message)
+        setError(section, { type: 'manual', message })
+      }
+    },
+    [section, setError, setVerificationMessage, updateVerificationStatus],
+  )
 
   const handleError = useCallback(
-    (error: AxiosError, section: string) => {
+    (section: string) => {
       updateVerificationStatus({ isDirty: false, isVerified: false })
-
-      const message =
-        error?.response?.status === 409
-          ? '이미 사용 중인 이름입니다.'
-          : '오류가 발생했습니다. 잠시 후 다시 시도해주세요.'
-
-      setError(section, { type: 'manual', message })
+      setError(section, {
+        type: 'manual',
+        message: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
+      })
     },
     [setError, updateVerificationStatus],
   )
@@ -46,8 +53,8 @@ export const useFontNameDuplicateCheck = (section: string) => {
 
     mutate(getValues(section), {
       onSuccess: handleSuccess,
-      onError: (error) => handleError(error, section),
-      onSettled: () => completeChecking(),
+      onError: () => handleError(section),
+      onSettled: completeChecking,
     })
   }, [completeChecking, getValues, handleError, handleSuccess, mutate, section, startChecking])
 

@@ -7,11 +7,20 @@ type Props = {
   section: string
   label: string
   hint?: string
+  successMessage?: string
   className?: string
 } & InputHTMLAttributes<HTMLInputElement>
 
-export const Input = ({ section, label, hint, className, ...rest }: Props) => {
+const MESSAGE_COLOR = {
+  success: 'text-success',
+  error: 'text-primary',
+  hint: 'text-darkgrey',
+} as const
+
+export const Input = ({ section, label, hint, successMessage, className, ...rest }: Props) => {
   const { formState, register } = useFormContext()
+  const errorMessage = formState.errors[section]?.message?.toString()
+  const message = errorMessage || successMessage || hint
 
   return (
     <div className={cn('flex-column gap-5', className)}>
@@ -20,8 +29,12 @@ export const Input = ({ section, label, hint, className, ...rest }: Props) => {
           {label}
         </label>
 
-        {hint && (
-          <p className={formState.errors[section] ? 'text-primary' : 'text-darkgrey'}>* {hint}</p>
+        {message && (
+          <p
+            className={MESSAGE_COLOR[errorMessage ? 'error' : successMessage ? 'success' : 'hint']}
+          >
+            * {message}
+          </p>
         )}
       </div>
       <input id={section} {...register(section)} {...rest} />
