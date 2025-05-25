@@ -14,7 +14,7 @@ import { useVerificationActions } from './fontNameVerification.store'
  */
 
 export const useFontNameDuplicateCheck = (section: string) => {
-  const { setError, getValues } = useFormContext()
+  const { setError, getValues, clearErrors } = useFormContext()
   const { mutate } = useValidateFontName()
 
   const { updateVerificationStatus, setVerificationMessage, startChecking, completeChecking } =
@@ -23,17 +23,18 @@ export const useFontNameDuplicateCheck = (section: string) => {
   const handleSuccess = useCallback(
     (result: boolean) => {
       if (result) {
-        updateVerificationStatus({ isDirty: false, isVerified: true })
-        setVerificationMessage('사용 가능한 이름입니다.')
-      } else {
         const message = '이미 사용 중인 이름입니다.'
 
         updateVerificationStatus({ isDirty: false, isVerified: false })
         setVerificationMessage(message)
         setError(section, { type: 'manual', message })
+      } else {
+        updateVerificationStatus({ isDirty: false, isVerified: true })
+        setVerificationMessage('사용 가능한 이름입니다.')
+        clearErrors(section)
       }
     },
-    [section, setError, setVerificationMessage, updateVerificationStatus],
+    [clearErrors, section, setError, setVerificationMessage, updateVerificationStatus],
   )
 
   const handleError = useCallback(
