@@ -22,7 +22,6 @@ type Props = {
 const MAX_VISIBLE = 4
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }: Props) => {
-  console.log(currentPage, totalPages)
   const currentGroup = Math.floor((currentPage - 1) / MAX_VISIBLE)
 
   const start = currentGroup * MAX_VISIBLE + 1

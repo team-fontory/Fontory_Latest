@@ -1,18 +1,11 @@
 import { publicApiClient } from '@/app/api'
 import { MAIN_QUERY_KEY } from '@/app/api'
-import type { CustomFontArray, FontArrayResponse } from '@/entity/font'
+import type { CustomFontArray, FontArrayResponse, FontFilter } from '@/entity/font'
 import { useAxiosSuspenseQuery } from '@/shared/hooks'
-import type { SortLabel } from '@/shared/ui'
-
-type ExploreListParams = {
-  page: number
-  sortBy: SortLabel
-  keyword: string | null
-}
 
 export const exploreKeys = {
   all: [...MAIN_QUERY_KEY, 'explore'],
-  list: ({ page, sortBy, keyword }: ExploreListParams) =>
+  list: ({ page, sortBy, keyword }: FontFilter) =>
     [...exploreKeys.all, 'list', page, sortBy, keyword] as const,
 } as const
 
@@ -20,7 +13,7 @@ const endpoints = {
   list: '/fonts',
 } as const
 
-export const useExploreList = ({ page, sortBy, keyword }: ExploreListParams) =>
+export const useExploreList = ({ page, sortBy, keyword }: FontFilter) =>
   useAxiosSuspenseQuery<CustomFontArray, FontArrayResponse>(
     exploreKeys.list({ page, sortBy, keyword }),
     () =>
