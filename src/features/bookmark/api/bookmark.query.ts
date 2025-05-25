@@ -9,7 +9,7 @@ export const bookmarkKeys = {
 }
 
 const endpoints = {
-  list: '/fonts',
+  list: '/bookmarks',
 } as const
 
 export const useBookmarkFontList = ({ page, sortBy, keyword }: FontFilter) => {
