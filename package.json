@@ -7,7 +7,7 @@
     "dev": "vite",
     "predev": "pnpm generate:icons",
     "prebuild": "pnpm generate:icons",
-    "build": "vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "generate:icons": "tsx scripts/generate-icon-map.ts"

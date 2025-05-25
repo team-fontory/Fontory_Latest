@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
 import type { FontFilter } from '@/entity/font'
-import { MyFontPreviewCardList, ProgressTable } from '@/features/progress'
+import { MyFontPreviewCardList, ProgressTable, useMyFontList } from '@/features/progress'
 import { useQueryParam } from '@/shared/hooks'
 import { toQueryString } from '@/shared/lib'
 import { Pagination, SectionHeader } from '@/shared/ui'
@@ -12,6 +12,8 @@ const MyFontPage = () => {
   const { getQueryParam } = useQueryParam()
 
   const page = parseInt(getQueryParam('page') ?? '1', 10)
+
+  const { data: myFontList } = useMyFontList({ page })
 
   const setFilterParams = (next: Partial<FontFilter>) => {
     const query = toQueryString({ page: next.page ?? page })
@@ -27,12 +29,12 @@ const MyFontPage = () => {
 
       <section className="mt-60">
         <SectionHeader title="COMPLETED" />
-        <MyFontPreviewCardList />
+        <MyFontPreviewCardList fontList={myFontList.content} />
 
         <nav className="mt-[8.75rem]">
           <Pagination
             currentPage={page}
-            totalPages={8}
+            totalPages={myFontList.totalPages}
             onPageChange={(page) => setFilterParams({ page })}
           />
         </nav>

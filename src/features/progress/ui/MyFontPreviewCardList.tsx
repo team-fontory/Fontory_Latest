@@ -1,10 +1,17 @@
+import type { FontDetailType } from '@/entity/font'
+
 import { MyFontPreviewCard } from './MyFontPreviewCard'
 
-export const MyFontPreviewCardList = () => {
+type Props = {
+  fontList: FontDetailType[]
+}
+
+export const MyFontPreviewCardList = ({ fontList }: Props) => {
   return (
     <div className="flex-column">
-      <MyFontPreviewCard />
-      <MyFontPreviewCard />
+      {fontList.map((font) => (
+        <MyFontPreviewCard key={font.fontId} {...font} />
+      ))}
     </div>
   )
 }
