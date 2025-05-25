@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
+import { ROUTES } from '@/app/router'
 import type { FontFilter } from '@/entity/font'
 import { useQueryParam } from '@/shared/hooks'
 import { toQueryString } from '@/shared/lib'
@@ -28,7 +29,7 @@ export const useFontFilterParams = () => {
       keyword: next.keyword ?? keyword,
     })
 
-    navigate(`/explore?${query}`)
+    navigate(`${ROUTES.EXPLORE}?${query}`)
   }
 
   return {
