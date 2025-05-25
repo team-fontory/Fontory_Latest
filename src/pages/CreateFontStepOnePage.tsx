@@ -2,13 +2,21 @@ import { FormProvider } from 'react-hook-form'
 
 import type { CreateFontStepOneFormType } from '@/entity/font'
 import { createFontStepOneSchema } from '@/entity/font'
-import { DownloadTemplate, StepOneButtonNavigation, UploadTemplate } from '@/features/create-font'
+import {
+  DownloadTemplate,
+  StepOneButtonNavigation,
+  UploadTemplate,
+  useCreateFontValues,
+} from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { SectionHeader, StepProgressBar } from '@/shared/ui'
 import { Layout } from '@/widgets'
 
 const CreateFontStepOnePage = () => {
-  const formMethods = useCustomForm<CreateFontStepOneFormType>(createFontStepOneSchema)
+  const { file } = useCreateFontValues()
+  const formMethods = useCustomForm<CreateFontStepOneFormType>(createFontStepOneSchema, {
+    defaultValues: { file },
+  })
 
   return (
     <Layout hasPadding>

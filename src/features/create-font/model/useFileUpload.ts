@@ -15,11 +15,11 @@ import { useCreateFontActions } from './createFont.store'
  */
 
 export const useFileUpload = (section: string) => {
-  const [file, setFile] = useState<File | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-
-  const { setValue } = useFormContext()
+  const { getValues, setValue } = useFormContext()
   const { uploadFile } = useCreateFontActions()
+
+  const [file, setFile] = useState<File | null>(getValues(section))
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const currentFile = e.target.files?.[0] || null

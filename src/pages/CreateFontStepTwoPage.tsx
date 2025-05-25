@@ -9,7 +9,11 @@ import {
   fontAttribute,
 } from '@/entity/font'
 import { CheckFontNameDuplicate } from '@/features/check-font-name-duplicate'
-import { StepTwoButtonNavigation, useCreateFontStep1Done } from '@/features/create-font'
+import {
+  StepTwoButtonNavigation,
+  useCreateFontStep1Done,
+  useCreateFontValues,
+} from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { Input, SectionHeader, StepProgressBar, Textarea } from '@/shared/ui'
 import { Layout } from '@/widgets'
@@ -17,7 +21,11 @@ import { Layout } from '@/widgets'
 const CreateFontStepTwoPage = () => {
   const navigate = useNavigate()
   const isStep1Completed = useCreateFontStep1Done()
-  const formMethods = useCustomForm<CreateFontStepTwoFormType>(createFontStepTwoSchema)
+
+  const { name, engName, example } = useCreateFontValues()
+  const formMethods = useCustomForm<CreateFontStepTwoFormType>(createFontStepTwoSchema, {
+    defaultValues: { name, engName, example },
+  })
 
   useEffect(() => {
     if (!isStep1Completed) {

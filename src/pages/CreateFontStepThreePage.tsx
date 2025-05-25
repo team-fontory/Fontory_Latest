@@ -12,6 +12,7 @@ import {
   CreateFontButton,
   useCreateFontStep2Done,
   useCreateFontStepActions,
+  useCreateFontValues,
 } from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { Input, PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
@@ -20,7 +21,11 @@ import { Layout } from '@/widgets'
 const CreateFontStepThreePage = () => {
   const navigate = useNavigate()
   const isStep2Completed = useCreateFontStep2Done()
-  const formMethods = useCustomForm<CreateFontStepThreeFormType>(createFontStepThreeSchema)
+
+  const { phoneNumber } = useCreateFontValues()
+  const formMethods = useCustomForm<CreateFontStepThreeFormType>(createFontStepThreeSchema, {
+    defaultValues: { phoneNumber },
+  })
 
   const { cancelStep2 } = useCreateFontStepActions()
 
