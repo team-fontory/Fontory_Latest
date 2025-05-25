@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const MyFontPreviewCardList = ({ fontList }: Props) => {
-  if (!fontList)
+  if (!fontList || !fontList.length)
     return (
       <p className="text-darkgrey py-20 text-center text-4xl font-bold">{EMPTY_MESSAGE.noFont}</p>
     )
