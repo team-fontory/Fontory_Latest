@@ -1,13 +1,17 @@
 import { fontAttribute } from '@/entity/font'
 import { Input, SecondaryButton } from '@/shared/ui'
 
-import { useVerificationCheckingState } from '../model/fontNameVerification.store'
+import {
+  useVerificationCheckingState,
+  useVerificationMessage,
+} from '../model/fontNameVerification.store'
 import { useFontNameDuplicateCheck } from '../model/useFontNameDuplicateCheck'
 import { useFontNameVerificationWatcher } from '../model/useFontNameVerificationWatcher'
 
 type Props = {
   section: string
   label: string
+  hint: string
   placeholder?: string
   className?: string
 }
@@ -16,9 +20,10 @@ type Props = {
  * 폰트 이름 입력 필드 + 중복검사 버튼 컴포넌트
  */
 
-export const CheckFontNameDuplicate = ({ section, label, placeholder, className }: Props) => {
+export const CheckFontNameDuplicate = ({ section, label, hint, placeholder, className }: Props) => {
   const fieldName = fontAttribute.name.section
   const isChecking = useVerificationCheckingState()
+  const successMessage = useVerificationMessage()
 
   const { checkFontNameDuplicate } = useFontNameDuplicateCheck(fieldName)
   const { markAsVerified } = useFontNameVerificationWatcher(fieldName)
@@ -34,6 +39,7 @@ export const CheckFontNameDuplicate = ({ section, label, placeholder, className 
         section={section}
         label={label}
         placeholder={placeholder}
+        hint={successMessage || hint}
         className={className ?? 'w-full'}
       />
       <SecondaryButton className="shrink-0" disabled={isChecking} onClick={handleCheckDuplicate}>

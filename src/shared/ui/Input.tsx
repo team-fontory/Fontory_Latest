@@ -6,17 +6,24 @@ import { cn } from '../lib'
 type Props = {
   section: string
   label: string
+  hint?: string
   className?: string
 } & InputHTMLAttributes<HTMLInputElement>
 
-export const Input = ({ section, label, className, ...rest }: Props) => {
-  const { register } = useFormContext()
+export const Input = ({ section, label, hint, className, ...rest }: Props) => {
+  const { formState, register } = useFormContext()
 
   return (
     <div className={cn('flex-column gap-5', className)}>
-      <label htmlFor={section} className="font-input-label">
-        {label}
-      </label>
+      <div className="flex-align-center items-end gap-4">
+        <label htmlFor={section} className="font-input-label">
+          {label}
+        </label>
+
+        {hint && (
+          <p className={formState.errors[section] ? 'text-primary' : 'text-darkgrey'}>* {hint}</p>
+        )}
+      </div>
       <input id={section} {...register(section)} {...rest} />
     </div>
   )
