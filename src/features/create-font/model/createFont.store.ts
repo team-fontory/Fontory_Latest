@@ -30,4 +30,6 @@ export const useCreateFontStore = create<CreateFontStore>((set) => ({
   },
 }))
 
+export const useCreateFontValues = () =>
+  useCreateFontStore(({ actions: _actions, ...rest }) => rest)
 export const useCreateFontActions = () => useCreateFontStore((state) => state.actions)

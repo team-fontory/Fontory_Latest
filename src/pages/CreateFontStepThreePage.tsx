@@ -1,16 +1,22 @@
 import { FormProvider } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import {
   type CreateFontStepThreeFormType,
   createFontStepThreeSchema,
   fontAttribute,
 } from '@/entity/font'
-import { StepThreeButtonNavigation } from '@/features/create-font'
+import { CreateFontButton } from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
-import { Input, SectionHeader, StepProgressBar } from '@/shared/ui'
+import { Input, PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
 
 const CreateFontStepThreePage = () => {
+  const navigate = useNavigate()
   const formMethods = useCustomForm<CreateFontStepThreeFormType>(createFontStepThreeSchema)
+
+  const goToPrevStep = () => {
+    navigate(-1)
+  }
 
   return (
     <div className="my-[16.63rem] min-h-screen px-48">
@@ -26,7 +32,13 @@ const CreateFontStepThreePage = () => {
           </p>
         </form>
 
-        <StepThreeButtonNavigation />
+        <div className="flex-between-center mt-[6.25rem]">
+          <PrimaryButton direction="left" onClick={goToPrevStep}>
+            이전 단계
+          </PrimaryButton>
+
+          <CreateFontButton />
+        </div>
       </FormProvider>
     </div>
   )
