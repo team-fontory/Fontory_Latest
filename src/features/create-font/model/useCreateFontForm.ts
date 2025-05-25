@@ -8,12 +8,6 @@ import { useCreateFont } from '../api/createFont.mutation'
 
 import { useCreateFontValues } from './createFont.store'
 
-/**
- * 폰트 제작 요청을 처리하는 훅
- *
- * - 폼 데이터를 FormData로 가공하고 요청 후 성공/실패 처리
- */
-
 const prepareFormData = (formData: CreateFontFormType) => {
   const sendForm = new FormData()
 
@@ -29,6 +23,12 @@ const prepareFormData = (formData: CreateFontFormType) => {
 
   return sendForm
 }
+
+/**
+ * 폰트 제작 요청을 처리하는 훅
+ *
+ * - 폼 데이터를 FormData로 가공하고 요청 후 성공/실패 처리
+ */
 
 export const useCreateFontForm = () => {
   const navigate = useNavigate()

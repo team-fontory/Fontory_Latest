@@ -26,7 +26,7 @@ const SignupStepTwoPage = () => {
           <PrimaryButton direction="left" onClick={goToPrevStep}>
             이전 단계
           </PrimaryButton>
-          \ <SignupButton />
+          <SignupButton />
         </div>
       </FormProvider>
     </section>

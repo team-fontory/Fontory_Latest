@@ -2,7 +2,8 @@ import { create } from 'zustand'
 
 import { type CreateFontFormType } from '@/entity/font'
 
-type CreateFontStore = CreateFontFormType & {
+type CreateFontStore = {
+  form: CreateFontFormType
   actions: {
     uploadFile: (file: File | null) => void
     setFontInformation: (data: Pick<CreateFontFormType, 'name' | 'engName' | 'example'>) => void
@@ -20,16 +21,17 @@ const initialValues = {
 }
 
 export const useCreateFontStore = create<CreateFontStore>((set) => ({
-  ...initialValues,
+  form: initialValues,
   actions: {
     uploadFile: (file) => set((state) => ({ ...state, file })),
-    setFontInformation: ({ name, engName, example }) =>
-      set((state) => ({ ...state, name, engName, example })),
+    setFontInformation: (information) =>
+      set((state) => ({
+        form: { ...information, phoneNumber: state.form.phoneNumber, file: state.form.file },
+      })),
     setPhoneNumber: (phoneNumber) => set((state) => ({ ...state, phoneNumber })),
-    reset: () => set({ ...initialValues }),
+    reset: () => set({ form: initialValues }),
   },
 }))
 
-export const useCreateFontValues = () =>
-  useCreateFontStore(({ actions: _actions, ...rest }) => rest)
+export const useCreateFontValues = () => useCreateFontStore((state) => state.form)
 export const useCreateFontActions = () => useCreateFontStore((state) => state.actions)
