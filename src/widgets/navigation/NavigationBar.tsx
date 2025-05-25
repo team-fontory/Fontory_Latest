@@ -15,12 +15,14 @@ const NAV_LINKS = [
   { label: '폰트제작', to: ROUTES.CREATE_FONT_STEP_ONE },
 ]
 
-const AuthItem = () => {
+const AuthItem = ({ isTransparent = false }: Props) => {
   const { data: profile, isError } = useMyProfile()
 
   if (!isError && profile)
     return (
-      <li className="group relative">
+      <li
+        className={cn('group relative', isTransparent ? 'hover:text-white' : 'hover:text-primary')}
+      >
         <Link to={ROUTES.ACCOUNT_INFO} className="hover:text-primary">
           마이페이지
         </Link>
@@ -32,7 +34,7 @@ const AuthItem = () => {
     )
 
   return (
-    <li>
+    <li className={isTransparent ? 'hover:text-white' : 'hover:text-primary'}>
       <Link to={ROUTES.LOGIN}>로그인</Link>
     </li>
   )
@@ -52,11 +54,11 @@ export const NavigationBar = ({ isTransparent = false }: Props) => {
 
       <ul className="font-navigation flex gap-9">
         {NAV_LINKS.map(({ label, to }) => (
-          <li key={label} className="hover:text-primary">
+          <li key={label} className={isTransparent ? 'hover:text-white' : 'hover:text-primary'}>
             <Link to={to}>{label}</Link>
           </li>
         ))}
-        <AuthItem />
+        <AuthItem isTransparent={isTransparent} />
       </ul>
     </nav>
   )
