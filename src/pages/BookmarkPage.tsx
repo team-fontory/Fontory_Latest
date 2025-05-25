@@ -10,7 +10,7 @@ const BookmarkPage = () => {
   } = useBookmarkFontList({ page, sortBy, keyword })
 
   return (
-    <div>
+    <div className="my-[16.63rem] min-h-screen px-48">
       <section>
         <SectionHeader title="BOOKMARKED" />
 

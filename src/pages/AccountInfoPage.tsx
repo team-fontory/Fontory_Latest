@@ -25,7 +25,7 @@ const AccountInfoPage = () => {
   }
 
   return (
-    <section className="my-[16.63rem] px-48">
+    <section className="my-[16.63rem] min-h-screen px-48">
       <SectionHeader title="ACCOUNT INFO" />
 
       <FormProvider {...formMethods}>
