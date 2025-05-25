@@ -2,7 +2,7 @@ import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { type UserFormType, userSchema } from '@/entity/user'
-import { SignupForm } from '@/features/sign-up'
+import { SignupButton, SignupForm } from '@/features/sign-up'
 import { useCustomForm } from '@/shared/hooks'
 import { PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
 
@@ -12,11 +12,6 @@ const SignupStepTwoPage = () => {
 
   const goToPrevStep = () => {
     navigate(-1)
-  }
-
-  const onSubmit = (formData: UserFormType) => {
-    console.log('submit')
-    console.log(formData)
   }
 
   return (
@@ -31,10 +26,7 @@ const SignupStepTwoPage = () => {
           <PrimaryButton direction="left" onClick={goToPrevStep}>
             이전 단계
           </PrimaryButton>
-
-          <PrimaryButton direction="none" onClick={formMethods.handleSubmit(onSubmit)}>
-            가입하기
-          </PrimaryButton>
+          \ <SignupButton />
         </div>
       </FormProvider>
     </section>
