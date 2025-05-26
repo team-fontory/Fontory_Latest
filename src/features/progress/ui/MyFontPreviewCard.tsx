@@ -19,7 +19,7 @@ export const MyFontPreviewCard = ({ fontId, fontName, example, writerName, woff 
           {fontName} / {writerName}
         </p>
         <DownloadButton.Label name={fontName} link={woff} />
-        <DeleteFontButton />
+        <DeleteFontButton fontId={fontId} />
       </div>
 
       <p className="font-preview" style={isLoaded ? { fontFamily } : undefined}>

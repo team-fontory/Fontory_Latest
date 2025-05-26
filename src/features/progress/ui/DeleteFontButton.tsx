@@ -1,9 +1,10 @@
+import type { FontDetailType } from '@/entity/font'
 import { Icon } from '@/shared/ui'
 
 import { useDeleteFont } from '../model/useDeleteFont'
 
-export const DeleteFontButton = () => {
-  const { handleDeleteFont } = useDeleteFont()
+export const DeleteFontButton = ({ fontId }: Pick<FontDetailType, 'fontId'>) => {
+  const { handleDeleteFont } = useDeleteFont(fontId)
 
   return (
     <button
