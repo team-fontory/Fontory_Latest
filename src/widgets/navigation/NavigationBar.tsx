@@ -15,20 +15,23 @@ const NAV_LINKS = [
   { label: '폰트제작', to: ROUTES.CREATE_FONT_STEP_ONE },
 ]
 
-const AuthItem = ({ isTransparent = false }: Props) => {
+export const AuthItem = ({ isTransparent = false }: Props) => {
   const { data: profile, isError } = useMyProfile()
 
   if (!isError && profile)
     return (
       <li className="group relative">
-        <Link
-          to={ROUTES.ACCOUNT_INFO}
-          className={isTransparent ? 'hover:text-white' : 'hover:text-primary'}
+        <button
+          type="button"
+          className={cn(
+            'cursor-pointer border-none bg-none',
+            isTransparent ? 'hover:text-white' : 'hover:text-primary',
+          )}
         >
           마이페이지
-        </Link>
+        </button>
 
-        <div className="invisible absolute top-full left-1/2 -translate-x-1/2 group-focus-within:visible group-hover:visible">
+        <div className="invisible absolute top-full left-1/2 z-10 -translate-x-1/2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100">
           <MypageDropdown />
         </div>
       </li>
