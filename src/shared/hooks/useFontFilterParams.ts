@@ -4,7 +4,7 @@ import { ROUTES } from '@/app/router'
 import type { FontFilter } from '@/entity/font'
 import { useQueryParam } from '@/shared/hooks'
 import { toQueryString } from '@/shared/lib'
-import { SORT_OPTIONS, type SortLabel } from '@/shared/ui'
+import { SORT_OPTIONS, type SortKey } from '@/shared/ui'
 
 /**
  * 페이지의 필터(query string) 상태를 관리하는 커스텀 훅
@@ -19,7 +19,7 @@ export const useFontFilterParams = () => {
   const { getQueryParam } = useQueryParam()
 
   const page = parseInt(getQueryParam('page') ?? '1', 10)
-  const sortBy = getQueryParam<SortLabel>('sortBy') ?? SORT_OPTIONS.all
+  const sortBy = getQueryParam<SortKey>('sortBy') ?? SORT_OPTIONS.createdAt.key
   const keyword = getQueryParam<string>('keyword') ?? null
 
   const setFilterParams = (next: Partial<FontFilter>) => {

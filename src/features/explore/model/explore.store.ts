@@ -13,7 +13,7 @@ type FilterStore = {
 
 const initialParams = {
   page: 0,
-  sortBy: SORT_OPTIONS.all,
+  sortBy: SORT_OPTIONS.createdAt.key,
   keyword: null,
 }
 

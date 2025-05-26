@@ -1,33 +1,36 @@
 import { cn } from '@/shared/lib'
 
 export const SORT_OPTIONS = {
-  all: '전체',
-  view: '조회순',
-  bookmark: '북마크순',
+  createdAt: { key: 'createdAt', label: '전체' },
+  downloadCount: { key: 'downloadCount', label: '조회순' },
+  bookmarkCount: { key: 'bookmarkCount', label: '북마크순' },
 } as const
 
-/** key 타입 ('all' | 'view' | 'bookmark') */
+/** 'createdAt' | 'downloadCount' | 'bookmark' */
 export type SortOption = keyof typeof SORT_OPTIONS
 
-/** value 타입 ('전체' | '조회순' | '북마크순') */
-export type SortLabel = (typeof SORT_OPTIONS)[SortOption]
+/** 'createdAt' | 'downloadCount' | 'bookmarkCount' */
+export type SortKey = (typeof SORT_OPTIONS)[SortOption]['key']
+
+/** '전체' | '조회순' | '북마크순' */
+export type SortLabel = (typeof SORT_OPTIONS)[SortOption]['label']
 
 type Props = {
-  value: SortLabel
-  onChange: (option: SortLabel) => void
+  value: SortOption
+  onChange: (option: SortKey) => void
 }
 
 export const SortTab = ({ value, onChange }: Props) => {
   return (
     <div className="flex gap-6">
-      {Object.entries(SORT_OPTIONS).map(([key, label]) => (
+      {Object.entries(SORT_OPTIONS).map(([option, { key, label }]) => (
         <button
-          key={key}
+          key={option}
           className={cn(
             'font-filter px-2 py-[1.06]',
-            value === label ? 'border-b-3 border-black text-black' : 'text-darkgrey',
+            value === key ? 'border-b-3 border-black text-black' : 'text-darkgrey',
           )}
-          onClick={() => onChange(label as SortLabel)}
+          onClick={() => onChange(key)}
         >
           {label}
         </button>

@@ -1,6 +1,6 @@
 import type z from 'zod'
 
-import type { SortLabel } from '@/shared/ui'
+import type { SortKey } from '@/shared/ui'
 
 import type {
   createFontStepOneSchema,
@@ -38,7 +38,7 @@ export type FontDetailType = Omit<Font, 'id' | 'name' | 'bookmarked'> & {
 
 export type FontFilter = {
   page: number
-  sortBy: SortLabel
+  sortBy: SortKey
   keyword: string | null
 }
 
