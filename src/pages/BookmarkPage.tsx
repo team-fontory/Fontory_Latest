@@ -1,4 +1,5 @@
 import { useBookmarkFontList } from '@/features/bookmark'
+import { EMPTY_MESSAGE } from '@/shared/config'
 import { useFontFilterParams } from '@/shared/hooks'
 import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
 import { FontPreviewCardList } from '@/shared/ui/FontPreviewCardList'
@@ -21,7 +22,7 @@ const BookmarkPage = () => {
           <SearchBar onSearch={(keyword) => setFilterParams({ keyword, page: 1 })} />
         </div>
 
-        <FontPreviewCardList fontList={content} />
+        <FontPreviewCardList fontList={content} emptyMessage={EMPTY_MESSAGE.noBookmark} />
 
         <nav className="mt-[8.75rem]">
           <Pagination
