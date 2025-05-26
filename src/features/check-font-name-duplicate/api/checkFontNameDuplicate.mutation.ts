@@ -6,6 +6,4 @@ export const endpoints = {
 } as const
 
 export const useValidateFontName = () =>
-  useAxiosMutation<boolean, string>((fontName) =>
-    apiClient.post(endpoints.validateName(fontName), null),
-  )
+  useAxiosMutation<boolean, string>((fontName) => apiClient.get(endpoints.validateName(fontName)))
