@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
 import { userAttribute, type UserFormType, userSchema } from '@/entity/user'
+import { DeleteUserButton } from '@/features/account'
 import { useMyProfile } from '@/features/auth'
 import { useCustomForm } from '@/shared/hooks'
 import { GenderRadioGroup, Input, PrimaryButton, SectionHeader } from '@/shared/ui'
@@ -16,10 +17,6 @@ const AccountInfoPage = () => {
 
   const onEdit = () => {
     navigate(ROUTES.ACCOUNT_EDIT)
-  }
-
-  const onDelete = () => {
-    console.log('탈퇴하기')
   }
 
   if (isError || !accountInfo) {
@@ -51,9 +48,7 @@ const AccountInfoPage = () => {
             수정하기
           </PrimaryButton>
 
-          <PrimaryButton direction="none" onClick={onDelete}>
-            탈퇴하기
-          </PrimaryButton>
+          <DeleteUserButton />
         </div>
       </section>
     </Layout>
