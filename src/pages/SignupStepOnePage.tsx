@@ -1,17 +1,24 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
-import { TermsAgreementList, TermsButtonGroup, useTermsAgreement } from '@/features/sign-up'
+import {
+  TermsAgreementList,
+  TermsButtonGroup,
+  useSignupStepActions,
+  useTermsAgreement,
+} from '@/features/sign-up'
 import { PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
 import { Layout } from '@/widgets'
 
 const SignupStepOnePage = () => {
   const navigate = useNavigate()
 
+  const { completeStep1 } = useSignupStepActions()
   const { checkedTerms, toggleCheck, agreeAll, isAllAgreed } = useTermsAgreement()
 
   const onSubmit = () => {
     if (isAllAgreed) {
+      completeStep1()
       navigate(ROUTES.SIGN_UP_STEP_TWO)
     }
   }

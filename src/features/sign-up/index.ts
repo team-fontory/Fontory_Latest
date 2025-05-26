@@ -1,4 +1,5 @@
 export * from './config/signup.constant'
+export * from './model/signupStep.store'
 export * from './model/useTermsAgreement'
 export * from './ui/SignupButton'
 export * from './ui/SignupForm'

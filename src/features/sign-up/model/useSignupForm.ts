@@ -6,6 +6,8 @@ import type { UserFormType } from '@/entity/user'
 
 import { useSignup } from '../api/signup.mutation'
 
+import { useSignupStepActions } from './signupStep.store'
+
 /**
  * 회원가입 폼 제출을 위한 커스텀 훅
  *
@@ -19,6 +21,7 @@ import { useSignup } from '../api/signup.mutation'
 export const useSignupForm = () => {
   const navigate = useNavigate()
   const { mutate: signup } = useSignup()
+  const { resetStep } = useSignupStepActions()
 
   const prepareFormData = (formData: UserFormType) => {
     const sendForm = new FormData()
@@ -36,6 +39,7 @@ export const useSignupForm = () => {
 
   const handleSuccess = () => {
     toast.success('회원가입에 성공했습니다.')
+    resetStep()
     navigate(ROUTES.HOME)
   }
 
