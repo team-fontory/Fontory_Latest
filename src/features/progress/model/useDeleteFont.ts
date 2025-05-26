@@ -4,6 +4,7 @@ import { useDeleteFontMutation } from '../api/myFont.mutation'
 
 export const useDeleteFont = (fontId: number) => {
   console.log('useDeleteFont', fontId)
+  console.log('useDeleteFont', fontId)
   const { mutate } = useDeleteFontMutation()
 
   const handleDeleteFont = (event: MouseEvent<HTMLButtonElement>) => {
