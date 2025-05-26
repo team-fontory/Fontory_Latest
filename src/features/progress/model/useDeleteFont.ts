@@ -1,3 +1,5 @@
+import type { MouseEvent } from 'react'
+
 import { useQueryParam } from '@/shared/hooks'
 
 import { useDeleteFontMutation } from '../api/myFont.mutation'
@@ -8,7 +10,10 @@ export const useDeleteFont = () => {
 
   const fontId = getQueryParam<number>('id')
 
-  const handleDeleteFont = () => {
+  const handleDeleteFont = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation()
+    event.preventDefault()
+
     mutate(fontId as number)
   }
 
