@@ -28,13 +28,13 @@ const BookmarkIcon = ({ fontId, isBookmarked }: Props) => {
   if (isBookmarked)
     return (
       <BaseComponent fontId={fontId} isBookmarked={isBookmarked}>
-        <Icon name="filled-bookmark" size={40} className="text-primary" />
+        <Icon name="filled-bookmark" size={'2.5rem'} className="text-primary" />
       </BaseComponent>
     )
 
   return (
     <BaseComponent fontId={fontId} isBookmarked={isBookmarked}>
-      <Icon name="unfilled-bookmark" size={40} className="text-darkgrey" />
+      <Icon name="unfilled-bookmark" size={'2.5rem'} className="text-darkgrey" />
     </BaseComponent>
   )
 }
@@ -46,7 +46,7 @@ const FloatingButton = ({ fontId, isBookmarked }: Props) => {
     return (
       <BaseComponent fontId={fontId} isBookmarked={isBookmarked}>
         <div className={cn('bg-primary', commonStyle)}>
-          <Icon name="unfilled-bookmark" size={40} className="text-white" />
+          <Icon name="unfilled-bookmark" size={'2.5rem'} className="text-white" />
         </div>
       </BaseComponent>
     )
@@ -54,7 +54,7 @@ const FloatingButton = ({ fontId, isBookmarked }: Props) => {
   return (
     <BaseComponent fontId={fontId} isBookmarked={isBookmarked}>
       <div className={cn('bg-darkgrey', commonStyle)}>
-        <Icon name="unfilled-bookmark" size={40} className="text-white" />
+        <Icon name="unfilled-bookmark" size={'2.5rem'} className="text-white" />
       </div>
     </BaseComponent>
   )
@@ -69,7 +69,7 @@ const Label = ({ fontId, isBookmarked }: Props) => {
       <BaseComponent fontId={fontId} isBookmarked={isBookmarked}>
         <div className={cn('bg-primary', commonStyle)}>
           <span>북마크 해제</span>
-          <Icon name="unfilled-bookmark" size={35} className="text-white" />
+          <Icon name="unfilled-bookmark" size={'2.1875rem'} className="text-white" />
         </div>
       </BaseComponent>
     )
@@ -78,7 +78,7 @@ const Label = ({ fontId, isBookmarked }: Props) => {
     <BaseComponent fontId={fontId} isBookmarked={isBookmarked}>
       <div className={cn('bg-darkgrey', commonStyle)}>
         <span>북마크</span>
-        <Icon name="unfilled-bookmark" size={35} className="text-white" />
+        <Icon name="unfilled-bookmark" size={'2.1875rem'} className="text-white" />
       </div>
     </BaseComponent>
   )
