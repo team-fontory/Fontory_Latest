@@ -1,5 +1,6 @@
 import { type PropsWithChildren } from 'react'
 
+import { useScrollToTop } from '@/shared/hooks'
 import { cn } from '@/shared/lib'
 
 import { NavigationBar } from '../navigation/NavigationBar'
@@ -14,6 +15,8 @@ export const Layout = ({
   isTransparentNav = false,
   hasPadding = false,
 }: PropsWithChildren<Props>) => {
+  useScrollToTop()
+
   return (
     <div className="overflow-x-hidden">
       <NavigationBar isTransparent={isTransparentNav} />
