@@ -10,7 +10,7 @@ export const LogoutButton = () => {
   const { mutate } = useLogout()
 
   const handleSuccess = () => {
-    toast.success('성공적으로 로그아웃되었습니다.')
+    toast.success('로그아웃되었습니다.')
     navigate(ROUTES.HOME)
   }
 
