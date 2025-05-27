@@ -1,23 +1,37 @@
 import { z } from 'zod'
 
+import { filterInput, formatPhoneNumberInput } from '@/shared/lib'
+
 export const fontAttribute = {
   name: {
     section: 'name',
     label: '폰트 이름',
     placeholder: '폰트 이름을 입력해주세요.',
     hint: '최대 9글자까지 입력 가능',
+    onInput: (e: React.FormEvent<HTMLInputElement>) => {
+      const input = e.currentTarget
+      input.value = filterInput(input.value, 9)
+    },
   },
   engName: {
     section: 'engName',
     label: '폰트 영어 이름',
     placeholder: '영어 이름을 입력해주세요.',
     hint: '최대 12글자까지 입력 가능',
+    onInput: (e: React.FormEvent<HTMLInputElement>) => {
+      const input = e.currentTarget
+      input.value = filterInput(input.value, 12, 'english')
+    },
   },
   example: {
     section: 'example',
     label: '예시 문구',
     placeholder: '예시 문구를 입력해주세요.',
     hint: '최소 10글자, 최대 50글자까지 입력 가능',
+    onInput: (e: React.FormEvent<HTMLTextAreaElement>) => {
+      const input = e.currentTarget
+      input.value = filterInput(input.value, 50)
+    },
   },
   phoneNumber: {
     section: 'phoneNumber',
@@ -25,6 +39,10 @@ export const fontAttribute = {
     maxLength: 11,
     placeholder: '전화번호를 입력해주세요.',
     hint: '"-"를 제외한 숫자만 입력 가능',
+    onInput: (e: React.FormEvent<HTMLInputElement>) => {
+      const input = e.currentTarget
+      input.value = formatPhoneNumberInput(input.value)
+    },
   },
   file: {
     section: 'file',

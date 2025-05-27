@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { formatDateInput } from '@/shared/lib'
+import { filterInput, formatDateInput } from '@/shared/lib'
 
 export const userAttribute = {
   nickname: {
@@ -8,6 +8,10 @@ export const userAttribute = {
     label: '닉네임',
     placeholder: '닉네임을 입력해주세요.',
     hint: '최대 9글자까지 입력 가능',
+    onInput: (e: React.FormEvent<HTMLInputElement>) => {
+      const input = e.currentTarget
+      input.value = filterInput(input.value, 9)
+    },
   },
   gender: {
     section: 'gender',
