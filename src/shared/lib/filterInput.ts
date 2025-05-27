@@ -7,6 +7,11 @@ const FILTER_PATTERNS: Record<Exclude<InputFilterType, 'custom'>, RegExp> = {
   alphanumeric: /^[a-zA-Z0-9]$/,
 }
 
+const getCharsetFromPattern = (pattern: RegExp) => {
+  const match = pattern.source.match(/\[([^\]]+)\]/)
+  return match ? match[1] : ''
+}
+
 /**
  * 미리 정의된 패턴 타입 또는 커스텀 정규식으로 입력값을 필터링하고 최대 글자 수를 제한
  *
@@ -27,7 +32,7 @@ export const filterInput = (
 
   if (!basePattern) return input.slice(0, maxLength)
 
-  const allowedPattern = new RegExp(`[^${basePattern.source}]`, 'g')
+  const allowedPattern = new RegExp(`[^${getCharsetFromPattern(basePattern)}]`, 'g')
   const filtered = input.replace(allowedPattern, '')
 
   return filtered.slice(0, maxLength)
