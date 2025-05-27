@@ -18,7 +18,7 @@ export const MyFontPreviewCard = ({ fontId, fontName, example, writerName, woff 
         <p className="font-preview-metadata text-darkgrey grow">
           {fontName} / {writerName}
         </p>
-        <DownloadButton.Label name={fontName} link={woff} />
+        <DownloadButton.Label fontId={fontId} fontName={fontName} />
         <DeleteFontButton fontId={fontId} />
       </div>
 

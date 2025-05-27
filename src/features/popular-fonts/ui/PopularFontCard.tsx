@@ -22,7 +22,7 @@ export const PopularFontCard = ({ fontId, fontName, example, isBookmarked, woff 
         <span className="font-popular-writer text-darkgrey grow">{fontName}</span>
         <div className="flex gap-4">
           <BookmarkButton.Icon fontId={fontId} isBookmarked={isBookmarked} />
-          <DownloadButton.Icon name={fontName} link={woff} />
+          <DownloadButton.Icon fontId={fontId} fontName={fontName} />
         </div>
       </div>
     </Link>

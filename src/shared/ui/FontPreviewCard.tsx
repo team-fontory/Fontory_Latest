@@ -21,13 +21,13 @@ export const FontPreviewCard = (props: FontDetailType) => {
       </p>
 
       <div className="max-h-0 scale-y-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-20 group-hover:scale-y-100 group-hover:opacity-100">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between p-1">
           <p className="font-preview-metadata text-darkgrey grow">
             {fontName} / {writerName}
           </p>
           <div className="flex gap-[0.83rem]">
             <BookmarkButton.Label fontId={fontId} isBookmarked={isBookmarked} />
-            <DownloadButton.Label name={fontName} link={woff} />
+            <DownloadButton.Label fontId={fontId} fontName={fontName} />
           </div>
         </div>
       </div>

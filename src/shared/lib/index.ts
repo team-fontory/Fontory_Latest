@@ -1,5 +1,4 @@
 export * from './cn'
-export * from './downloadFile'
 export * from './filterInput'
 export * from './formatInput'
 export * from './formatIsoToDateTime'

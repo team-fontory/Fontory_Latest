@@ -36,7 +36,6 @@ export const fontAttribute = {
   phoneNumber: {
     section: 'phoneNumber',
     label: '전화번호',
-    maxLength: 11,
     placeholder: '전화번호를 입력해주세요.',
     hint: '"-"를 제외한 숫자만 입력 가능',
     onInput: (e: React.FormEvent<HTMLInputElement>) => {

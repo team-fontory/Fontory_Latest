@@ -58,3 +58,5 @@ export type FontProgress = Pick<Font, 'id' | 'name'> & {
   createdAt: string
   status: string
 }
+
+export type DownloadFont = Pick<Font, 'id' | 'name'> & { ttf: string }
