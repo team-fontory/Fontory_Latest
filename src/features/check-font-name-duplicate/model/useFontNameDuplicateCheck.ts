@@ -25,11 +25,11 @@ export const useFontNameDuplicateCheck = (section: string) => {
       if (result) {
         const message = '이미 사용 중인 이름입니다.'
 
-        updateVerificationStatus({ isDirty: false, isVerified: false })
+        updateVerificationStatus(false)
         setVerificationMessage(message)
         setError(section, { type: 'manual', message })
       } else {
-        updateVerificationStatus({ isDirty: false, isVerified: true })
+        updateVerificationStatus(true)
         setVerificationMessage('사용 가능한 이름입니다.')
         clearErrors(section)
       }
@@ -39,7 +39,7 @@ export const useFontNameDuplicateCheck = (section: string) => {
 
   const handleError = useCallback(
     (section: string) => {
-      updateVerificationStatus({ isDirty: false, isVerified: false })
+      updateVerificationStatus(false)
       setError(section, {
         type: 'manual',
         message: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',

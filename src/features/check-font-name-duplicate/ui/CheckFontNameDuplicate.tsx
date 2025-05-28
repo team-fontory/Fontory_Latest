@@ -4,6 +4,7 @@ import { Input, SecondaryButton } from '@/shared/ui'
 import {
   useVerificationCheckingState,
   useVerificationMessage,
+  useVerificationStatus,
 } from '../model/fontNameVerification.store'
 import { useFontNameDuplicateCheck } from '../model/useFontNameDuplicateCheck'
 import { useFontNameVerificationWatcher } from '../model/useFontNameVerificationWatcher'
@@ -22,6 +23,7 @@ type Props = {
 
 export const CheckFontNameDuplicate = ({ section, label, hint, placeholder, className }: Props) => {
   const fieldName = fontAttribute.name.section
+  const isVerified = useVerificationStatus()
   const isChecking = useVerificationCheckingState()
   const successMessage = useVerificationMessage()
 
@@ -43,7 +45,11 @@ export const CheckFontNameDuplicate = ({ section, label, hint, placeholder, clas
         successMessage={successMessage || undefined}
         className={className ?? 'w-full'}
       />
-      <SecondaryButton className="shrink-0" disabled={isChecking} onClick={handleCheckDuplicate}>
+      <SecondaryButton
+        className="shrink-0"
+        disabled={isChecking || isVerified}
+        onClick={handleCheckDuplicate}
+      >
         중복 검사
       </SecondaryButton>
     </div>

@@ -25,11 +25,11 @@ export const useNicknameDuplicateCheck = (section: string) => {
       if (result) {
         const message = '이미 사용 중인 닉네임입니다.'
 
-        updateVerificationStatus({ isDirty: false, isVerified: false })
+        updateVerificationStatus(false)
         setVerificationMessage(message)
         setError(section, { type: 'manual', message })
       } else {
-        updateVerificationStatus({ isDirty: false, isVerified: true })
+        updateVerificationStatus(true)
         setVerificationMessage('사용 가능한 닉네임입니다.')
         clearErrors(section)
       }
@@ -39,7 +39,7 @@ export const useNicknameDuplicateCheck = (section: string) => {
 
   const handleError = useCallback(
     (section: string) => {
-      updateVerificationStatus({ isDirty: false, isVerified: false })
+      updateVerificationStatus(false)
 
       setError(section, {
         type: 'manual',

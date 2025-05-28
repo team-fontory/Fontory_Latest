@@ -20,7 +20,7 @@ export const useFontNameVerificationWatcher = (fieldName: string) => {
   const fontName = useWatch({ control, name: fieldName })
   const verifiedFontNameRef = useRef<string | null>(null)
 
-  const { updateVerificationStatus } = useVerificationActions()
+  const { resetVerification } = useVerificationActions()
 
   const markAsVerified = () => {
     const current = getValues(fieldName)
@@ -32,9 +32,9 @@ export const useFontNameVerificationWatcher = (fieldName: string) => {
 
   useEffect(() => {
     if (hasChangedAfterVerification) {
-      updateVerificationStatus({ isDirty: true, isVerified: false })
+      resetVerification()
     }
-  }, [hasChangedAfterVerification, updateVerificationStatus])
+  }, [hasChangedAfterVerification, resetVerification])
 
   return { fontName, markAsVerified }
 }

@@ -4,6 +4,7 @@ import { Input, SecondaryButton } from '@/shared/ui'
 import {
   useVerificationCheckingState,
   useVerificationMessage,
+  useVerificationStatus,
 } from '../model/nicknameVerification.store'
 import { useNicknameDuplicateCheck } from '../model/useNicknameDuplicateCheck'
 import { useNicknameVerificationWatcher } from '../model/useNicknameVerificationWatcher'
@@ -23,6 +24,7 @@ type Props = {
 export const CheckNicknameDuplicate = ({ section, label, hint, placeholder, className }: Props) => {
   const fieldName = userAttribute.nickname.section
   const isChecking = useVerificationCheckingState()
+  const isVerified = useVerificationStatus()
   const successMessage = useVerificationMessage()
 
   const { checkNicknameDuplicate } = useNicknameDuplicateCheck(fieldName)
@@ -43,7 +45,11 @@ export const CheckNicknameDuplicate = ({ section, label, hint, placeholder, clas
         successMessage={successMessage || undefined}
         className={className ?? 'w-full'}
       />
-      <SecondaryButton className="shrink-0" disabled={isChecking} onClick={handleCheckDuplicate}>
+      <SecondaryButton
+        className="shrink-0"
+        disabled={isChecking || isVerified}
+        onClick={handleCheckDuplicate}
+      >
         중복 검사
       </SecondaryButton>
     </div>

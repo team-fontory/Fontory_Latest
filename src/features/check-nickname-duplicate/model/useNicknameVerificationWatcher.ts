@@ -19,7 +19,7 @@ export const useNicknameVerificationWatcher = (fieldName: string) => {
   const { control, getValues } = useFormContext()
   const nickname = useWatch({ control, name: fieldName })
   const verifiedNicknameRef = useRef<string | null>(null)
-  const { updateVerificationStatus } = useVerificationActions()
+  const { resetVerification } = useVerificationActions()
 
   const markAsVerified = () => {
     const current = getValues(fieldName)
@@ -31,9 +31,9 @@ export const useNicknameVerificationWatcher = (fieldName: string) => {
 
   useEffect(() => {
     if (hasChangedAfterVerification) {
-      updateVerificationStatus({ isDirty: true, isVerified: false })
+      resetVerification()
     }
-  }, [hasChangedAfterVerification, updateVerificationStatus])
+  }, [hasChangedAfterVerification, resetVerification])
 
   return { nickname, markAsVerified }
 }
