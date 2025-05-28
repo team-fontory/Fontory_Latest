@@ -28,6 +28,12 @@ const usePrepareFormData = () => {
 
   sendForm.append('file', formData.file as File)
 
+  console.log('phone', phoneNumber, phoneNumber.replace(/-/g, ''))
+  let entries = sendForm.entries()
+  for (const pair of entries) {
+    console.log(pair[0] + ', ' + pair[1])
+  }
+
   return sendForm
 }
 
