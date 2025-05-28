@@ -1,3 +1,4 @@
+import { useFormContext } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -10,7 +11,10 @@ import { useCreateFontActions, useCreateFontValues } from './createFont.store'
 
 const usePrepareFormData = () => {
   const sendForm = new FormData()
+  const { getValues } = useFormContext()
   const formData = useCreateFontValues()
+
+  const { phoneNumber } = getValues()
 
   sendForm.append(
     'fontCreateDTO',
@@ -18,9 +22,10 @@ const usePrepareFormData = () => {
       name: formData.name,
       engName: formData.engName,
       example: formData.example,
-      phoneNumber: formData.phoneNumber.replace(/-/g, '') || '',
+      phoneNumber: phoneNumber.replace(/-/g, '') || '',
     }),
   )
+
   sendForm.append('file', formData.file as File)
 
   return sendForm
@@ -52,7 +57,7 @@ export const useCreateFontForm = () => {
   }
 
   const handleSubmitForm = () => {
-    createFont(sendForm, { onSuccess: handleSuccess, onError: handleError })
+    // createFont(sendForm, { onSuccess: handleSuccess, onError: handleError })
   }
 
   return { handleSubmitForm }
