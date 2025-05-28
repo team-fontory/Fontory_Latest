@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
 import type { CreateFontStepTwoFormType } from '@/entity/font'
+import { useVerificationStatus } from '@/features/check-font-name-duplicate/model/fontNameVerification.store'
 import { PrimaryButton } from '@/shared/ui'
 
 import { useCreateFontActions } from '../model/createFont.store'
@@ -10,6 +11,7 @@ import { useCreateFontStepActions } from '../model/createFontStep.store'
 
 export const StepTwoButtonNavigation = () => {
   const navigate = useNavigate()
+  const isVerified = useVerificationStatus()
 
   const { completeStep2, cancelStep1 } = useCreateFontStepActions()
   const { handleSubmit, formState } = useFormContext<CreateFontStepTwoFormType>()
@@ -34,7 +36,7 @@ export const StepTwoButtonNavigation = () => {
 
       <PrimaryButton
         direction="right"
-        disabled={!formState.isValid}
+        disabled={!formState.isValid || !isVerified}
         onClick={handleSubmit(goToNextStep)}
       >
         다음 단계

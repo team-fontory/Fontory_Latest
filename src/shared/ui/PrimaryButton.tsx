@@ -36,6 +36,7 @@ export const PrimaryButton = ({
           : 'border-primary text-primary hover:bg-primary hover:text-white',
         className,
       )}
+      disabled={disabled}
       {...props}
     >
       {children}

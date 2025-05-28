@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import { cn } from '../lib'
 
-type Variant = 'filled' | 'outlined'
+type Variant = 'filled' | 'outlined' | 'disabled'
 
 type Props = {
   children: ReactNode
@@ -12,11 +12,13 @@ type Props = {
 const variantClassMap: Record<Variant, string> = {
   filled: 'bg-secondary text-white hover:bg-secondary-hover',
   outlined: 'bg-white text-secondary border-2 border-secondary hover:bg-secondary hover:text-white',
+  disabled: 'border-darkgrey text-darkgrey',
 }
 
 export const SecondaryButton = ({
   type = 'button',
   className,
+  disabled,
   children,
   variant = 'filled',
   ...props
@@ -26,9 +28,10 @@ export const SecondaryButton = ({
       type={type}
       className={cn(
         'rounded-small font-secondary-button px-7 py-5 text-center transition-colors',
-        variantClassMap[variant],
+        disabled ? variantClassMap['disabled'] : variantClassMap[variant],
         className,
       )}
+      disabled={disabled}
       {...props}
     >
       {children}
