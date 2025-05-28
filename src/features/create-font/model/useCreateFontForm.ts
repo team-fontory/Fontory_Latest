@@ -22,7 +22,7 @@ const usePrepareFormData = () => {
       name: formData.name,
       engName: formData.engName,
       example: formData.example,
-      phoneNumber: phoneNumber.replace(/-/g, '') || '',
+      phoneNumber: phoneNumber.replace(/-/g, ''),
     }),
   )
 
