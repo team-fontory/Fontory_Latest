@@ -35,8 +35,8 @@ const AccountInfoPage = () => {
         <FormProvider {...formMethods}>
           <form className="flex-column mt-[6.25rem] gap-[3.75rem]">
             <div className="grid grid-cols-2 gap-6">
-              <Input {...userAttribute.nickname} disabled />
-              <Input {...userAttribute.birth} disabled />
+              <Input {...userAttribute.nickname} hint="" disabled />
+              <Input {...userAttribute.birth} hint="" disabled />
             </div>
 
             <GenderRadioGroup section={userAttribute.gender.section} disabled />
