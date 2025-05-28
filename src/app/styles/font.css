@@ -67,6 +67,9 @@
 @utility font-dropdown {
   @apply text-[1.25rem] font-normal;
 }
+@utility font-footer {
+  @apply text-[1rem] font-normal;
+}
 
 /* 폰트 */
 @utility font-preview {
