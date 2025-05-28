@@ -18,7 +18,7 @@ const usePrepareFormData = () => {
       name: formData.name,
       engName: formData.engName,
       example: formData.example,
-      phone: formData.phoneNumber.replace(/-/g, '') || '',
+      phoneNumber: formData.phoneNumber.replace(/-/g, '') || '',
     }),
   )
   sendForm.append('file', formData.file as File)
