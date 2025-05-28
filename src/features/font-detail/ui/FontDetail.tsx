@@ -34,8 +34,8 @@ export const FontDetail = (props: FontDetailType) => {
           <p className="font-detail-label">폰트 정보</p>
           <div className="flex-column gap-6">
             <FontDetailMeta label="제작 일자" value={'2024-12-05'} />
-            <FontDetailMeta label="다운로드 수" value={`${bookmarkCount} 회`} />
-            <FontDetailMeta label="북마크 수" value={`${downloadCount} 회`} />
+            <FontDetailMeta label="다운로드 수" value={`${downloadCount} 회`} />
+            <FontDetailMeta label="북마크 수" value={`${bookmarkCount} 회`} />
           </div>
         </div>
 
