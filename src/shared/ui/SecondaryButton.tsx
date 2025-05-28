@@ -12,7 +12,7 @@ type Props = {
 const variantClassMap: Record<Variant, string> = {
   filled: 'bg-secondary text-white hover:bg-secondary-hover',
   outlined: 'bg-white text-secondary border-2 border-secondary hover:bg-secondary hover:text-white',
-  disabled: 'border-darkgrey text-darkgrey',
+  disabled: 'bg-grey text-darkgrey',
 }
 
 export const SecondaryButton = ({
