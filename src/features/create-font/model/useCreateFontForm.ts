@@ -28,12 +28,6 @@ const usePrepareFormData = () => {
 
   sendForm.append('file', formData.file as File)
 
-  console.log('phone', phoneNumber, phoneNumber.replace(/-/g, ''))
-  let entries = sendForm.entries()
-  for (const pair of entries) {
-    console.log(pair[0] + ', ' + pair[1])
-  }
-
   return sendForm
 }
 
@@ -45,7 +39,9 @@ const usePrepareFormData = () => {
 
 export const useCreateFontForm = () => {
   const navigate = useNavigate()
-  const sendForm = usePrepareFormData()
+  const sendForm = new FormData()
+  const { getValues } = useFormContext()
+  const formData = useCreateFontValues()
 
   const { mutate: createFont } = useCreateFont()
   const { reset } = useCreateFontActions()
@@ -63,6 +59,22 @@ export const useCreateFontForm = () => {
   }
 
   const handleSubmitForm = () => {
+    const { phoneNumber } = getValues()
+
+    console.log(formData, phoneNumber)
+
+    sendForm.append(
+      'fontCreateDTO',
+      JSON.stringify({
+        name: formData.name,
+        engName: formData.engName,
+        example: formData.example,
+        phoneNumber: phoneNumber.replace(/-/g, ''),
+      }),
+    )
+
+    sendForm.append('file', formData.file as File)
+
     createFont(sendForm, { onSuccess: handleSuccess, onError: handleError })
   }
 
