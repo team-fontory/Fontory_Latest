@@ -19,8 +19,11 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
-          이 서비스는 NAVER Corp.의 [DM-Font](https://github.com/clovaai/dmfont) 기술을 활용하고
-          있습니다.
+          이 서비스는 NAVER Corp.의 [DM-Font]
+          <a href="https://github.com/clovaai/dmfont" target="_blank">
+            (https://github.com/clovaai/dmfont)
+          </a>{' '}
+          기술을 활용하고 있습니다.
         </li>
         <li className="font-bold">문의: fontory@fontory.co.kr</li>
       </ul>
