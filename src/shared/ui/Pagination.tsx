@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import { cn } from '../lib'
 
 import { Icon } from './Icon/Icon'
@@ -43,6 +45,10 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Props) => 
   const handleGoToSelectPage = (page: number) => {
     onPageChange(page)
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [currentPage])
 
   return (
     <div className="flex items-center justify-center gap-4">
