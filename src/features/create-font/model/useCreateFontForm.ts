@@ -9,28 +9,6 @@ import { useCreateFont } from '../api/createFont.mutation'
 
 import { useCreateFontActions, useCreateFontValues } from './createFont.store'
 
-const usePrepareFormData = () => {
-  const sendForm = new FormData()
-  const { getValues } = useFormContext()
-  const formData = useCreateFontValues()
-
-  const { phoneNumber } = getValues()
-
-  sendForm.append(
-    'fontCreateDTO',
-    JSON.stringify({
-      name: formData.name,
-      engName: formData.engName,
-      example: formData.example,
-      phoneNumber: phoneNumber.replace(/-/g, ''),
-    }),
-  )
-
-  sendForm.append('file', formData.file as File)
-
-  return sendForm
-}
-
 /**
  * 폰트 제작 요청을 처리하는 훅
  *
@@ -69,7 +47,7 @@ export const useCreateFontForm = () => {
         name: formData.name,
         engName: formData.engName,
         example: formData.example,
-        phoneNumber: phoneNumber.replace(/-/g, ''),
+        phoneNumber: phoneNumber.replace(/-/g, '') || '',
       }),
     )
 
