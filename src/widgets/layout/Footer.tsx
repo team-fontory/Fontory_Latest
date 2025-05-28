@@ -6,8 +6,17 @@ export const Footer = () => {
       <ul className="flex-column font-footer items-end gap-3">
         <li>© 2025 Fontory. All Rights Reserved.</li>
         <li>
-          <Link to={''}>서비스 이용약관</Link> | <Link to={''}>개인정보 처리방침</Link> |{' '}
-          <Link to={''}>폰트 공유약관</Link>
+          <Link to={import.meta.env.VITE_PUBLIC_SERVICE_TERM} target="_blank">
+            서비스 이용약관
+          </Link>{' '}
+          |{' '}
+          <Link to={import.meta.env.VITE_PUBLIC_FONT_TERM} target="_blank">
+            개인정보 처리방침
+          </Link>{' '}
+          |{' '}
+          <Link to={import.meta.env.VITE_PUBLIC_PRIVACY_TERM} target="_blank">
+            폰트 공유약관
+          </Link>
         </li>
         <li>
           이 서비스는 NAVER Corp.의 [DM-Font](https://github.com/clovaai/dmfont) 기술을 활용하고
