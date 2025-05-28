@@ -39,8 +39,6 @@ export const useCreateFontForm = () => {
   const handleSubmitForm = () => {
     const { phoneNumber } = getValues()
 
-    console.log(formData, phoneNumber)
-
     sendForm.append(
       'fontCreateDTO',
       JSON.stringify({
