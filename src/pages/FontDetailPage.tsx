@@ -19,7 +19,7 @@ const FontDetailPage = () => {
         <FontDetail {...fontDetail} />
       </section>
 
-      {recommendList && (
+      {recommendList && recommendList.length && (
         <section className="mt-60">
           <SectionHeader title="OTHER FONTS" />
           <FontDetailOtherFonts recommendList={recommendList} />
