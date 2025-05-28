@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { ROUTES } from '@/app/router'
+import { useVerificationActions } from '@/features/check-nickname-duplicate/model/nicknameVerification.store'
 
 import { useCreateFont } from '../api/createFont.mutation'
 
@@ -37,10 +38,12 @@ export const useCreateFontForm = () => {
 
   const { mutate: createFont } = useCreateFont()
   const { reset } = useCreateFontActions()
+  const { resetVerification } = useVerificationActions()
 
   const handleSuccess = () => {
     toast.success('폰트 제작 요청이 되었습니다.')
     reset()
+    resetVerification()
     navigate(ROUTES.MY_FONT)
   }
 

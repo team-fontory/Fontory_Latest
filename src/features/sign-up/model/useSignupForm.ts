@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 
 import { ROUTES } from '@/app/router'
 import type { UserFormType } from '@/entity/user'
+import { useVerificationActions } from '@/features/check-font-name-duplicate/model/fontNameVerification.store'
 
 import { useSignup } from '../api/signup.mutation'
 
@@ -22,6 +23,7 @@ export const useSignupForm = () => {
   const navigate = useNavigate()
   const { mutate: signup } = useSignup()
   const { resetStep } = useSignupStepActions()
+  const { resetVerification } = useVerificationActions()
 
   const prepareFormData = (formData: UserFormType) => {
     const sendForm = new FormData()
@@ -40,6 +42,7 @@ export const useSignupForm = () => {
   const handleSuccess = () => {
     toast.success('회원가입에 성공했습니다.')
     resetStep()
+    resetVerification()
     navigate(ROUTES.HOME)
   }
 
