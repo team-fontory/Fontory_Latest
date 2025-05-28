@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 import { useExploreList } from '@/features/explore'
 import { PopularFontCardList } from '@/features/popular-fonts'
 import { EMPTY_MESSAGE } from '@/shared/config'
@@ -8,6 +10,7 @@ import { Layout } from '@/widgets'
 
 const ExplorePage = () => {
   const { page, sortBy, keyword, setFilterParams } = useFontFilterParams()
+  const scrollTargetRef = useRef<HTMLDivElement>(null)
 
   const {
     data: { content, currentPage, totalPages },
@@ -15,12 +18,12 @@ const ExplorePage = () => {
 
   return (
     <Layout hasPadding>
-      <section className="mb-60">
+      <section>
         <SectionHeader title="POPULAR" />
         <PopularFontCardList />
       </section>
 
-      <section>
+      <section ref={scrollTargetRef} className="mt-60">
         <SectionHeader title="ALL FONTS" />
 
         <div className="mb-[4.5rem] grid grid-cols-2">
@@ -37,6 +40,7 @@ const ExplorePage = () => {
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
+            scrollTargetRef={scrollTargetRef}
             onPageChange={(page) => setFilterParams({ page })}
           />
         </nav>

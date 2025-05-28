@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 import { useBookmarkFontList } from '@/features/bookmark'
 import { EMPTY_MESSAGE } from '@/shared/config'
 import { useFontFilterParams } from '@/shared/hooks'
@@ -6,6 +8,8 @@ import { FontPreviewCardList } from '@/shared/ui/FontPreviewCardList'
 import { Layout } from '@/widgets'
 
 const BookmarkPage = () => {
+  const scrollTargetRef = useRef<HTMLDivElement>(null)
+
   const { page, sortBy, keyword, setFilterParams } = useFontFilterParams()
 
   const {
@@ -14,7 +18,7 @@ const BookmarkPage = () => {
 
   return (
     <Layout hasPadding>
-      <section>
+      <section ref={scrollTargetRef}>
         <SectionHeader title="BOOKMARKED" />
 
         <div className="mb-[4.5rem] grid grid-cols-2">
@@ -28,6 +32,7 @@ const BookmarkPage = () => {
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
+            scrollTargetRef={scrollTargetRef}
             onPageChange={(page) => setFilterParams({ page })}
           />
         </nav>

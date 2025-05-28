@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { type RefObject, useEffect } from 'react'
 
 import { cn } from '../lib'
 
@@ -8,6 +8,7 @@ type Props = {
   currentPage: number
   totalPages: number
   onPageChange: (page: number) => void
+  scrollTargetRef: RefObject<HTMLElement | null>
 }
 
 /**
@@ -18,12 +19,13 @@ type Props = {
  *
  * @param currentPage - 현재 페이지 번호
  * @param totalPages - 전체 페이지 수
+ * @param scrollTargetRef - 페이지 변경 시 스크롤 될 ref
  * @param onPageChange - 페이지 변경 시 호출되는 콜백 함수
  */
 
 const MAX_VISIBLE = 4
 
-export const Pagination = ({ currentPage, totalPages, onPageChange }: Props) => {
+export const Pagination = ({ currentPage, totalPages, scrollTargetRef, onPageChange }: Props) => {
   const currentGroup = Math.floor((currentPage - 1) / MAX_VISIBLE)
 
   const start = currentGroup * MAX_VISIBLE + 1
@@ -47,8 +49,8 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Props) => 
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [currentPage])
+    scrollTargetRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [currentPage, scrollTargetRef])
 
   return (
     <div className="flex items-center justify-center gap-4">

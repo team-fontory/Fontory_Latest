@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
@@ -10,6 +11,8 @@ import { Layout } from '@/widgets'
 
 const MyFontPage = () => {
   const navigate = useNavigate()
+  const scrollTargetRef = useRef<HTMLDivElement>(null)
+
   const { getQueryParam } = useQueryParam()
 
   const page = parseInt(getQueryParam('page') ?? '1', 10)
@@ -28,7 +31,7 @@ const MyFontPage = () => {
         <ProgressTable />
       </section>
 
-      <section className="mt-60">
+      <section ref={scrollTargetRef} className="mt-60">
         <SectionHeader title="COMPLETED" />
         <MyFontPreviewCardList fontList={myFontList.content} />
 
@@ -36,6 +39,7 @@ const MyFontPage = () => {
           <Pagination
             currentPage={page}
             totalPages={myFontList.totalPages}
+            scrollTargetRef={scrollTargetRef}
             onPageChange={(page) => setFilterParams({ page })}
           />
         </nav>
