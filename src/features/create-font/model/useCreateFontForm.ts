@@ -57,7 +57,7 @@ export const useCreateFontForm = () => {
   }
 
   const handleSubmitForm = () => {
-    // createFont(sendForm, { onSuccess: handleSuccess, onError: handleError })
+    createFont(sendForm, { onSuccess: handleSuccess, onError: handleError })
   }
 
   return { handleSubmitForm }
