@@ -1,25 +1,21 @@
 import { useFormContext } from 'react-hook-form'
 
-import type { CreateFontStepThreeFormType } from '@/entity/font'
+import type { CreateFontFormType } from '@/entity/font'
 import { PrimaryButton } from '@/shared/ui'
 
-import { useCreateFontActions } from '../model/createFont.store'
-import { useCreateFontForm } from '../model/useCreateFontForm'
+import { useCreateFontForm } from '../hook/useCreateFontForm'
 
 export const CreateFontButton = () => {
-  const { handleSubmit } = useFormContext<CreateFontStepThreeFormType>()
-  const { setPhoneNumber } = useCreateFontActions()
+  const { handleSubmit, reset } = useFormContext<CreateFontFormType>()
   const { handleSubmitForm } = useCreateFontForm()
-  const { reset } = useCreateFontActions()
 
-  const onSubmit = (formData: CreateFontStepThreeFormType) => {
-    setPhoneNumber(formData.phoneNumber)
-    handleSubmitForm()
+  const onSubmit = (formData: CreateFontFormType) => {
+    handleSubmitForm(formData)
     reset()
   }
 
   return (
-    <PrimaryButton direction="none" onClick={handleSubmit(onSubmit)}>
+    <PrimaryButton type="submit" direction="none" onClick={handleSubmit(onSubmit)}>
       제작하기
     </PrimaryButton>
   )

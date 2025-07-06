@@ -67,6 +67,15 @@ export const fontSchema = z.object({
     .refine((file) => file !== null && file.size > 0, '파일을 업로드해주세요.'),
 })
 
+export const defaultValues = {
+  name: '',
+  engName: '',
+  example: '',
+  phoneNumber: '',
+  file: null,
+}
+
+export const createFontSchema = fontSchema
 export const createFontStepOneSchema = fontSchema.pick({ file: true })
 export const createFontStepTwoSchema = fontSchema.pick({ name: true, engName: true, example: true })
 export const createFontStepThreeSchema = fontSchema.pick({ phoneNumber: true })

@@ -1,53 +1,24 @@
-import { FormProvider } from 'react-hook-form'
-
-import {
-  type CreateFontStepThreeFormType,
-  createFontStepThreeSchema,
-  fontAttribute,
-} from '@/entity/font'
-import { useCustomForm } from '@/shared/hooks'
-import { Input, PrimaryButton, SectionHeader, StepProgressBar } from '@/shared/ui'
-import { Layout } from '@/widgets'
-
-import { useCreateFontValues } from '../model/createFont.store'
-import { useCreateFontStepActions } from '../model/createFontStep.store'
+import { fontAttribute } from '@/entity/font'
+import { Input } from '@/shared/ui'
 
 import { CreateFontButton } from './CreateFontButton'
+import { CreateFontPrevButton } from './CreateFontPrevButton'
 
 export const CreateFontStepThree = () => {
-  const { phoneNumber } = useCreateFontValues()
-  const formMethods = useCustomForm<CreateFontStepThreeFormType>(createFontStepThreeSchema, {
-    defaultValues: { phoneNumber },
-  })
-
-  const { setStep } = useCreateFontStepActions()
-
-  const goToPrevStep = () => {
-    setStep(2)
-  }
-
   return (
-    <Layout hasPadding>
-      <SectionHeader title="CREATION" />
-      <StepProgressBar currentStep={3} totalSteps={3} label="전화번호를 입력해주세요. (선택)" />
+    <>
+      <div className="font-page-description mt-[6.25rem] grid grid-cols-2 items-end gap-6">
+        <Input {...fontAttribute.phoneNumber} />
+        <p className="text-right">
+          제작 소요 시간은 최대 10분입니다.
+          <br /> 제작이 완료되면 입력하신 전화번호로 알림을 전송해드립니다.
+        </p>
+      </div>
 
-      <FormProvider {...formMethods}>
-        <form className="font-page-description mt-[6.25rem] grid grid-cols-2 items-end gap-6">
-          <Input {...fontAttribute.phoneNumber} />
-          <p className="text-right">
-            제작 소요 시간은 최대 10분입니다.
-            <br /> 제작이 완료되면 입력하신 전화번호로 알림을 전송해드립니다.
-          </p>
-        </form>
-
-        <div className="flex-between-center mt-[6.25rem]">
-          <PrimaryButton direction="left" onClick={goToPrevStep}>
-            이전 단계
-          </PrimaryButton>
-
-          <CreateFontButton />
-        </div>
-      </FormProvider>
-    </Layout>
+      <div className="flex-between-center mt-[6.25rem]">
+        <CreateFontPrevButton prevPageNumber={2} />
+        <CreateFontButton />
+      </div>
+    </>
   )
 }

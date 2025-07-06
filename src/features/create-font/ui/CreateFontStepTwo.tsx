@@ -1,42 +1,56 @@
-import { FormProvider } from 'react-hook-form'
+import { useFormContext, useWatch } from 'react-hook-form'
 
-import {
-  type CreateFontStepTwoFormType,
-  createFontStepTwoSchema,
-  fontAttribute,
-} from '@/entity/font'
+import { fontAttribute } from '@/entity/font'
 import { CheckFontNameDuplicate } from '@/features/check-font-name-duplicate'
-import { useCustomForm } from '@/shared/hooks'
-import { Input, SectionHeader, StepProgressBar, Textarea } from '@/shared/ui'
-import { Layout } from '@/widgets'
+import { useVerificationStatus } from '@/features/check-nickname-duplicate/model/nicknameVerification.store'
+import { Input, PrimaryButton, Textarea } from '@/shared/ui'
 
-import { useCreateFontValues } from '../model/createFont.store'
+import { useCreateFontStepActions } from '../model/createFontStep.store'
 
-import { StepTwoButtonNavigation } from './StepTwoButtonNavigation'
+import { CreateFontPrevButton } from './CreateFontPrevButton'
 
 export const CreateFontStepTwo = () => {
-  const { name, engName, example } = useCreateFontValues()
-  const formMethods = useCustomForm<CreateFontStepTwoFormType>(createFontStepTwoSchema, {
-    defaultValues: { name, engName, example },
-  })
+  const isVerified = useVerificationStatus()
+
+  const { setStep } = useCreateFontStepActions()
+  const { trigger, control } = useFormContext()
+
+  const fontName = useWatch({ control, name: fontAttribute.name.section })
+  const fontEngName = useWatch({ control, name: fontAttribute.engName.section })
+  const example = useWatch({ control, name: fontAttribute.example.section })
+
+  const isPartialValid = !!fontName && !!fontEngName && !!example && isVerified
+
+  const onClickNextButton = async () => {
+    const isValid = await trigger([
+      fontAttribute.name.section,
+      fontAttribute.engName.section,
+      fontAttribute.example.section,
+    ])
+
+    if (isValid) {
+      setStep(3)
+    }
+  }
 
   return (
-    <Layout hasPadding>
-      <SectionHeader title="CREATION" />
-      <StepProgressBar currentStep={2} totalSteps={3} label="폰트 정보를 입력해주세요." />
+    <>
+      <div className="flex-column mt-[6.25rem] gap-[3.75rem]">
+        <div className="grid grid-cols-2 gap-6">
+          <CheckFontNameDuplicate {...fontAttribute.name} />
+          <Input {...fontAttribute.engName} />
+        </div>
 
-      <FormProvider {...formMethods}>
-        <form className="flex-column mt-[6.25rem] gap-[3.75rem]">
-          <div className="grid grid-cols-2 gap-6">
-            <CheckFontNameDuplicate {...fontAttribute.name} />
-            <Input {...fontAttribute.engName} />
-          </div>
+        <Textarea {...fontAttribute.example} />
+      </div>
 
-          <Textarea {...fontAttribute.example} />
-        </form>
+      <div className="flex-between-center mt-[6.25rem]">
+        <CreateFontPrevButton prevPageNumber={1} />
 
-        <StepTwoButtonNavigation />
-      </FormProvider>
-    </Layout>
+        <PrimaryButton direction="right" disabled={!isPartialValid} onClick={onClickNextButton}>
+          다음 단계
+        </PrimaryButton>
+      </div>
+    </>
   )
 }

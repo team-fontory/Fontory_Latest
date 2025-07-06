@@ -2,30 +2,33 @@ import { create } from 'zustand'
 
 type CreateFontStepStore = {
   currentStep: number
+  totalSteps: number
   actions: {
     setStep: (step: number) => void
     resetStep: () => void
   }
 }
 
-const INITIAL_STEP = 1
+export const stepLabels = [
+  '아래의 템플릿을 다운받아 작성해주세요.',
+  '폰트 정보를 입력해주세요.',
+  '전화번호를 입력해주세요. (선택)',
+]
 
-/**
- *
- * 폰트 생성 과정에서 현재 스텝을 전역으로 관리하는 스토어
- *
- * - currentStep: 현재 진행 중인 스텝 (1~3)
- * - setStep: 특정 스텝으로 이동
- * - resetStep: 1단계로 초기화
- */
+const initialValues = {
+  currentStep: 1,
+  totalSteps: 3,
+  stepLabels,
+}
 
 export const useCreateFontStepStore = create<CreateFontStepStore>((set) => ({
-  currentStep: INITIAL_STEP,
+  ...initialValues,
   actions: {
     setStep: (step: number) => set({ currentStep: step }),
-    resetStep: () => set({ currentStep: INITIAL_STEP }),
+    resetStep: () => set({ ...initialValues }),
   },
 }))
 
 export const useCreateFontStep = () => useCreateFontStepStore((state) => state.currentStep)
+export const useCreateFontTotalSteps = () => useCreateFontStepStore((state) => state.totalSteps)
 export const useCreateFontStepActions = () => useCreateFontStepStore((state) => state.actions)

@@ -1,41 +1,39 @@
-import { FormProvider } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 
-import { type CreateFontStepOneFormType, createFontStepOneSchema } from '@/entity/font'
-import { useCustomForm } from '@/shared/hooks'
-import { SectionHeader, StepProgressBar } from '@/shared/ui'
-import { Layout } from '@/widgets'
+import { fontAttribute } from '@/entity/font'
+import { PrimaryButton } from '@/shared/ui'
 
-import { useCreateFontValues } from '../model/createFont.store'
+import { useCreateFontStepActions } from '../model/createFontStep.store'
 
 import { DownloadTemplate } from './DownloadTemplate'
-import { StepOneButtonNavigation } from './StepOneButtonNavigation'
 import { UploadTemplate } from './UploadTemplate'
 
 export const CreateFontStepOne = () => {
-  const { file } = useCreateFontValues()
-  const formMethods = useCustomForm<CreateFontStepOneFormType>(createFontStepOneSchema, {
-    defaultValues: { file },
-  })
+  const { trigger, watch } = useFormContext()
+  const { setStep } = useCreateFontStepActions()
+
+  const onClickButton = async () => {
+    const isValid = await trigger(fontAttribute.file.section)
+    if (isValid) {
+      setStep(2)
+    }
+  }
 
   return (
-    <Layout hasPadding>
-      <FormProvider {...formMethods}>
-        <form>
-          <SectionHeader title="CREATION" />
-          <StepProgressBar
-            currentStep={1}
-            totalSteps={3}
-            label="아래의 템플릿을 다운받아 작성해주세요."
-          />
+    <>
+      <div className="my-[6.25rem] grid grid-cols-2 gap-40">
+        <DownloadTemplate />
+        <UploadTemplate />
+      </div>
 
-          <div className="my-[6.25rem] grid grid-cols-2 gap-40">
-            <DownloadTemplate />
-            <UploadTemplate />
-          </div>
-
-          <StepOneButtonNavigation />
-        </form>
-      </FormProvider>
-    </Layout>
+      <PrimaryButton
+        direction="right"
+        className="mt-5 ml-auto"
+        onClick={onClickButton}
+        disabled={!watch(fontAttribute.file.section)}
+      >
+        다음 단계
+      </PrimaryButton>
+    </>
   )
 }
