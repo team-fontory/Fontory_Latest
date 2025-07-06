@@ -12,7 +12,7 @@ type Props = {
 
 const NAV_LINKS = [
   { label: '둘러보기', to: ROUTES.EXPLORE },
-  { label: '폰트제작', to: ROUTES.CREATE_FONT_STEP_ONE },
+  { label: '폰트제작', to: ROUTES.CREATE_FONT },
 ]
 
 export const AuthItem = ({ isTransparent = false }: Props) => {

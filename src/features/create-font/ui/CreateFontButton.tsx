@@ -10,10 +10,12 @@ export const CreateFontButton = () => {
   const { handleSubmit } = useFormContext<CreateFontStepThreeFormType>()
   const { setPhoneNumber } = useCreateFontActions()
   const { handleSubmitForm } = useCreateFontForm()
+  const { reset } = useCreateFontActions()
 
   const onSubmit = (formData: CreateFontStepThreeFormType) => {
     setPhoneNumber(formData.phoneNumber)
     handleSubmitForm()
+    reset()
   }
 
   return (

@@ -13,9 +13,7 @@ const MyFontPage = lazy(() => import('@/pages/MyFontPage'))
 const AccountInfoPage = lazy(() => import('@/pages/AccountInfoPage'))
 const AccountEditPage = lazy(() => import('@/pages/AccountEditPage'))
 const FontDetailPage = lazy(() => import('@/pages/FontDetailPage'))
-const CreateFontStepOnePage = lazy(() => import('@/pages/CreateFontStepOnePage'))
-const CreateFontStepTwoPage = lazy(() => import('@/pages/CreateFontStepTwoPage'))
-const CreateFontStepThreePage = lazy(() => import('@/pages/CreateFontStepThreePage'))
+const CreateFont = lazy(() => import('@/pages/CreateFont'))
 
 export const routes: RouteObject[] = [
   { path: ROUTES.HOME, element: <HomePage /> },
@@ -28,7 +26,5 @@ export const routes: RouteObject[] = [
   { path: ROUTES.ACCOUNT_INFO, element: <AccountInfoPage /> },
   { path: ROUTES.ACCOUNT_EDIT, element: <AccountEditPage /> },
   { path: ROUTES.DETAIL(), element: <FontDetailPage /> },
-  { path: ROUTES.CREATE_FONT_STEP_ONE, element: <CreateFontStepOnePage /> },
-  { path: ROUTES.CREATE_FONT_STEP_TWO, element: <CreateFontStepTwoPage /> },
-  { path: ROUTES.CREATE_FONT_STEP_THREE, element: <CreateFontStepThreePage /> },
+  { path: ROUTES.CREATE_FONT, element: <CreateFont /> },
 ]

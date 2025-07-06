@@ -1,18 +1,17 @@
 import { FormProvider } from 'react-hook-form'
 
-import type { CreateFontStepOneFormType } from '@/entity/font'
-import { createFontStepOneSchema } from '@/entity/font'
-import {
-  DownloadTemplate,
-  StepOneButtonNavigation,
-  UploadTemplate,
-  useCreateFontValues,
-} from '@/features/create-font'
+import { type CreateFontStepOneFormType, createFontStepOneSchema } from '@/entity/font'
 import { useCustomForm } from '@/shared/hooks'
 import { SectionHeader, StepProgressBar } from '@/shared/ui'
 import { Layout } from '@/widgets'
 
-const CreateFontStepOnePage = () => {
+import { useCreateFontValues } from '../model/createFont.store'
+
+import { DownloadTemplate } from './DownloadTemplate'
+import { StepOneButtonNavigation } from './StepOneButtonNavigation'
+import { UploadTemplate } from './UploadTemplate'
+
+export const CreateFontStepOne = () => {
   const { file } = useCreateFontValues()
   const formMethods = useCustomForm<CreateFontStepOneFormType>(createFontStepOneSchema, {
     defaultValues: { file },
@@ -40,5 +39,3 @@ const CreateFontStepOnePage = () => {
     </Layout>
   )
 }
-
-export default CreateFontStepOnePage

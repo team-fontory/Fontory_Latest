@@ -3,9 +3,7 @@ export const ROUTES = {
   LOGIN: '/login',
   SIGN_UP_STEP_ONE: '/signup/step-one',
   SIGN_UP_STEP_TWO: '/signup/step-two',
-  CREATE_FONT_STEP_ONE: '/create-font/step-one',
-  CREATE_FONT_STEP_TWO: '/create-font/step-two',
-  CREATE_FONT_STEP_THREE: '/create-font/step-three',
+  CREATE_FONT: '/create-font',
   EXPLORE: '/explore',
   DETAIL: (id: string | number = ':id') => `/detail/${id}`,
 
