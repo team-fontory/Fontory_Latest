@@ -12,9 +12,9 @@ import { useFontNameCheckActions } from '../model/fontNameCheck.store'
 
 export const useFontNameChangeDetector = (fieldName: string) => {
   const { control, getValues, clearErrors } = useFormContext()
-  const { resetFontNameCheckState, setFontNameMessage } = useFontNameCheckActions()
+  const { setFontNameChangedAfterCheck } = useFontNameCheckActions()
 
-  const currentInputValue = useWatch({ control, name: fieldName })
+  const currentValue = useWatch({ control, name: fieldName })
   const lastCheckedValueRef = useRef<string | null>(null)
 
   const rememberCheckedValue = () => {
@@ -22,15 +22,14 @@ export const useFontNameChangeDetector = (fieldName: string) => {
   }
 
   useEffect(() => {
-    const hasInputChangedAfterCheck =
-      lastCheckedValueRef.current !== null && lastCheckedValueRef.current !== currentInputValue
+    const isChangedAfterCheck =
+      lastCheckedValueRef.current !== null && lastCheckedValueRef.current !== currentValue
 
-    if (hasInputChangedAfterCheck) {
-      resetFontNameCheckState()
-      setFontNameMessage(null)
+    if (isChangedAfterCheck) {
+      setFontNameChangedAfterCheck()
       clearErrors(fieldName)
     }
-  }, [currentInputValue, fieldName, clearErrors, setFontNameMessage, resetFontNameCheckState])
+  }, [currentValue, fieldName, clearErrors, setFontNameChangedAfterCheck])
 
   return { rememberCheckedValue }
 }

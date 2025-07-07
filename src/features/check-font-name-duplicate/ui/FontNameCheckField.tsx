@@ -3,7 +3,7 @@ import { Input, SecondaryButton } from '@/shared/ui'
 
 import { useFontNameChangeDetector } from '../hook/useFontNameChangeDetector'
 import { useFontNameDuplicateCheck } from '../hook/useFontNameDuplicateCheck'
-import { useFontNameDuplicated, useFontNameMessage } from '../model/fontNameCheck.store'
+import { useFontNameChecked, useFontNameMessage } from '../model/fontNameCheck.store'
 
 type Props = {
   label: string
@@ -14,7 +14,7 @@ type Props = {
 
 export const FontNameCheckField = ({ label, hint, placeholder, className }: Props) => {
   const section = createFontStepTwoConfig.attribute.name.section
-  const isDuplicated = useFontNameDuplicated()
+  const isChecked = useFontNameChecked()
   const successMessage = useFontNameMessage()
 
   const { checkFontNameDuplicate, isPending: isChecking } = useFontNameDuplicateCheck(section)
@@ -37,7 +37,7 @@ export const FontNameCheckField = ({ label, hint, placeholder, className }: Prop
       />
       <SecondaryButton
         className="shrink-0"
-        disabled={isChecking || !isDuplicated}
+        disabled={isChecking || !isChecked}
         onClick={handleCheckDuplicate}
       >
         중복 검사
