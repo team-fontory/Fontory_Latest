@@ -12,16 +12,16 @@ import { TERMS } from '../config/signup.constant'
  */
 
 export const useTermsAgreement = () => {
-  const [checkedTerms, setCheckedTerms] = useState<boolean[]>(TERMS.map(() => false))
+  const [checkedTerms, setCheckedFontNameTerms] = useState<boolean[]>(TERMS.map(() => false))
 
   const isAllAgreed = checkedTerms.every(Boolean)
 
   const toggleCheck = (index: number) => {
-    setCheckedTerms((prev) => prev.map((v, i) => (i === index ? !v : v)))
+    setCheckedFontNameTerms((prev) => prev.map((v, i) => (i === index ? !v : v)))
   }
 
   const agreeAll = () => {
-    setCheckedTerms(TERMS.map(() => !isAllAgreed))
+    setCheckedFontNameTerms(TERMS.map(() => !isAllAgreed))
   }
 
   return {

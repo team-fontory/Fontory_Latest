@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { ROUTES } from '@/app/router'
 import type { UserFormType } from '@/entity/user'
-import { useVerificationActions } from '@/features/check-font-name-duplicate/model/fontNameVerification.store'
+import { useVerificationActions } from '@/features/check-nickname-duplicate/model/nicknameVerification.store'
 
 import { useSignup } from '../api/signup.mutation'
 

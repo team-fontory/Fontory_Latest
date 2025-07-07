@@ -1,15 +1,16 @@
 import { useRef } from 'react'
 import { useWatch } from 'react-hook-form'
 
-import { fontAttribute } from '@/entity/font'
+import { createFontStepOneConfig } from '@/entity/font'
 import { SecondaryButton } from '@/shared/ui'
 
 import { useFileUpload } from '../hook/useFileUpload'
 
 export const UploadTemplate = () => {
+  const section = createFontStepOneConfig.attribute.file.section
   const inputRef = useRef<HTMLInputElement>(null)
-  const file = useWatch({ name: fontAttribute.file.section })
-  const { isLoading, handleFileChange } = useFileUpload(fontAttribute.file.section)
+  const file = useWatch({ name: section })
+  const { isLoading, handleFileChange } = useFileUpload(section)
 
   const openFileDialog = () => inputRef.current?.click()
 

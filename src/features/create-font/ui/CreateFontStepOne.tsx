@@ -1,23 +1,18 @@
 import { useFormContext } from 'react-hook-form'
 
-import { fontAttribute } from '@/entity/font'
+import { createFontStepOneConfig } from '@/entity/font'
 import { PrimaryButton } from '@/shared/ui'
 
-import { useCreateFontStepActions } from '../model/createFontStep.store'
+import { useNextStepButton } from '../hook/useNextStepButton'
 
 import { DownloadTemplate } from './DownloadTemplate'
 import { UploadTemplate } from './UploadTemplate'
 
 export const CreateFontStepOne = () => {
-  const { trigger, watch } = useFormContext()
-  const { setStep } = useCreateFontStepActions()
+  const section = createFontStepOneConfig.attribute.file.section
 
-  const onClickButton = async () => {
-    const isValid = await trigger(fontAttribute.file.section)
-    if (isValid) {
-      setStep(2)
-    }
-  }
+  const { watch } = useFormContext()
+  const { handleClickNextButton } = useNextStepButton(section, 2)
 
   return (
     <>
@@ -29,8 +24,8 @@ export const CreateFontStepOne = () => {
       <PrimaryButton
         direction="right"
         className="mt-5 ml-auto"
-        onClick={onClickButton}
-        disabled={!watch(fontAttribute.file.section)}
+        onClick={handleClickNextButton}
+        disabled={!watch(section)}
       >
         다음 단계
       </PrimaryButton>

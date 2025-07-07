@@ -1,2 +1,2 @@
-export * from './model/fontNameVerification.store'
-export * from './ui/CheckFontNameDuplicate'
+export * from './model/fontNameCheck.store'
+export * from './ui/FontNameCheckField'

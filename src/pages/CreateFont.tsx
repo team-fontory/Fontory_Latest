@@ -1,16 +1,15 @@
 import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
 
-import { type CreateFontFormType, createFontSchema, defaultValues } from '@/entity/font'
-import { useVerificationActions } from '@/features/check-font-name-duplicate'
+import { createFontDefaultValues, type CreateFontFormType, createFontSchema } from '@/entity/font'
 import {
   CreateFontStepOne,
   CreateFontStepThree,
   CreateFontStepTwo,
   stepLabels,
   useCreateFontStep,
-  useCreateFontStepActions,
   useCreateFontTotalSteps,
+  useResetCreateFontForm,
 } from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
 import { SectionHeader, StepProgressBar } from '@/shared/ui'
@@ -18,6 +17,13 @@ import { Layout } from '@/widgets'
 
 const RenderCreateFontPage = () => {
   const currentStep = useCreateFontStep()
+  const { resetAll } = useResetCreateFontForm()
+
+  useEffect(() => {
+    return () => {
+      resetAll()
+    }
+  }, [resetAll])
 
   switch (currentStep) {
     case 1:
@@ -32,18 +38,9 @@ const RenderCreateFontPage = () => {
 const CreateFont = () => {
   const currentStep = useCreateFontStep()
   const totalSteps = useCreateFontTotalSteps()
-  const formMethods = useCustomForm<CreateFontFormType>(createFontSchema, { defaultValues })
-
-  const { resetVerification } = useVerificationActions()
-  const { resetStep } = useCreateFontStepActions()
-
-  useEffect(() => {
-    return () => {
-      formMethods.reset()
-      resetVerification()
-      resetStep()
-    }
-  }, [formMethods, resetStep, resetVerification])
+  const formMethods = useCustomForm<CreateFontFormType>(createFontSchema, {
+    defaultValues: createFontDefaultValues,
+  })
 
   return (
     <Layout hasPadding>

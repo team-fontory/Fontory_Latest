@@ -1,2 +1,2 @@
-export * from './config/font.schema'
+export * from './config/font.config'
 export * from './types/font.type'
