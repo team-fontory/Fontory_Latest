@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { useFontNameCheckActions } from '@/features/check-font-name-duplicate'
@@ -9,11 +10,11 @@ export const useResetCreateFontForm = () => {
   const { resetFontNameCheckState } = useFontNameCheckActions()
   const { resetStep } = useCreateFontStepActions()
 
-  const resetAll = () => {
+  const resetAll = useCallback(() => {
     reset()
     resetFontNameCheckState()
     resetStep()
-  }
+  }, [reset, resetFontNameCheckState, resetStep])
 
   return { resetAll }
 }
