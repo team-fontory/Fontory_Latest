@@ -37,7 +37,7 @@ export const FontNameCheckField = ({ label, hint, placeholder, className }: Prop
       />
       <SecondaryButton
         className="shrink-0"
-        disabled={isChecking || !isChecked}
+        disabled={isChecking || isChecked}
         onClick={handleCheckDuplicate}
       >
         중복 검사
