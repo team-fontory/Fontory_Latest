@@ -1,12 +1,12 @@
 import { useFormContext } from 'react-hook-form'
 
-import type { UserFormType } from '@/entity/user'
+import type { User } from '@/entity/user'
 import { PrimaryButton } from '@/shared/ui'
 
 import { useEditAccountInformation } from '../hook/useEditAccountInformation'
 
 export const AccountEditButton = () => {
-  const { handleSubmit } = useFormContext<UserFormType>()
+  const { handleSubmit } = useFormContext<User>()
   const { handleSubmitForm } = useEditAccountInformation()
 
   return (

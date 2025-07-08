@@ -18,10 +18,12 @@ const AuthContext = createContext<AuthContextValue>({
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { data, isLoading, isError } = useMyProfile()
 
+  if (isLoading || isError || !data) return
+
   return (
     <AuthContext.Provider
       value={{
-        user: data ?? null,
+        user: { nickname: data.nickname, gender: data.gender, birth: data.birth },
         isLoading,
         isError,
       }}

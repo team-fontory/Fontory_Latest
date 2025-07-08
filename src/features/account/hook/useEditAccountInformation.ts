@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form'
 import { type To, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import type { UserFormType } from '@/entity/user'
+import type { User } from '@/entity/user'
 
 import { useEditAccount } from '../api/account.mutation'
 
@@ -27,7 +27,7 @@ export const useEditAccountInformation = () => {
     toast.error(TOAST_MESSAGE.error)
   }
 
-  const handleSubmitForm = (formData: UserFormType) => {
+  const handleSubmitForm = (formData: User) => {
     editAccount(formData, { onSuccess, onError })
   }
 
