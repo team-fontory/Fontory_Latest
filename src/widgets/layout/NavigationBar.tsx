@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { useAuth } from '@/app/providers'
 import { ROUTES } from '@/app/router'
-import { useMyProfile } from '@/features/auth'
 import { cn } from '@/shared/lib'
 
 import { MypageDropdown } from './MypageDropdown'
@@ -16,9 +16,9 @@ const NAV_LINKS = [
 ]
 
 export const AuthItem = ({ isTransparent = false }: Props) => {
-  const { data: profile, isError } = useMyProfile()
+  const { user, isError } = useAuth()
 
-  if (!isError && profile)
+  if (!isError && user)
     return (
       <li className="group relative">
         <button
