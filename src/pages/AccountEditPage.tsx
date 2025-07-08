@@ -27,14 +27,13 @@ const AccountEditPage = () => {
 
         <FormProvider {...formMethods}>
           <AccountEditForm />
+          <div className="mt-[6.25rem] flex justify-end gap-9">
+            <AccountEditButton />
+            <PrimaryButton direction="none" onClick={onCancel}>
+              취소하기
+            </PrimaryButton>
+          </div>
         </FormProvider>
-
-        <div className="mt-[6.25rem] flex justify-end gap-9">
-          <AccountEditButton />
-          <PrimaryButton direction="none" onClick={onCancel}>
-            취소하기
-          </PrimaryButton>
-        </div>
       </section>
     </Layout>
   )
