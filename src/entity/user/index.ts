@@ -1,2 +1,2 @@
-export * from './config/user.schema'
+export * from './config/user.config'
 export * from './types/user.type'

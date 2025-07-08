@@ -2,7 +2,7 @@ import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
-import { userAttribute, type UserFormType, userSchema } from '@/entity/user'
+import { userConfig, type UserFormType } from '@/entity/user'
 import { DeleteUserButton } from '@/features/account'
 import { useMyProfile } from '@/features/auth'
 import { useCustomForm } from '@/shared/hooks'
@@ -11,9 +11,12 @@ import { Layout } from '@/widgets'
 
 const AccountInfoPage = () => {
   const navigate = useNavigate()
+
+  const { attribute, schema, defaultValues } = userConfig
+  const { nickname, birth, gender } = attribute
   const { data: accountInfo, isError, isPending } = useMyProfile()
 
-  const formMethods = useCustomForm<UserFormType>(userSchema, { defaultValues: { ...accountInfo } })
+  const formMethods = useCustomForm<UserFormType>(schema, { defaultValues })
 
   const onEdit = () => {
     navigate(ROUTES.ACCOUNT_EDIT)
@@ -35,11 +38,11 @@ const AccountInfoPage = () => {
         <FormProvider {...formMethods}>
           <form className="flex-column mt-[6.25rem] gap-[3.75rem]">
             <div className="grid grid-cols-2 gap-6">
-              <Input {...userAttribute.nickname} hint="" disabled />
-              <Input {...userAttribute.birth} hint="" disabled />
+              <Input {...nickname} hint="" disabled />
+              <Input {...birth} hint="" disabled />
             </div>
 
-            <GenderRadioGroup section={userAttribute.gender.section} disabled />
+            <GenderRadioGroup section={gender.section} disabled />
           </form>
         </FormProvider>
 

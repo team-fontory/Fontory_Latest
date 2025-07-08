@@ -1,6 +1,6 @@
 import type z from 'zod'
 
-import type { userSchema } from '../config/user.schema'
+import type { userConfig } from '../config/user.config'
 
 export type GenderType = 'MALE' | 'FEMALE' | null
 
@@ -10,6 +10,4 @@ export type User = {
   birth: string
 }
 
-export type UserFormType = z.input<typeof userSchema> & {
-  file: File | null
-}
+export type UserFormType = z.input<typeof userConfig.schema>

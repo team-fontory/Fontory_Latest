@@ -2,25 +2,6 @@ import { z } from 'zod'
 
 import { filterInput, formatPhoneNumberInput } from '@/shared/lib'
 
-export const fontSchema = z.object({
-  name: z
-    .string()
-    .min(1, { message: '폰트 이름을 입력해주세요.' })
-    .max(9, { message: '9글자까지 입력 가능합니다.' }),
-  engName: z
-    .string()
-    .min(1, { message: '폰트 영어 이름을 입력해주세요.' })
-    .max(12, { message: '12글자까지 입력 가능합니다.' }),
-  example: z
-    .string()
-    .min(10, { message: '10글자 이상 작성해주세요.' })
-    .max(50, { message: '50글자까지 입력 가능합니다.' }),
-  phoneNumber: z.string(),
-  file: z
-    .custom<File | null>((val) => val === null || val instanceof File, '파일을 업로드해주세요.')
-    .refine((file) => file !== null && file.size > 0, '파일을 업로드해주세요.'),
-})
-
 export const createFontStepOneConfig = {
   attribute: {
     file: {

@@ -2,7 +2,7 @@ import { FormProvider } from 'react-hook-form'
 import { type To, useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
-import { type UserFormType, userSchema } from '@/entity/user'
+import { userConfig, type UserFormType } from '@/entity/user'
 import { AccountEditForm } from '@/features/account'
 import { useMyProfile } from '@/features/auth'
 import { useCustomForm } from '@/shared/hooks'
@@ -11,12 +11,13 @@ import { Layout } from '@/widgets'
 
 const AccountEditPage = () => {
   const navigate = useNavigate()
+
+  const { schema, defaultValues } = userConfig
   const { data: accountInfo, isError, isPending } = useMyProfile()
 
-  const formMethods = useCustomForm<UserFormType>(userSchema, { defaultValues: { ...accountInfo } })
+  const formMethods = useCustomForm<UserFormType>(schema, { defaultValues })
 
   const onComplete = () => {
-    // 폼 제출, 폼 초기화, 이동
     formMethods.reset()
     navigate(-1 as To, { replace: true })
   }

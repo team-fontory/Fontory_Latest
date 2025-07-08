@@ -1,1 +1,2 @@
-export * from './ui/CheckNicknameDuplicate'
+export * from './model/nicknameCheck.store'
+export * from './ui/NicknameCheckField'
