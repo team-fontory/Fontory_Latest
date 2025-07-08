@@ -1,10 +1,10 @@
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
+import { useAuth } from '@/app/providers'
 import { ROUTES } from '@/app/router'
 import { userConfig, type UserFormType } from '@/entity/user'
 import { DeleteUserButton } from '@/features/account'
-import { useMyProfile } from '@/features/auth'
 import { useCustomForm } from '@/shared/hooks'
 import { GenderRadioGroup, Input, PrimaryButton, SectionHeader } from '@/shared/ui'
 import { Layout } from '@/widgets'
@@ -12,22 +12,14 @@ import { Layout } from '@/widgets'
 const AccountInfoPage = () => {
   const navigate = useNavigate()
 
-  const { attribute, schema, defaultValues } = userConfig
+  const { attribute, schema } = userConfig
   const { nickname, birth, gender } = attribute
-  const { data: accountInfo, isError, isPending } = useMyProfile()
+  const { user } = useAuth()
 
-  const formMethods = useCustomForm<UserFormType>(schema, { defaultValues })
+  const formMethods = useCustomForm<UserFormType>(schema, { defaultValues: { ...user } })
 
   const onEdit = () => {
     navigate(ROUTES.ACCOUNT_EDIT)
-  }
-
-  if (isError || !accountInfo) {
-    navigate(ROUTES.LOGIN, { replace: true })
-  }
-
-  if (isPending) {
-    return null
   }
 
   return (
