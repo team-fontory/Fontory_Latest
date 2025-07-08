@@ -12,10 +12,10 @@ import { Layout } from '@/widgets'
 const AccountEditPage = () => {
   const navigate = useNavigate()
 
-  const { schema, defaultValues } = userConfig
+  const { schema } = userConfig
   const { data: accountInfo, isError, isPending } = useMyProfile()
 
-  const formMethods = useCustomForm<UserFormType>(schema, { defaultValues })
+  const formMethods = useCustomForm<UserFormType>(schema, { defaultValues: { ...accountInfo } })
 
   const onComplete = () => {
     formMethods.reset()

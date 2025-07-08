@@ -1,6 +1,7 @@
-import { lazy } from 'react'
+import { lazy, type ReactNode } from 'react'
 import type { RouteObject } from 'react-router-dom'
 
+import { ProtectedRoute } from './ProtectedRoute'
 import { ROUTES } from './routes.constant'
 
 const HomePage = lazy(() => import('@/pages/HomePage'))
@@ -14,15 +15,19 @@ const AccountEditPage = lazy(() => import('@/pages/AccountEditPage'))
 const FontDetailPage = lazy(() => import('@/pages/FontDetailPage'))
 const CreateFont = lazy(() => import('@/pages/CreateFont'))
 
+const withAuth = (element: ReactNode) => <ProtectedRoute>{element}</ProtectedRoute>
+
 export const routes: RouteObject[] = [
   { path: ROUTES.HOME, element: <HomePage /> },
   { path: ROUTES.LOGIN, element: <LoginPage /> },
   { path: ROUTES.SIGN_UP, element: <SignupPage /> },
   { path: ROUTES.EXPLORE, element: <ExplorePage /> },
-  { path: ROUTES.BOOKMARK, element: <BookmarkPage /> },
-  { path: ROUTES.MY_FONT, element: <MyFontPage /> },
-  { path: ROUTES.ACCOUNT_INFO, element: <AccountInfoPage /> },
-  { path: ROUTES.ACCOUNT_EDIT, element: <AccountEditPage /> },
   { path: ROUTES.DETAIL(), element: <FontDetailPage /> },
-  { path: ROUTES.CREATE_FONT, element: <CreateFont /> },
+
+  // 로그인 후 이용 가능
+  { path: ROUTES.BOOKMARK, element: withAuth(<BookmarkPage />) },
+  { path: ROUTES.MY_FONT, element: withAuth(<MyFontPage />) },
+  { path: ROUTES.ACCOUNT_INFO, element: withAuth(<AccountInfoPage />) },
+  { path: ROUTES.ACCOUNT_EDIT, element: withAuth(<AccountEditPage />) },
+  { path: ROUTES.CREATE_FONT, element: withAuth(<CreateFont />) },
 ]
