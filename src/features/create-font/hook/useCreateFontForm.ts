@@ -22,8 +22,8 @@ export const useCreateFontForm = () => {
 
   const onSuccess = () => {
     toast.success(TOAST_MESSAGE.success)
-    resetAll()
     navigate(ROUTES.MY_FONT)
+    resetAll()
   }
 
   const onError = () => {
