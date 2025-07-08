@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form'
 import { type To, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import type { User } from '@/entity/user'
+import type { UserFormType } from '@/entity/user'
 
 import { useEditAccount } from '../api/account.mutation'
 
@@ -27,7 +27,12 @@ export const useEditAccountInformation = () => {
     toast.error(TOAST_MESSAGE.error)
   }
 
-  const handleSubmitForm = (formData: User) => {
+  const handleSubmitForm = (formData: UserFormType) => {
+    const { file: _, ...rest } = formData
+    const sendForm = new FormData()
+    sendForm.append('file', '')
+    sendForm.append('req', JSON.stringify({ ...rest }))
+
     editAccount(formData, { onSuccess, onError })
   }
 

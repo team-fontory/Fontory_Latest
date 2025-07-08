@@ -12,11 +12,17 @@ export const endpoints = {
 export const useEditAccount = () => {
   const queryClient = useQueryClient()
 
-  return useAxiosMutation(() => apiClient.patch(endpoints.editAccount), {
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: MAIN_QUERY_KEY })
+  return useAxiosMutation(
+    (formData) =>
+      apiClient.patch(endpoints.editAccount, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: MAIN_QUERY_KEY })
+      },
     },
-  })
+  )
 }
 
 export const useDeleteUser = () => {
