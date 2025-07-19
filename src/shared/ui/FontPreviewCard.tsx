@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
-import type { FontDetailType } from '@/entity/font'
+import type { PreviewFont } from '@/entity/font'
 import { BookmarkButton } from '@/features/bookmark-font'
 import { DownloadButton } from '@/features/download-font'
 
 import { useDynamicFont } from '../hooks'
 
-export const FontPreviewCard = (props: FontDetailType) => {
-  const { fontId, fontName, example, woff, writerName, isBookmarked } = props
-  const { fontFamily, isLoaded } = useDynamicFont(woff, fontId)
+export const FontPreviewCard = (props: PreviewFont) => {
+  const { fontId, fontName, example, fontAddr, writerName, isBookmarked } = props
+  const { fontFamily, isLoaded } = useDynamicFont(fontAddr, fontId)
 
   return (
     <Link

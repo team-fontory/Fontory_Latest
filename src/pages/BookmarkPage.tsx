@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { useBookmarkFontList } from '@/features/bookmark'
+import { useBookmarkFontList } from '@/entity/font'
 import { EMPTY_MESSAGE } from '@/shared/config'
 import { useFontFilterParams } from '@/shared/hooks'
 import { Pagination, SearchBar, SortTab } from '@/shared/ui'
@@ -12,10 +12,7 @@ const BookmarkPage = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null)
 
   const { page, sortBy, keyword, setFilterParams } = useFontFilterParams()
-
-  const {
-    data: { content, currentPage, totalPages },
-  } = useBookmarkFontList({ page, sortBy, keyword })
+  const { data: bookmarkFontInfo } = useBookmarkFontList({ page, sortBy, keyword })
 
   return (
     <Layout hasPadding>
@@ -27,12 +24,16 @@ const BookmarkPage = () => {
           <SearchBar onSearch={(keyword) => setFilterParams({ keyword, page: 1 })} />
         </div>
 
-        <FontPreviewCardList fontList={content} emptyMessage={EMPTY_MESSAGE.noBookmark} />
+        <FontPreviewCardList
+          fontList={bookmarkFontInfo.fontList}
+          isEmpty={bookmarkFontInfo.isEmpty}
+          emptyMessage={EMPTY_MESSAGE.noBookmark}
+        />
 
         <nav className="mt-[8.75rem]">
           <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
+            currentPage={bookmarkFontInfo.currentPage}
+            totalPages={bookmarkFontInfo.totalPages}
             scrollTargetRef={scrollTargetRef}
             onPageChange={(page) => setFilterParams({ page })}
           />

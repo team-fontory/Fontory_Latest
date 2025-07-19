@@ -1,16 +1,17 @@
-import type { FontDetailType } from '@/entity/font'
+import type { PreviewFont } from '@/entity/font'
 
 import { EMPTY_MESSAGE } from '../config'
 
 import { FontPreviewCard } from './FontPreviewCard'
 
 type Props = {
-  fontList: FontDetailType[]
+  fontList: PreviewFont[]
+  isEmpty: boolean
   emptyMessage?: string
 }
 
-export const FontPreviewCardList = ({ fontList, emptyMessage }: Props) => {
-  if (!fontList || !fontList.length)
+export const FontPreviewCardList = ({ fontList, isEmpty, emptyMessage }: Props) => {
+  if (isEmpty)
     return (
       <p className="text-darkgrey py-20 text-center text-4xl font-bold">
         {emptyMessage || EMPTY_MESSAGE.noFont}
