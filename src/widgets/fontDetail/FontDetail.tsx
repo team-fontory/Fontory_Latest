@@ -1,5 +1,5 @@
-import type { FontDetailType } from '@/entity/font'
-import { useDynamicFont } from '@/shared/hooks'
+import { useFontDetail } from '@/entity/font'
+import { useDynamicFont, useParamFontId } from '@/shared/hooks'
 
 type Props = {
   label: string
@@ -15,9 +15,12 @@ const FontDetailMeta = ({ label, value }: Props) => {
   )
 }
 
-export const FontDetail = (props: FontDetailType) => {
-  const { fontId, fontName, writerName, example, bookmarkCount, downloadCount, woff } = props
-  const { fontFamily, isLoaded } = useDynamicFont(woff, fontId)
+export const FontDetail = () => {
+  const fontId = useParamFontId()
+  const { data: fontDetail } = useFontDetail(fontId)
+
+  const { fontName, writerName, example, bookmarkCount, downloadCount, fontAddr } = fontDetail
+  const { fontFamily, isLoaded } = useDynamicFont(fontAddr, fontId)
 
   return (
     <div>

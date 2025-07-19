@@ -1,7 +1,7 @@
 import { apiClient, publicApiClient } from '@/app/api'
 
 import { PreviewFontList } from '../model/font.model'
-import type { FontArrayResponse, FontFilter } from '../types/font.type'
+import type { FontArrayResponse, FontDetailResponse, FontFilter } from '../types/font.type'
 
 class Service {
   async getBookmark({ page, sortBy, keyword }: FontFilter) {
@@ -18,6 +18,14 @@ class Service {
     })
 
     return new PreviewFontList(response)
+  }
+
+  async getDetail(fontId: number) {
+    return apiClient.get<FontDetailResponse>(`/fonts/${fontId}`)
+  }
+
+  async getRecommend(fontId: number) {
+    return apiClient.get<FontDetailResponse[]>(`/fonts/${fontId}/others`)
   }
 }
 

@@ -1,8 +1,8 @@
-import type { FontDetailType } from '@/entity/font'
+import type { PreviewFont } from '@/entity/font'
 import { FontPreviewCard } from '@/shared/ui'
 
 type Props = {
-  recommendList: FontDetailType[]
+  recommendList: PreviewFont[]
 }
 
 export const FontDetailOtherFonts = ({ recommendList }: Props) => {

@@ -1,32 +1,28 @@
-import {
-  FloatingButtonGroup,
-  FontDetail,
-  FontDetailOtherFonts,
-  useFontDetail,
-} from '@/features/font-detail'
+import { useRecommendFontList } from '@/entity/font'
 import { useParamFontId } from '@/shared/hooks'
 import { Layout } from '@/widgets'
+import { FloatingButtonGroup, FontDetail, FontDetailOtherFonts } from '@/widgets/fontDetail'
 import { SectionHeader } from '@/widgets/section'
 
 const FontDetailPage = () => {
   const fontId = useParamFontId()
-  const { fontDetail, recommendList } = useFontDetail(fontId)
+  const { data: recommendFontInfo } = useRecommendFontList(fontId)
 
   return (
     <Layout hasPadding>
       <section>
         <SectionHeader title={'FONT'} />
-        <FontDetail {...fontDetail} />
+        <FontDetail />
       </section>
 
-      {recommendList && !!recommendList.length && (
+      {!recommendFontInfo.isEmpty && (
         <section className="mt-60">
           <SectionHeader title={'OTHER FONTS'} />
-          <FontDetailOtherFonts recommendList={recommendList} />
+          <FontDetailOtherFonts recommendList={recommendFontInfo.fontList} />
         </section>
       )}
 
-      <FloatingButtonGroup {...fontDetail} />
+      <FloatingButtonGroup />
     </Layout>
   )
 }
