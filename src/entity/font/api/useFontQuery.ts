@@ -11,3 +11,10 @@ export const useBookmarkFontList = (filter: FontFilter) => {
     queryFn: () => FontService.getBookmark(filter),
   })
 }
+
+export const useExploreFontList = (filter: FontFilter) => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.explore(filter),
+    queryFn: () => FontService.getExplore(filter),
+  })
+}
