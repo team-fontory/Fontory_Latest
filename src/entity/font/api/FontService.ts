@@ -27,6 +27,10 @@ class Service {
   async getRecommend(fontId: number) {
     return apiClient.get<FontDetailResponse[]>(`/fonts/${fontId}/others`)
   }
+
+  async getPopular() {
+    return apiClient.get<FontDetailResponse[]>('/fonts/popular')
+  }
 }
 
 export const FontService = new Service()

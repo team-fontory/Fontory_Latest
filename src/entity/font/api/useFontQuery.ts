@@ -36,34 +36,12 @@ export const useRecommendFontList = (fontId: number) => {
   })
 }
 
-// export const useFontDetail = (fontId: number) => {
-//   const [detailQuery, recommendQuery] = useSuspenseQueries<
-//     [
-//       UseQueryOptions<FontDetailResponse, AxiosError, FontDetailType>,
-//       UseQueryOptions<FontDetailResponse[], AxiosError, FontDetailType[]>,
-//     ]
-//   >({
-//     queries: [
-//       {
-//         queryKey: fontQueryKeys.detail(fontId),
-//         queryFn: () => FontService.getDetail(fontId),
-//         select: ({ id, name, bookmarked, ...rest }) => ({
-//           fontId: id,
-//           fontName: name,
-//           isBookmarked: bookmarked,
-//           ...rest,
-//         }),
-//       },
-//       {
-//         queryKey: fontQueryKeys.recommend(fontId),
-//         queryFn: () => FontService.getRecommend(fontId),
-//         select: (data) => new PreviewFontList(data),
-//       },
-//     ],
-//   })
-
-//   return {
-//     fontDetail: detailQuery.data,
-//     recommendList: recommendQuery.data,
-//   }
-// }
+export const usePopularFontList = () => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.popular(),
+    queryFn: () => FontService.getPopular(),
+    select: (data) => new PreviewFontList({ content: data, number: 1, totalPages: 1 }),
+    staleTime: 60000,
+    gcTime: 60000 * 5,
+  })
+}

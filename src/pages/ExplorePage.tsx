@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 
 import { useExploreFontList } from '@/entity/font'
-import { PopularFontCardList } from '@/features/popular-fonts'
 import { EMPTY_MESSAGE } from '@/shared/config'
 import { useFontFilterParams } from '@/shared/hooks'
 import { Pagination, SearchBar, SortTab } from '@/shared/ui'
 import { FontPreviewCardList } from '@/shared/ui/FontPreviewCardList'
 import { Layout } from '@/widgets'
+import { PopularFontCardList } from '@/widgets/popular-font'
 import { SectionHeader } from '@/widgets/section'
 
 const ExplorePage = () => {

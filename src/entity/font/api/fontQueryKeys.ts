@@ -8,4 +8,5 @@ export const fontQueryKeys = {
     [...fontQueryKeys.all, 'explore', page, sortBy, keyword] as const,
   detail: (fontId: number) => [...fontQueryKeys.all, 'detail', fontId],
   recommend: (fontId: number) => [...fontQueryKeys.all, 'detail', 'recommend', fontId],
+  popular: () => [...fontQueryKeys.all, 'popular'],
 }
