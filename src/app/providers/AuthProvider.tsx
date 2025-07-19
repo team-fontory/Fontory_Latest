@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react'
 
 import type { User } from '@/entity/user'
 import { useMyProfile } from '@/features/auth'
+import { Loading } from '@/shared/ui'
 
 type AuthContextValue = {
   user: User | null
@@ -18,12 +19,19 @@ const AuthContext = createContext<AuthContextValue>({
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { data, isLoading, isError } = useMyProfile()
 
-  if (isLoading || isError || !data) return
+  let user = {
+    nickname: '',
+    gender: null,
+    birth: '',
+  } as User
+
+  if (isLoading) return <Loading />
+  if (data) user = { ...data }
 
   return (
     <AuthContext.Provider
       value={{
-        user: { nickname: data.nickname, gender: data.gender, birth: data.birth },
+        user,
         isLoading,
         isError,
       }}
