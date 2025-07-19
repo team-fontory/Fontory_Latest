@@ -6,8 +6,9 @@ import type { FontFilter } from '@/entity/font'
 import { MyFontPreviewCardList, ProgressTable, useMyFontList } from '@/features/progress'
 import { useQueryParam } from '@/shared/hooks'
 import { toQueryString } from '@/shared/lib'
-import { Pagination, SectionHeader } from '@/shared/ui'
+import { Pagination } from '@/shared/ui'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const MyFontPage = () => {
   const navigate = useNavigate()
@@ -27,12 +28,12 @@ const MyFontPage = () => {
   return (
     <Layout hasPadding>
       <section>
-        <SectionHeader title="IN PROGRESS" />
+        <SectionHeader title={'IN PROGRESS'} />
         <ProgressTable />
       </section>
 
       <section ref={scrollTargetRef} className="mt-60">
-        <SectionHeader title="COMPLETED" />
+        <SectionHeader title={'COMPLETED'} />
         <MyFontPreviewCardList fontList={myFontList.content} />
 
         <nav className="mt-[8.75rem]">

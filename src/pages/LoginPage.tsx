@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom'
 
 import googleImage from '@/shared/assets/login/google.png'
 import naverImage from '@/shared/assets/login/naver.png'
-import { SectionHeader } from '@/shared/ui'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const LoginPage = () => {
   return (
     <Layout hasPadding>
       <section className="flex-column gap-[6.25rem]">
-        <SectionHeader title="LOGIN" />
+        <SectionHeader title={'LOGIN'} />
 
         <div className="flex-between gap-6">
           <Link

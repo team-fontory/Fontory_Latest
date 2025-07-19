@@ -5,8 +5,8 @@ import {
   useFontDetail,
 } from '@/features/font-detail'
 import { useParamFontId } from '@/shared/hooks'
-import { SectionHeader } from '@/shared/ui'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const FontDetailPage = () => {
   const fontId = useParamFontId()
@@ -15,13 +15,13 @@ const FontDetailPage = () => {
   return (
     <Layout hasPadding>
       <section>
-        <SectionHeader title="FONT" />
+        <SectionHeader title={'FONT'} />
         <FontDetail {...fontDetail} />
       </section>
 
       {recommendList && !!recommendList.length && (
         <section className="mt-60">
-          <SectionHeader title="OTHER FONTS" />
+          <SectionHeader title={'OTHER FONTS'} />
           <FontDetailOtherFonts recommendList={recommendList} />
         </section>
       )}

@@ -6,8 +6,9 @@ import { ROUTES } from '@/app/router'
 import { userConfig, type UserFormType } from '@/entity/user'
 import { DeleteUserButton } from '@/features/account'
 import { useCustomForm } from '@/shared/hooks'
-import { GenderRadioGroup, Input, PrimaryButton, SectionHeader } from '@/shared/ui'
+import { GenderRadioGroup, Input, PrimaryButton } from '@/shared/ui'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const AccountInfoPage = () => {
   const navigate = useNavigate()

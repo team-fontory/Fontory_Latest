@@ -12,8 +12,9 @@ import {
   useResetCreateFontForm,
 } from '@/features/create-font'
 import { useCustomForm } from '@/shared/hooks'
-import { SectionHeader, StepProgressBar } from '@/shared/ui'
+import { StepProgressBar } from '@/shared/ui'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const RenderCreateFontPage = () => {
   const currentStep = useCreateFontStep()

@@ -4,9 +4,10 @@ import { useExploreList } from '@/features/explore'
 import { PopularFontCardList } from '@/features/popular-fonts'
 import { EMPTY_MESSAGE } from '@/shared/config'
 import { useFontFilterParams } from '@/shared/hooks'
-import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
+import { Pagination, SearchBar, SortTab } from '@/shared/ui'
 import { FontPreviewCardList } from '@/shared/ui/FontPreviewCardList'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const ExplorePage = () => {
   const { page, sortBy, keyword, setFilterParams } = useFontFilterParams()
@@ -19,12 +20,12 @@ const ExplorePage = () => {
   return (
     <Layout hasPadding>
       <section>
-        <SectionHeader title="POPULAR" />
+        <SectionHeader title={'POPULAR'} />
         <PopularFontCardList />
       </section>
 
       <section ref={scrollTargetRef} className="mt-60">
-        <SectionHeader title="ALL FONTS" />
+        <SectionHeader title={'ALL FONTS'} />
 
         <div className="mb-[4.5rem] grid grid-cols-2">
           <SortTab value={sortBy} onChange={(sortBy) => setFilterParams({ sortBy })} />

@@ -4,8 +4,6 @@ type Props = {
 
 /**
  * 섹션 제목을 표시하는 헤더 컴포넌트
- *
- * @param {string} props.title - 섹션 제목 텍스트
  */
 
 export const SectionHeader = ({ title }: Props) => {

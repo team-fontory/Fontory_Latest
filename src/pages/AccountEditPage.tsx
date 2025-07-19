@@ -5,8 +5,9 @@ import { useAuth } from '@/app/providers'
 import { userConfig, type UserFormType } from '@/entity/user'
 import { AccountEditButton, AccountEditForm } from '@/features/account'
 import { useCustomForm } from '@/shared/hooks'
-import { PrimaryButton, SectionHeader } from '@/shared/ui'
+import { PrimaryButton } from '@/shared/ui'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const AccountEditPage = () => {
   const { schema } = userConfig

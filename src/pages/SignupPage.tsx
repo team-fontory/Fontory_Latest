@@ -11,8 +11,9 @@ import {
   useSignupTotalSteps,
 } from '@/features/sign-up'
 import { useCustomForm } from '@/shared/hooks'
-import { SectionHeader, StepProgressBar } from '@/shared/ui'
+import { StepProgressBar } from '@/shared/ui'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const RenderSignupPage = () => {
   const currentStep = useSignupStep()
@@ -40,7 +41,7 @@ const SignupPage = () => {
   return (
     <Layout hasPadding>
       <section>
-        <SectionHeader title="SIGN UP" />
+        <SectionHeader title={'ACCOUNT INFO'} />
         <StepProgressBar
           currentStep={currentStep}
           totalSteps={totalSteps}

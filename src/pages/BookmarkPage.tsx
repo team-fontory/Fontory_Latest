@@ -3,9 +3,10 @@ import { useRef } from 'react'
 import { useBookmarkFontList } from '@/features/bookmark'
 import { EMPTY_MESSAGE } from '@/shared/config'
 import { useFontFilterParams } from '@/shared/hooks'
-import { Pagination, SearchBar, SectionHeader, SortTab } from '@/shared/ui'
+import { Pagination, SearchBar, SortTab } from '@/shared/ui'
 import { FontPreviewCardList } from '@/shared/ui/FontPreviewCardList'
 import { Layout } from '@/widgets'
+import { SectionHeader } from '@/widgets/section'
 
 const BookmarkPage = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null)
