@@ -1,15 +1,14 @@
 import type { MouseEvent } from 'react'
 
-import { useDeleteFontMutation } from '../api/myFont.mutation'
+import { useDeleteFontMutation } from '../api/deleteFont.mutation'
 
 export const useDeleteFont = (fontId: number) => {
-  const { mutate } = useDeleteFontMutation()
+  const { mutate: deleteFont } = useDeleteFontMutation()
 
   const handleDeleteFont = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
     event.preventDefault()
-
-    mutate(fontId)
+    deleteFont(fontId)
   }
 
   return { handleDeleteFont }

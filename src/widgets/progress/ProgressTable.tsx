@@ -1,6 +1,5 @@
+import { useProgressFontList } from '@/entity/font'
 import { formatIsoToDateTime } from '@/shared/lib'
-
-import { useProgressFontList } from '../api/myFont.query'
 
 export const ProgressTable = () => {
   const { data: progressList } = useProgressFontList()

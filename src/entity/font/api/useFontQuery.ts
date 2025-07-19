@@ -10,6 +10,7 @@ export const useBookmarkFontList = (filter: FontFilter) => {
   return useSuspenseQuery({
     queryKey: fontQueryKeys.bookmark(filter),
     queryFn: () => FontService.getBookmark(filter),
+    select: (data) => new PreviewFontList(data),
   })
 }
 
@@ -17,6 +18,7 @@ export const useExploreFontList = (filter: FontFilter) => {
   return useSuspenseQuery({
     queryKey: fontQueryKeys.explore(filter),
     queryFn: () => FontService.getExplore(filter),
+    select: (data) => new PreviewFontList(data),
   })
 }
 
@@ -41,6 +43,26 @@ export const usePopularFontList = () => {
     queryKey: fontQueryKeys.popular(),
     queryFn: () => FontService.getPopular(),
     select: (data) => new PreviewFontList({ content: data, number: 1, totalPages: 1 }),
+    staleTime: 60000,
+    gcTime: 60000 * 5,
+  })
+}
+
+export const useProgressFontList = () => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.inProgress(),
+    queryFn: () => FontService.getInProgress(),
+    // select: (data) => new PreviewFontList({ content: data, number: 1, totalPages: 1 }),
+    staleTime: 60000,
+    gcTime: 60000 * 5,
+  })
+}
+
+export const useCompletedFontList = (page: number) => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.complete(page),
+    queryFn: () => FontService.getCompleted(page),
+    select: (data) => new PreviewFontList(data),
     staleTime: 60000,
     gcTime: 60000 * 5,
   })

@@ -1,35 +1,43 @@
 import { apiClient, publicApiClient } from '@/app/api'
 
-import { PreviewFontList } from '../model/font.model'
-import type { FontArrayResponse, FontDetailResponse, FontFilter } from '../types/font.type'
+import type {
+  FontArrayResponse,
+  FontDetailResponse,
+  FontFilter,
+  FontProgress,
+} from '../types/font.type'
 
 class Service {
-  async getBookmark({ page, sortBy, keyword }: FontFilter) {
-    const response = await apiClient.get<FontArrayResponse>('/bookmarks', {
+  getBookmark({ page, sortBy, keyword }: FontFilter) {
+    return apiClient.get<FontArrayResponse>('/bookmarks', {
       params: { page: page - 1, size: 8, keyword, sortBy },
     })
-
-    return new PreviewFontList(response)
   }
 
-  async getExplore({ page, sortBy, keyword }: FontFilter) {
-    const response = await publicApiClient.get<FontArrayResponse>('/fonts', {
+  getExplore({ page, sortBy, keyword }: FontFilter) {
+    return publicApiClient.get<FontArrayResponse>('/fonts', {
       params: { page: page - 1, size: 8, keyword, sortBy },
     })
-
-    return new PreviewFontList(response)
   }
 
-  async getDetail(fontId: number) {
+  getDetail(fontId: number) {
     return apiClient.get<FontDetailResponse>(`/fonts/${fontId}`)
   }
 
-  async getRecommend(fontId: number) {
+  getRecommend(fontId: number) {
     return apiClient.get<FontDetailResponse[]>(`/fonts/${fontId}/others`)
   }
 
-  async getPopular() {
+  getPopular() {
     return apiClient.get<FontDetailResponse[]>('/fonts/popular')
+  }
+
+  getInProgress() {
+    return apiClient.get<FontProgress[]>('/fonts/progress')
+  }
+
+  getCompleted(page: number) {
+    return apiClient.get<FontArrayResponse>('/fonts/members', { params: { page: page - 1 } })
   }
 }
 

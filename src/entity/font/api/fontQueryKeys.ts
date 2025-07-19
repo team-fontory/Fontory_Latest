@@ -4,9 +4,20 @@ export const fontQueryKeys = {
   all: ['font'] as const,
   bookmark: ({ page, sortBy, keyword }: FontFilter) =>
     [...fontQueryKeys.all, 'bookmark', page, sortBy, keyword] as const,
+
+  // explore
+  exploreAll: () => [...fontQueryKeys.all, 'explore'] as const,
   explore: ({ page, sortBy, keyword }: FontFilter) =>
-    [...fontQueryKeys.all, 'explore', page, sortBy, keyword] as const,
-  detail: (fontId: number) => [...fontQueryKeys.all, 'detail', fontId],
-  recommend: (fontId: number) => [...fontQueryKeys.all, 'detail', 'recommend', fontId],
-  popular: () => [...fontQueryKeys.all, 'popular'],
+    [...fontQueryKeys.exploreAll(), page, sortBy, keyword] as const,
+  popular: () => [...fontQueryKeys.exploreAll(), 'popular'] as const,
+
+  // detail
+  detailAll: () => [...fontQueryKeys.all, 'detail'] as const,
+  detail: (fontId: number) => [...fontQueryKeys.detailAll(), fontId] as const,
+  recommend: (fontId: number) => [...fontQueryKeys.detailAll(), 'recommend', fontId] as const,
+
+  // progress
+  progressAll: () => [...fontQueryKeys.all, 'progress'] as const,
+  inProgress: () => [...fontQueryKeys.progressAll(), 'in-progress'] as const,
+  complete: (page: number) => [...fontQueryKeys.progressAll(), 'complete', page] as const,
 }

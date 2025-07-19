@@ -34,6 +34,8 @@ export type FontFilter = {
   keyword: string | null
 }
 
+export type MyFontListType = Pick<FontFilter, 'page'>
+
 export type FontArrayResponse = {
   content: FontDetailResponse[]
   number: number
