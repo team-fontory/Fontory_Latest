@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 
 import { PreviewFont, PreviewFontList } from '../model/font.model'
+import { FontProgressListModel } from '../model/fontProgress.model'
 import type { FontFilter } from '../types/font.type'
 
 import { fontQueryKeys } from './fontQueryKeys'
@@ -52,7 +53,7 @@ export const useProgressFontList = () => {
   return useSuspenseQuery({
     queryKey: fontQueryKeys.inProgress(),
     queryFn: () => FontService.getInProgress(),
-    // select: (data) => new PreviewFontList({ content: data, number: 1, totalPages: 1 }),
+    select: (data) => new FontProgressListModel(data),
     staleTime: 60000,
     gcTime: 60000 * 5,
   })

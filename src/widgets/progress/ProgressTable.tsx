@@ -1,9 +1,30 @@
 import { useProgressFontList } from '@/entity/font'
-import { formatIsoToDateTime } from '@/shared/lib'
+import { EMPTY_MESSAGE } from '@/shared/config'
+
+const ProgressTableBody = () => {
+  const tableCommonStyle = 'py-6 text-center'
+
+  const { data: progressFontInfo } = useProgressFontList()
+
+  if (progressFontInfo.isEmpty) {
+    return (
+      <p className="text-darkgrey py-20 text-center text-4xl font-bold">{EMPTY_MESSAGE.noFont}</p>
+    )
+  }
+
+  return (
+    <tbody>
+      {progressFontInfo.fontList.map(({ id, name, createdAt }) => (
+        <tr key={id} className="font-progress-value">
+          <td className={tableCommonStyle}>{name}</td>
+          <td className={tableCommonStyle}>{createdAt}</td>
+        </tr>
+      ))}
+    </tbody>
+  )
+}
 
 export const ProgressTable = () => {
-  const { data: progressList } = useProgressFontList()
-
   const tableCommonStyle = 'py-6 text-center'
 
   return (
@@ -14,15 +35,7 @@ export const ProgressTable = () => {
           <th className={tableCommonStyle}>제작 요청 시간</th>
         </tr>
       </thead>
-
-      <tbody>
-        {progressList.map(({ id, name, createdAt }) => (
-          <tr key={id} className="font-progress-value">
-            <td className={tableCommonStyle}>{name}</td>
-            <td className={tableCommonStyle}>{formatIsoToDateTime(createdAt)}</td>
-          </tr>
-        ))}
-      </tbody>
+      <ProgressTableBody />
     </table>
   )
 }
