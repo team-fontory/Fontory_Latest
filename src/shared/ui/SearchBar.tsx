@@ -3,11 +3,12 @@ import { type FormEvent, useState } from 'react'
 import { Icon } from './Icon/Icon'
 
 type Props = {
+  defaultKeyword?: string
   onSearch: (keyword: string) => void
 }
 
-export const SearchBar = ({ onSearch }: Props) => {
-  const [keyword, setKeyword] = useState<string>('')
+export const SearchBar = ({ defaultKeyword = '', onSearch }: Props) => {
+  const [keyword, setKeyword] = useState<string>(defaultKeyword)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()

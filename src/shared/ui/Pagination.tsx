@@ -1,6 +1,7 @@
-import { type RefObject, useEffect } from 'react'
+import { type RefObject, useEffect, useMemo } from 'react'
 
 import { cn } from '../lib'
+import { PaginationManager } from '../lib/paginationManager'
 
 import { Icon } from './Icon/Icon'
 
@@ -23,30 +24,11 @@ type Props = {
  * @param onPageChange - 페이지 변경 시 호출되는 콜백 함수
  */
 
-const MAX_VISIBLE = 4
-
 export const Pagination = ({ currentPage, totalPages, scrollTargetRef, onPageChange }: Props) => {
-  const currentGroup = Math.floor((currentPage - 1) / MAX_VISIBLE)
-
-  const start = currentGroup * MAX_VISIBLE + 1
-  const end = Math.min(start + MAX_VISIBLE - 1, totalPages)
-  const visiblePages = Array.from({ length: end - start + 1 }, (_, i) => start + i)
-
-  const handleGoToPrevGroup = () => {
-    const prevGroupFirstPage = Math.max(1, start - MAX_VISIBLE)
-    onPageChange(prevGroupFirstPage)
-  }
-
-  const handleGoToNextGroup = () => {
-    const nextGroupFirstPage = start + MAX_VISIBLE
-    if (nextGroupFirstPage <= totalPages) {
-      onPageChange(nextGroupFirstPage)
-    }
-  }
-
-  const handleGoToSelectPage = (page: number) => {
-    onPageChange(page)
-  }
+  const manager = useMemo(
+    () => new PaginationManager(currentPage, totalPages),
+    [currentPage, totalPages],
+  )
 
   useEffect(() => {
     scrollTargetRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -54,19 +36,19 @@ export const Pagination = ({ currentPage, totalPages, scrollTargetRef, onPageCha
 
   return (
     <div className="flex items-center justify-center gap-4">
-      {start > 1 && (
+      {manager.hasPrevGroup && (
         <button
-          onClick={handleGoToPrevGroup}
+          onClick={() => onPageChange(manager.prevGroupFirstPage)}
           className="flex-center rounded-small border-grey h-20 w-20 border"
         >
           <Icon name="caret-right" size="2.25rem" className="text-primary rotate-180" />
         </button>
       )}
 
-      {visiblePages.map((page) => (
+      {manager.visiblePages.map((page) => (
         <button
           key={page}
-          onClick={() => handleGoToSelectPage(page)}
+          onClick={() => onPageChange(page)}
           className={cn(
             'rounded-small font-pagination border-grey h-20 w-20 border',
             page === currentPage ? 'bg-primary border-none text-white' : 'text-darkgrey',
@@ -76,9 +58,9 @@ export const Pagination = ({ currentPage, totalPages, scrollTargetRef, onPageCha
         </button>
       ))}
 
-      {end < totalPages && (
+      {manager.hasNextGroup && (
         <button
-          onClick={handleGoToNextGroup}
+          onClick={() => onPageChange(manager.nextGroupFirstPage)}
           className="flex-center rounded-small border-grey h-20 w-20 border"
         >
           <Icon name="caret-right" size="2.25rem" className="text-primary" />

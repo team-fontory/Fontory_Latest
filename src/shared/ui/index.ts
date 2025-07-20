@@ -1,5 +1,6 @@
 export * from './CustomToast'
 export * from './FontPreviewCard'
+export * from './FontPreviewCardList'
 export * from './GenderRadioGroup'
 export * from './Icon/Icon'
 export * from './Input'
