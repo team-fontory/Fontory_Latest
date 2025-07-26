@@ -1,25 +1,20 @@
 import { FormProvider } from 'react-hook-form'
-import { type To, useNavigate } from 'react-router-dom'
 
-import { useAuth } from '@/app/providers'
-import { userConfig, type UserFormType } from '@/entity/user'
-import { AccountEditButton, AccountEditForm } from '@/features/account'
+import { useProfile, userConfig, type UserForm } from '@/entity/user'
+import {
+  AccountEditCancelButton,
+  AccountEditForm,
+  AccountEditSubmitButton,
+} from '@/features/account'
 import { useCustomForm } from '@/shared/hooks'
-import { PrimaryButton } from '@/shared/ui'
 import { Layout } from '@/widgets'
 import { SectionHeader } from '@/widgets/section'
 
 const AccountEditPage = () => {
   const { schema } = userConfig
-  const { user } = useAuth()
+  const { data: userInfo } = useProfile()
 
-  const navigate = useNavigate()
-  const formMethods = useCustomForm<UserFormType>(schema, { defaultValues: { ...user } })
-
-  const onCancel = () => {
-    formMethods.reset()
-    navigate(-1 as To, { replace: true })
-  }
+  const formMethods = useCustomForm<UserForm>(schema, { defaultValues: userInfo.userData })
 
   return (
     <Layout hasPadding>
@@ -29,10 +24,8 @@ const AccountEditPage = () => {
         <FormProvider {...formMethods}>
           <AccountEditForm />
           <div className="mt-[6.25rem] flex justify-end gap-9">
-            <AccountEditButton />
-            <PrimaryButton direction="none" onClick={onCancel}>
-              취소하기
-            </PrimaryButton>
+            <AccountEditSubmitButton />
+            <AccountEditCancelButton />
           </div>
         </FormProvider>
       </section>

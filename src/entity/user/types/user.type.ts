@@ -11,3 +11,4 @@ export type User = {
 }
 
 export type UserFormType = z.input<typeof userConfig.schema>
+export type UserForm = z.input<typeof userConfig.schema>

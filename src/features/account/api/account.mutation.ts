@@ -24,13 +24,3 @@ export const useEditAccount = () => {
     },
   )
 }
-
-export const useDeleteUser = () => {
-  const queryClient = useQueryClient()
-
-  return useAxiosMutation(() => apiClient.delete(endpoints.deleteUser), {
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: MAIN_QUERY_KEY })
-    },
-  })
-}

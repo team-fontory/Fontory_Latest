@@ -5,7 +5,7 @@ import { PrimaryButton } from '@/shared/ui'
 
 import { useEditAccountInformation } from '../hook/useEditAccountInformation'
 
-export const AccountEditButton = () => {
+export const AccountEditSubmitButton = () => {
   const { handleSubmit } = useFormContext<UserFormType>()
   const { handleSubmitForm } = useEditAccountInformation()
 
