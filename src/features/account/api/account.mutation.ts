@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 
 import { apiClient } from '@/app/api'
-import { MAIN_QUERY_KEY } from '@/app/api'
+import { authQueryKeys } from '@/entity/user'
 import { useAxiosMutation } from '@/shared/hooks'
 
 export const endpoints = {
@@ -19,7 +19,7 @@ export const useEditAccount = () => {
       }),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: MAIN_QUERY_KEY })
+        queryClient.invalidateQueries({ queryKey: authQueryKeys.all })
       },
     },
   )

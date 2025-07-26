@@ -18,8 +18,6 @@ const NAV_LINKS = [
 export const AuthItem = ({ isTransparent = false }: Props) => {
   const user = useAuth()
 
-  console.log('user', user)
-
   if (user)
     return (
       <li className="group relative">

@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 
 import { apiClient } from '@/app/api'
-import { MAIN_QUERY_KEY } from '@/app/api'
+import { fontQueryKeys } from '@/entity/font/api/fontQueryKeys'
 import { useAxiosMutation } from '@/shared/hooks'
 
 export const endpoints = {
@@ -16,7 +16,7 @@ export const useAddBookmark = () => {
     (fontId) => apiClient.post(endpoints.addBookmark(fontId)),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: MAIN_QUERY_KEY })
+        queryClient.invalidateQueries({ queryKey: fontQueryKeys.all })
       },
     },
   )
@@ -29,7 +29,7 @@ export const useRemoveBookmark = () => {
     (fontId) => apiClient.delete(endpoints.removeBookmark(fontId)),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: MAIN_QUERY_KEY })
+        queryClient.invalidateQueries({ queryKey: fontQueryKeys.all })
       },
     },
   )

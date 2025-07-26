@@ -1,6 +1,6 @@
 import type { MouseEvent } from 'react'
 
-import { useFontDownload } from '../api/downloadFont.mutation'
+import { useFontDownload } from '@/entity/font'
 
 export const useFontDownloadHandler = (fontId: number, fontName: string) => {
   const { refetch } = useFontDownload(fontId)

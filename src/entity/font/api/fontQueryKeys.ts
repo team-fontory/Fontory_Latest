@@ -4,6 +4,7 @@ export const fontQueryKeys = {
   all: ['font'] as const,
   bookmark: ({ page, sortBy, keyword }: FontFilter) =>
     [...fontQueryKeys.all, 'bookmark', page, sortBy, keyword] as const,
+  download: (fontId: number) => [...fontQueryKeys.all, 'download', fontId] as const,
 
   // explore
   exploreAll: () => [...fontQueryKeys.all, 'explore'] as const,

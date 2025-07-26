@@ -1,6 +1,7 @@
 import { apiClient, publicApiClient } from '@/app/api'
 
 import type {
+  DownloadFont,
   FontArrayResponse,
   FontDetailResponse,
   FontFilter,
@@ -38,6 +39,10 @@ class Service {
 
   getCompleted(page: number) {
     return apiClient.get<FontArrayResponse>('/fonts/members', { params: { page: page - 1 } })
+  }
+
+  getDownload(fontId: number) {
+    return apiClient.get<DownloadFont>(`/fonts/${fontId}/download`)
   }
 }
 

@@ -1,6 +1,6 @@
 import { FormProvider } from 'react-hook-form'
 
-import { useProfile, userConfig, type UserForm } from '@/entity/user'
+import { useProfile, type User, userConfig, type UserForm } from '@/entity/user'
 import {
   AccountEditCancelButton,
   AccountEditForm,
@@ -14,7 +14,9 @@ const AccountEditPage = () => {
   const { schema } = userConfig
   const { data: userInfo } = useProfile()
 
-  const formMethods = useCustomForm<UserForm>(schema, { defaultValues: userInfo.userData })
+  const formMethods = useCustomForm<UserForm>(schema, { defaultValues: userInfo.user as User })
+
+  if (!userInfo.user) return null
 
   return (
     <Layout hasPadding>

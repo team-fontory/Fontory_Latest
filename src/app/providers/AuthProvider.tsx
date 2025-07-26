@@ -5,9 +5,9 @@ import { useProfile, type User } from '@/entity/user'
 const AuthContext = createContext<User | null>(null)
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const { data: user } = useProfile()
+  const { data: userData } = useProfile()
 
-  const authValue = useMemo(() => user?.userData ?? null, [user])
+  const authValue = useMemo(() => userData.user ?? null, [userData])
 
   return <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
 }

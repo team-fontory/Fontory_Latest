@@ -1,7 +1,7 @@
 import type { User } from './types/user.type'
 
 export class AuthModel {
-  public readonly userData: User
+  private readonly userData: User | null
 
   constructor(data: User) {
     this.userData = {
@@ -9,5 +9,9 @@ export class AuthModel {
       gender: data.gender,
       birth: data.birth,
     }
+  }
+
+  get user() {
+    return this.userData
   }
 }

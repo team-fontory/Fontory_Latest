@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
 import { PreviewFont, PreviewFontList } from '../model/font.model'
 import { FontProgressListModel } from '../model/fontProgress.model'
@@ -12,6 +12,14 @@ export const useBookmarkFontList = (filter: FontFilter) => {
     queryKey: fontQueryKeys.bookmark(filter),
     queryFn: () => FontService.getBookmark(filter),
     select: (data) => new PreviewFontList(data),
+  })
+}
+
+export const useFontDownload = (fontId: number) => {
+  return useQuery({
+    queryKey: fontQueryKeys.download(fontId),
+    queryFn: () => FontService.getDownload(fontId),
+    enabled: false,
   })
 }
 

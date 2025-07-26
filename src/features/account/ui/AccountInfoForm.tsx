@@ -1,6 +1,6 @@
 import { FormProvider } from 'react-hook-form'
 
-import { useProfile, userConfig, type UserForm } from '@/entity/user'
+import { useProfile, type User, userConfig, type UserForm } from '@/entity/user'
 import { useCustomForm } from '@/shared/hooks'
 import { GenderRadioGroup, Input } from '@/shared/ui'
 
@@ -9,7 +9,9 @@ export const AccountInfoForm = () => {
   const { nickname, birth, gender } = attribute
   const { data: userInfo } = useProfile()
 
-  const formMethods = useCustomForm<UserForm>(schema, { defaultValues: userInfo.userData })
+  const formMethods = useCustomForm<UserForm>(schema, { defaultValues: userInfo.user as User })
+
+  if (!userInfo.user) return null
 
   return (
     <FormProvider {...formMethods}>

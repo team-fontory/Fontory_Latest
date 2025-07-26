@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 
-import { apiClient, MAIN_QUERY_KEY } from '@/app/api'
+import { apiClient } from '@/app/api'
+import { fontQueryKeys } from '@/entity/font/api/fontQueryKeys'
 import { useAxiosMutation } from '@/shared/hooks'
 
 export const endpoints = {
@@ -16,7 +17,7 @@ export const useCreateFont = () => {
         headers: { 'Content-Type': 'multipart/form-data' },
       }),
     {
-      onSuccess: () => queryClient.invalidateQueries({ queryKey: MAIN_QUERY_KEY }),
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: fontQueryKeys.all }),
     },
   )
 }

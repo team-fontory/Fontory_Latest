@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { ROUTES } from '@/app/router'
 
-import { useLogout } from '../api/auth.mutation'
+import { useLogout } from '../api/logout.mutation'
 
 export const LogoutButton = () => {
   const navigate = useNavigate()
