@@ -1,6 +1,8 @@
 import type { AxiosError, AxiosRequestConfig } from 'axios'
 import axios, { type InternalAxiosRequestConfig } from 'axios'
 
+import { ROUTES } from '../router'
+
 const BASE_URL = import.meta.env.VITE_PUBLIC_SERVER_DOMAIN
 
 const client = axios.create({
@@ -19,6 +21,10 @@ client.interceptors.request.use(
 client.interceptors.response.use(
   (response) => response.data,
   async (error: AxiosError) => {
+    if (error.response?.status === 401) {
+      window.location.href = ROUTES.LOGIN
+    }
+
     return Promise.reject(error)
   },
 )
