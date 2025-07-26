@@ -19,10 +19,6 @@ client.interceptors.request.use(
 client.interceptors.response.use(
   (response) => response.data,
   async (error: AxiosError) => {
-    // if (error.response?.status === 401) {
-    //   window.location.href = ROUTES.LOGIN
-    // }
-
     return Promise.reject(error)
   },
 )

@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const authValue = useMemo(() => user?.userData ?? null, [user])
 
+  console.log('authValue', authValue)
   return <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
 }
 
