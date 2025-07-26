@@ -10,5 +10,6 @@ export const useProfile = () => {
     queryKey: authQueryKeys.profile(),
     queryFn: () => AuthService.getProfile(),
     select: (data) => new AuthModel(data),
+    retry: false,
   })
 }
