@@ -16,9 +16,9 @@ const NAV_LINKS = [
 ]
 
 export const AuthItem = ({ isTransparent = false }: Props) => {
-  const { user, isError } = useAuth()
+  const user = useAuth()
 
-  if (!isError && user)
+  if (user)
     return (
       <li className="group relative">
         <button

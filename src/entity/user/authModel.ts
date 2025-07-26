@@ -1,9 +1,9 @@
-import type { GenderType, User } from './types/user.type'
+import type { User } from './types/user.type'
 
 export class AuthModel {
-  private readonly nickname: string
-  private readonly gender: GenderType
-  private readonly birth: string
+  private readonly nickname: User['nickname']
+  private readonly gender: User['gender']
+  private readonly birth: User['birth']
 
   constructor(data: User) {
     this.nickname = data.nickname
