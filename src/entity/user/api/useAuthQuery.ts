@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 
 import { AuthModel } from '../authModel'
 
@@ -6,7 +6,7 @@ import { authQueryKeys } from './authQueryKeys'
 import { AuthService } from './AuthService'
 
 export const useProfile = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: authQueryKeys.profile(),
     queryFn: () => AuthService.getProfile(),
     select: (data) => new AuthModel(data),
