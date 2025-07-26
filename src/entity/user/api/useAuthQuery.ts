@@ -9,7 +9,10 @@ export const useProfile = () => {
   return useSuspenseQuery({
     queryKey: authQueryKeys.profile(),
     queryFn: () => AuthService.getProfile(),
-    select: (data) => new AuthModel(data),
+    select: (data) => {
+      console.log(data, 'select')
+      return new AuthModel(data)
+    },
     retry: false,
   })
 }

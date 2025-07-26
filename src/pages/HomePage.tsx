@@ -4,16 +4,16 @@ import {
   Footer,
   HeroSection,
   MoreViewSection,
-  NavigationBar,
   SecondLandingSection,
 } from '@/widgets'
 
 const HomePage = () => {
-  const { ref: heroRef, isIntersecting: isHeroVisible } = useIntersectionObserver<HTMLDivElement>()
+  const { ref: heroRef } = useIntersectionObserver<HTMLDivElement>()
+  // const { ref: heroRef, isIntersecting: isHeroVisible } = useIntersectionObserver<HTMLDivElement>()
 
   return (
     <div className="overflow-x-hidden">
-      <NavigationBar isTransparent={isHeroVisible} />
+      {/* <NavigationBar isTransparent={isHeroVisible} /> */}
       <main className="min-h-screen">
         <div className="scroll-snap-y h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
           <div ref={heroRef} className="h-screen snap-start">
