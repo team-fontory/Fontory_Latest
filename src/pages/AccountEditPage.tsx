@@ -7,16 +7,23 @@ import {
   AccountEditSubmitButton,
 } from '@/features/account'
 import { useCustomForm } from '@/shared/hooks'
+import { Loading } from '@/shared/ui'
 import { Layout } from '@/widgets'
 import { SectionHeader } from '@/widgets/section'
 
 const AccountEditPage = () => {
   const { schema } = userConfig
-  const { data: userInfo } = useProfile()
+  const { data: userInfo, isPending, isError } = useProfile()
 
-  const formMethods = useCustomForm<UserForm>(schema, { defaultValues: userInfo.user as User })
+  const formMethods = useCustomForm<UserForm>(schema, { defaultValues: userInfo?.user as User })
 
-  if (!userInfo.user) return null
+  if (isPending) {
+    return <Loading />
+  }
+
+  if (isError) {
+    return null
+  }
 
   return (
     <Layout hasPadding>
