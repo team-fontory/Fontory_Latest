@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
 import { LogoutButton } from '@/features/auth'
-import { cn } from '@/shared/lib'
+import { cn } from '@/utils/cn'
 
 const MYPAGE_LIST = [
   { label: '회원정보', to: ROUTES.ACCOUNT_INFO },

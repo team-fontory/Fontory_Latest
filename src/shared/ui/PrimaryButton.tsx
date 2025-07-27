@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
-import { cn } from '../lib'
+import { cn } from '@/utils/cn'
 
 import { Icon } from './Icon/Icon'
 

@@ -4,7 +4,7 @@ import { ROUTES } from '@/app/router'
 import type { PreviewFont } from '@/entity/font'
 import { BookmarkButton } from '@/features/bookmark-font'
 import { DownloadButton } from '@/features/download-font'
-import { useDynamicFont } from '@/shared/hooks'
+import { useDynamicFont } from '@/hooks/useDynamicFont'
 
 type Props = {
   fontList: PreviewFont

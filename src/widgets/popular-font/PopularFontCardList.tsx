@@ -1,5 +1,5 @@
 import { usePopularFontList } from '@/entity/font'
-import { cn } from '@/shared/lib'
+import { cn } from '@/utils/cn'
 
 import { PopularFontCard } from './PopularFontCard'
 

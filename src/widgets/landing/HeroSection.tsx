@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 import heroBg from '@/shared/assets/hero-bg.png'
-import { getDirectionAnimation } from '@/shared/lib'
+import { getDirectionAnimation } from '@/utils/getDirectionAnimation'
 
 export const HeroSection = () => {
   return (

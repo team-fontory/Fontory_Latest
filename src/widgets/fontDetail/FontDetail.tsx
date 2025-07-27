@@ -1,5 +1,6 @@
 import { useFontDetail } from '@/entity/font'
-import { useDynamicFont, useParamFontId } from '@/shared/hooks'
+import { useDynamicFont } from '@/hooks/useDynamicFont'
+import { useParamFontId } from '@/hooks/useParamFontId'
 
 type Props = {
   label: string

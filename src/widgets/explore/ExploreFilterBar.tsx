@@ -1,4 +1,4 @@
-import { useTypedSearchParam } from '@/shared/hooks'
+import { useTypedSearchParam } from '@/hooks/useTypedSearchParam'
 import { SearchBar, SORT_OPTIONS, type SortKey, SortTab } from '@/shared/ui'
 
 export const ExploreFilterBar = () => {

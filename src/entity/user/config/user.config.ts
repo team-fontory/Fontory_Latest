@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
-import { filterInput, formatDateInput } from '@/shared/lib'
+import { filterInput } from '@/utils/filterInput'
+import { formatDateInput } from '@/utils/formatInput'
 
 export const userConfig = {
   attribute: {

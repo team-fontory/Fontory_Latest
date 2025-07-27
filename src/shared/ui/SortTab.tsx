@@ -1,4 +1,4 @@
-import { cn } from '@/shared/lib'
+import { cn } from '@/utils/cn'
 
 export const SORT_OPTIONS = {
   createdAt: { key: 'createdAt', label: '전체' },

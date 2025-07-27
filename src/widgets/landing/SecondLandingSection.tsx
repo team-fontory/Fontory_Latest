@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 
 import greenBg from '@/shared/assets/main-card/green.png'
 import yellowBg from '@/shared/assets/main-card/yellow.png'
-import { getDirectionAnimation, getScaleInViewAnimation } from '@/shared/lib'
+import { getDirectionAnimation } from '@/utils/getDirectionAnimation'
+import { getScaleInViewAnimation } from '@/utils/getScaleInViewAnimation'
 
 import { FeatureCard } from './FeatureCard'
 

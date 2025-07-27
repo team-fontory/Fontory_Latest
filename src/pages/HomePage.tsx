@@ -1,4 +1,4 @@
-import { useIntersectionObserver } from '@/shared/hooks'
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import {
   FirstLandingSection,
   Footer,

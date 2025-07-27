@@ -4,7 +4,7 @@ import { ROUTES } from '@/app/router'
 import type { PreviewFont } from '@/entity/font'
 import { DeleteFontButton } from '@/features/delete-font'
 import { DownloadButton } from '@/features/download-font'
-import { useDynamicFont } from '@/shared/hooks'
+import { useDynamicFont } from '@/hooks/useDynamicFont'
 
 export const MyFontPreviewCard = (props: PreviewFont) => {
   const { fontId, fontName, example, fontAddr, writerName } = props

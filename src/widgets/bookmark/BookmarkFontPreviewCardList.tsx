@@ -1,6 +1,6 @@
 import { useBookmarkFontList } from '@/entity/font'
+import { useTypedSearchParam } from '@/hooks/useTypedSearchParam'
 import { EMPTY_MESSAGE } from '@/shared/config'
-import { useTypedSearchParam } from '@/shared/hooks'
 import { FontPreviewCardList, SORT_OPTIONS, type SortKey } from '@/shared/ui'
 
 export const BookmarkFontPreviewCardList = () => {

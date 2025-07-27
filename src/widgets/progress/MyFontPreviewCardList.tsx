@@ -1,6 +1,6 @@
 import { useCompletedFontList } from '@/entity/font'
+import { useTypedSearchParam } from '@/hooks/useTypedSearchParam'
 import { EMPTY_MESSAGE } from '@/shared/config'
-import { useTypedSearchParam } from '@/shared/hooks'
 
 import { MyFontPreviewCard } from './MyFontPreviewCard'
 

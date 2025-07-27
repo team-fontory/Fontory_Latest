@@ -1,7 +1,7 @@
 import type { RefObject } from 'react'
 
 import { useCompletedFontList } from '@/entity/font'
-import { useTypedSearchParam } from '@/shared/hooks'
+import { useTypedSearchParam } from '@/hooks/useTypedSearchParam'
 import { Pagination } from '@/shared/ui'
 
 type Props = {

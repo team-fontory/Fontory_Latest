@@ -6,7 +6,7 @@ import {
   AccountEditForm,
   AccountEditSubmitButton,
 } from '@/features/account'
-import { useCustomForm } from '@/shared/hooks'
+import { useCustomForm } from '@/hooks/useCustomForm'
 import { Loading } from '@/shared/ui'
 import { Layout } from '@/widgets'
 import { SectionHeader } from '@/widgets/section'

@@ -1,7 +1,7 @@
 import type { TextareaHTMLAttributes } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { cn } from '../lib'
+import { cn } from '@/utils/cn'
 
 type Props = {
   section: string

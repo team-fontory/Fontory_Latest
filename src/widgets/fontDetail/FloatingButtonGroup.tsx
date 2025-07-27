@@ -1,7 +1,7 @@
 import { useFontDetail } from '@/entity/font'
 import { BookmarkButton } from '@/features/bookmark-font'
 import { DownloadButton } from '@/features/download-font'
-import { useParamFontId } from '@/shared/hooks'
+import { useParamFontId } from '@/hooks/useParamFontId'
 
 export const FloatingButtonGroup = () => {
   const fontId = useParamFontId()

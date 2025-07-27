@@ -1,7 +1,7 @@
 import { type PropsWithChildren } from 'react'
 
-import { useScrollToTop } from '@/shared/hooks'
-import { cn } from '@/shared/lib'
+import { useScrollToTop } from '@/hooks/useScrollToTop'
+import { cn } from '@/utils/cn'
 
 import { Footer } from './Footer'
 import { NavigationBar } from './NavigationBar'

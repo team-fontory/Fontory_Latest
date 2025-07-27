@@ -1,4 +1,4 @@
-import { formatIsoToDateTime } from '@/shared/lib'
+import { formatIsoToDateTime } from '@/utils/formatIsoToDateTime'
 
 import type { FontProgress } from '../types/font.type'
 

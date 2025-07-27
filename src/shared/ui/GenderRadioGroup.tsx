@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 
-import { cn } from '@/shared/lib'
+import { cn } from '@/utils/cn'
 
 type GenderRadioGroupProps = {
   section: string

@@ -1,6 +1,6 @@
 import { SyncLoader } from 'react-spinners'
 
-import { getCssVariable } from '../lib'
+import { getCssVariable } from '@/utils/getCssVariable'
 
 export const Loading = () => {
   const color = getCssVariable('--color-primary')

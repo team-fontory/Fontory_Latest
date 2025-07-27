@@ -1,5 +1,5 @@
 import { useRecommendFontList } from '@/entity/font'
-import { useParamFontId } from '@/shared/hooks'
+import { useParamFontId } from '@/hooks/useParamFontId'
 import { Layout } from '@/widgets'
 import { FloatingButtonGroup, FontDetail, FontDetailOtherFonts } from '@/widgets/fontDetail'
 import { SectionHeader } from '@/widgets/section'

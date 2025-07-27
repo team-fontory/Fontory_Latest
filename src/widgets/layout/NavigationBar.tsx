@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { useAuth } from '@/app/providers'
 import { ROUTES } from '@/app/router'
-import { cn } from '@/shared/lib'
+import { cn } from '@/utils/cn'
 
 import { MypageDropdown } from './MypageDropdown'
 

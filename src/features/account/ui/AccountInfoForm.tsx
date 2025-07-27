@@ -1,7 +1,7 @@
 import { FormProvider } from 'react-hook-form'
 
 import { useProfile, type User, userConfig, type UserForm } from '@/entity/user'
-import { useCustomForm } from '@/shared/hooks'
+import { useCustomForm } from '@/hooks/useCustomForm'
 import { GenderRadioGroup, Input, Loading } from '@/shared/ui'
 
 export const AccountInfoForm = () => {

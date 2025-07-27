@@ -1,7 +1,7 @@
 import { type RefObject, useEffect, useMemo } from 'react'
 
-import { cn } from '../lib'
-import { PaginationManager } from '../lib/paginationManager'
+import { cn } from '@/utils/cn'
+import { PaginationManager } from '@/utils/paginationManager'
 
 import { Icon } from './Icon/Icon'
 

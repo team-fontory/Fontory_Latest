@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
-import { filterInput, formatPhoneNumberInput } from '@/shared/lib'
+import { filterInput } from '@/utils/filterInput'
+import { formatPhoneNumberInput } from '@/utils/formatInput'
 
 export const createFontStepOneConfig = {
   attribute: {
