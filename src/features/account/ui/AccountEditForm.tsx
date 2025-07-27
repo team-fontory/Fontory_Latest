@@ -1,6 +1,7 @@
+import { GenderRadioGroup } from '@/components/GenderRadioGroup'
+import { Input } from '@/components/Input'
 import { userConfig } from '@/entity/user'
 import { NicknameCheckField } from '@/features/check-nickname-duplicate'
-import { GenderRadioGroup, Input } from '@/shared/ui'
 
 export const AccountEditForm = () => {
   const { nickname, birth, gender } = userConfig.attribute

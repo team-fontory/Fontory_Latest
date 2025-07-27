@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 
-import { Icon } from '@/shared/ui'
+import { Icon } from '@/components/Icon/Icon'
 
 import { useFontDownloadHandler } from '../model/useFontDownloadHandler'
 

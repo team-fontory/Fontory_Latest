@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { Icon } from '@/shared/ui'
+import { Icon } from '@/components/Icon/Icon'
 
 export const MoreViewSection = () => {
   return (

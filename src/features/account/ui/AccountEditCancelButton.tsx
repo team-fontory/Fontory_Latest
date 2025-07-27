@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form'
 import { type To, useNavigate } from 'react-router-dom'
 
-import { PrimaryButton } from '@/shared/ui'
+import { PrimaryButton } from '@/components/PrimaryButton'
 
 export const AccountEditCancelButton = () => {
   const navigate = useNavigate()

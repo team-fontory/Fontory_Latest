@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { ROUTES } from '@/app/router'
-import { PrimaryButton } from '@/shared/ui'
+import { PrimaryButton } from '@/components/PrimaryButton'
 
 import { useDeleteUser } from '../api/deleteUser.mutation'
 

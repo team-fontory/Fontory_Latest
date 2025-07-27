@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { useWatch } from 'react-hook-form'
 
+import { SecondaryButton } from '@/components/SecondaryButton'
 import { createFontStepOneConfig } from '@/entity/font'
-import { SecondaryButton } from '@/shared/ui'
 
 import { useFileUpload } from '../hook/useFileUpload'
 

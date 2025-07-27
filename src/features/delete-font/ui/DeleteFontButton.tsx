@@ -1,5 +1,5 @@
+import { Icon } from '@/components/Icon/Icon'
 import type { FontDetailType } from '@/entity/font'
-import { Icon } from '@/shared/ui'
 
 import { useDeleteFont } from '../hook/useDeleteFont'
 

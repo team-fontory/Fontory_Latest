@@ -1,6 +1,8 @@
+import { Input } from '@/components/Input'
+import { PrimaryButton } from '@/components/PrimaryButton'
+import { Textarea } from '@/components/Textarea'
 import { createFontStepTwoConfig } from '@/entity/font'
 import { FontNameCheckField } from '@/features/check-font-name-duplicate'
-import { Input, PrimaryButton, Textarea } from '@/shared/ui'
 
 import { useNextStepButton } from '../hook/useNextStepButton'
 import { useStepTwoValidation } from '../hook/useStepTwoValidation'

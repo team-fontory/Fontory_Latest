@@ -1,5 +1,5 @@
 import { AppRouter } from './app/router'
-import { CustomToast } from './shared/ui'
+import { CustomToast } from './components/CustomToast'
 
 function App() {
   return (

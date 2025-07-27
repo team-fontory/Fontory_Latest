@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router'
-import { PrimaryButton } from '@/shared/ui'
+import { PrimaryButton } from '@/components/PrimaryButton'
 
 export const AccountEditEntryButton = () => {
   const navigate = useNavigate()

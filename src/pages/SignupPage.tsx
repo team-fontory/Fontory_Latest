@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
 
+import { StepProgressBar } from '@/components/StepProgressBar'
 import { userConfig, type UserFormType } from '@/entity/user'
 import {
   SignupStepOne,
@@ -11,7 +12,6 @@ import {
   useSignupTotalSteps,
 } from '@/features/sign-up'
 import { useCustomForm } from '@/hooks/useCustomForm'
-import { StepProgressBar } from '@/shared/ui'
 import { Layout } from '@/widgets'
 import { SectionHeader } from '@/widgets/section'
 

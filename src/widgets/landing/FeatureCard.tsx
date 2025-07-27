@@ -1,5 +1,5 @@
-import { Icon } from '@/shared/ui'
-import type { IconName } from '@/shared/ui/Icon/iconMap'
+import { Icon } from '@/components/Icon/Icon'
+import type { IconName } from '@/components/Icon/iconMap'
 
 type Props = {
   title: string

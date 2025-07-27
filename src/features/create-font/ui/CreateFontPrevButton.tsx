@@ -1,4 +1,4 @@
-import { PrimaryButton } from '@/shared/ui'
+import { PrimaryButton } from '@/components/PrimaryButton'
 
 import { useCreateFontStepActions } from '../model/createFontStep.store'
 

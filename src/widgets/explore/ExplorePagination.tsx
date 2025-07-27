@@ -1,8 +1,9 @@
 import type { RefObject } from 'react'
 
+import { Pagination } from '@/components/Pagination'
+import { SORT_OPTIONS, type SortKey } from '@/components/SortTab'
 import { useExploreFontList } from '@/entity/font'
 import { useTypedSearchParam } from '@/hooks/useTypedSearchParam'
-import { Pagination, SORT_OPTIONS, type SortKey } from '@/shared/ui'
 
 type Props = {
   scrollTargetRef: RefObject<HTMLElement | null>

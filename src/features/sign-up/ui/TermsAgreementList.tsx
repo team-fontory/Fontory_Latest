@@ -1,4 +1,4 @@
-import { Icon } from '@/shared/ui'
+import { Icon } from '@/components/Icon/Icon'
 
 import { TERMS } from '../config/signup.constant'
 

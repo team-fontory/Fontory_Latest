@@ -1,10 +1,10 @@
+import { PrimaryButton } from '@/components/PrimaryButton'
 import {
   TermsAgreementList,
   TermsButtonGroup,
   useSignupStepActions,
   useTermsAgreement,
 } from '@/features/sign-up'
-import { PrimaryButton } from '@/shared/ui'
 
 export const SignupStepOne = () => {
   const { setStep } = useSignupStepActions()

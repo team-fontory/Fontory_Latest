@@ -1,8 +1,8 @@
 import { useFormContext } from 'react-hook-form'
 
+import { PrimaryButton } from '@/components/PrimaryButton'
 import type { UserFormType } from '@/entity/user'
 import { useNickNameChecked } from '@/features/check-nickname-duplicate'
-import { PrimaryButton } from '@/shared/ui'
 
 import { useSignupForm } from '../model/useSignupForm'
 

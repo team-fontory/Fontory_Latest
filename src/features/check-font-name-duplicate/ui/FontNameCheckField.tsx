@@ -1,5 +1,5 @@
+import { Input } from '@/components/Input'
 import { createFontStepTwoConfig } from '@/entity/font'
-import { Input, SecondaryButton } from '@/shared/ui'
 
 import { useFontNameChangeDetector } from '../hook/useFontNameChangeDetector'
 import { useFontNameDuplicateCheck } from '../hook/useFontNameDuplicateCheck'

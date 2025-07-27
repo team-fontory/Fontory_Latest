@@ -1,5 +1,6 @@
+import { SearchBar } from '@/components/SearchBar'
+import { SORT_OPTIONS, type SortKey, SortTab } from '@/components/SortTab'
 import { useTypedSearchParam } from '@/hooks/useTypedSearchParam'
-import { SearchBar, SORT_OPTIONS, type SortKey, SortTab } from '@/shared/ui'
 
 export const ExploreFilterBar = () => {
   const [sortBy, setSortBy] = useTypedSearchParam<SortKey>('sortBy', SORT_OPTIONS.createdAt.key)

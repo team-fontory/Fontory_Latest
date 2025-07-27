@@ -1,6 +1,6 @@
 import type z from 'zod'
 
-import type { SortKey } from '@/shared/ui'
+import type { SortKey } from '@/components/SortTab'
 
 import type { createFontSchema } from '../config/font.config'
 

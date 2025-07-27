@@ -6,8 +6,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const rootDir = resolve(__dirname, '../')
-const ASSETS_DIR = join(rootDir, 'src/shared/assets')
-const OUTPUT_DIR = join(rootDir, 'src/shared/ui/Icon')
+const ASSETS_DIR = join(rootDir, 'src/assets')
+const OUTPUT_DIR = join(rootDir, 'src/components/Icon')
 const OUTPUT_FILE = join(OUTPUT_DIR, 'iconMap.ts')
 
 const toCamelCase = (str) =>
@@ -41,7 +41,7 @@ const generateIconMap = () => {
     for (const file of files) {
       const importKey = file.replace('.svg', '')
       const varName = toCamelCase(`${folder}-${file}`)
-      const importPath = `@/shared/assets/${folder}/${file}`
+      const importPath = `@/assets/${folder}/${file}`
 
       imports.push(`import ${varName} from '${importPath}?react'`)
       mapEntries.push(`  '${importKey}': ${varName},`)

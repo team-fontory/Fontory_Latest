@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form'
 
+import { PrimaryButton } from '@/components/PrimaryButton'
 import { createFontStepOneConfig } from '@/entity/font'
-import { PrimaryButton } from '@/shared/ui'
 
 import { useNextStepButton } from '../hook/useNextStepButton'
 

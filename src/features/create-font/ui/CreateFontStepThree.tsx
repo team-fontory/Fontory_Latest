@@ -1,7 +1,8 @@
 import { useFormContext } from 'react-hook-form'
 
+import { Input } from '@/components/Input'
+import { PrimaryButton } from '@/components/PrimaryButton'
 import { type CreateFontFormType, createFontStepThreeConfig } from '@/entity/font'
-import { Input, PrimaryButton } from '@/shared/ui'
 
 import { useCreateFontForm } from '../hook/useCreateFontForm'
 

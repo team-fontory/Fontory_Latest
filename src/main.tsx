@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { AuthProvider } from './app/providers/AuthProvider.tsx'
 import { QueryProvider } from './app/providers/QueryProvider.tsx'
-import { Loading } from './shared/ui/Loading.tsx'
+import { Loading } from './components/Loading.tsx'
 import App from './App.tsx'
 
 import '@/app/styles/index.css'

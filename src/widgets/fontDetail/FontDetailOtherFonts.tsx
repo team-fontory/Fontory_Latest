@@ -1,5 +1,5 @@
+import { FontPreviewCard } from '@/components/FontPreviewCard'
 import type { PreviewFont } from '@/entity/font'
-import { FontPreviewCard } from '@/shared/ui'
 
 type Props = {
   recommendList: PreviewFont[]

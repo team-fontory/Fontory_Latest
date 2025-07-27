@@ -25,4 +25,4 @@ dist-ssr
 
 
 .env
-/src/shared/ui/Icon/iconMap.ts
+/src/components/Icon/iconMap.ts

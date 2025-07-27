@@ -1,7 +1,9 @@
+import { GenderRadioGroup } from '@/components/GenderRadioGroup'
+import { Input } from '@/components/Input'
+import { PrimaryButton } from '@/components/PrimaryButton'
 import { userConfig } from '@/entity/user'
 import { NicknameCheckField } from '@/features/check-nickname-duplicate'
 import { SignupButton, useSignupStepActions } from '@/features/sign-up'
-import { GenderRadioGroup, Input, PrimaryButton } from '@/shared/ui'
 
 export const SignupStepTwo = () => {
   const { nickname, birth, gender } = userConfig.attribute

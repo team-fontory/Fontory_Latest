@@ -1,4 +1,4 @@
-import { SecondaryButton } from '@/shared/ui'
+import { SecondaryButton } from '@/components/SecondaryButton'
 
 type Props = {
   checkedTerms: boolean[]

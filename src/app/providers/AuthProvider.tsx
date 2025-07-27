@@ -1,7 +1,7 @@
 import { createContext, type ReactNode, useContext } from 'react'
 
+import { Loading } from '@/components/Loading'
 import { useProfile, type User } from '@/entity/user'
-import { Loading } from '@/shared/ui'
 
 const AuthContext = createContext<User | null>(null)
 

@@ -1,5 +1,6 @@
 import { FormProvider } from 'react-hook-form'
 
+import { Loading } from '@/components/Loading'
 import { useProfile, type User, userConfig, type UserForm } from '@/entity/user'
 import {
   AccountEditCancelButton,
@@ -7,7 +8,6 @@ import {
   AccountEditSubmitButton,
 } from '@/features/account'
 import { useCustomForm } from '@/hooks/useCustomForm'
-import { Loading } from '@/shared/ui'
 import { Layout } from '@/widgets'
 import { SectionHeader } from '@/widgets/section'
 

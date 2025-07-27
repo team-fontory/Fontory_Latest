@@ -1,5 +1,6 @@
+import { Input } from '@/components/Input'
+import { SecondaryButton } from '@/components/SecondaryButton'
 import { userConfig } from '@/entity/user'
-import { Input, SecondaryButton } from '@/shared/ui'
 
 import { useFontNameChangeDetector } from '../hook/useFontNameChangeDetector'
 import { useNicknameDuplicateCheck } from '../hook/useNicknameDuplicateCheck'

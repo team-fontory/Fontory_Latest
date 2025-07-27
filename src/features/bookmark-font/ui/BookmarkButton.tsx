@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 
-import { Icon } from '@/shared/ui'
+import { Icon } from '@/components/Icon/Icon'
 import { cn } from '@/utils/cn'
 
 import { useBookmark } from '../model/useBookmark'
