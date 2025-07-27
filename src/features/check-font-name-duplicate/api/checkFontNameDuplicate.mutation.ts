@@ -1,5 +1,5 @@
 import { apiClient } from '@/app/api'
-import { useAxiosMutation } from '@/shared/hooks'
+import { useAxiosMutation } from '@/hooks/useAxiosQuery'
 
 export const endpoints = {
   validateName: (fontName: string) => `/fonts/verify-name?fontName=${fontName}`,

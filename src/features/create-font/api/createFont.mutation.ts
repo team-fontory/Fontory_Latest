@@ -2,7 +2,7 @@ import { useQueryClient } from '@tanstack/react-query'
 
 import { apiClient } from '@/app/api'
 import { fontQueryKeys } from '@/entity/font/api/fontQueryKeys'
-import { useAxiosMutation } from '@/shared/hooks'
+import { useAxiosMutation } from '@/hooks/useAxiosQuery'
 
 export const endpoints = {
   create: '/fonts',

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import googleImage from '@/shared/assets/login/google.png'
-import naverImage from '@/shared/assets/login/naver.png'
+import googleImage from '@/assets/login/google.png'
+import naverImage from '@/assets/login/naver.png'
 import { Layout } from '@/widgets'
 import { SectionHeader } from '@/widgets/section'
 

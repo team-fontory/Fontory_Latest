@@ -1,5 +1,5 @@
+import { EMPTY_MESSAGE } from '@/constants/emptyMessage'
 import { useProgressFontList } from '@/entity/font'
-import { EMPTY_MESSAGE } from '@/shared/config'
 
 const ProgressTableBody = () => {
   const tableCommonStyle = 'py-6 text-center'

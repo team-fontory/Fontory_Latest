@@ -1,5 +1,5 @@
 import { publicApiClient } from '@/app/api'
-import { useAxiosMutation } from '@/shared/hooks'
+import { useAxiosMutation } from '@/hooks/useAxiosQuery'
 
 export const endpoints = {
   signup: '/register',

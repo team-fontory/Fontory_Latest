@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
-import blueBg from '@/shared/assets/main-card/blue.png'
-import redBg from '@/shared/assets/main-card/red.png'
+import blueBg from '@/assets/main-card/blue.png'
+import redBg from '@/assets/main-card/red.png'
 import { getDirectionAnimation } from '@/utils/getDirectionAnimation'
 import { getScaleInViewAnimation } from '@/utils/getScaleInViewAnimation'
 

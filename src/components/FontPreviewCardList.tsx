@@ -1,6 +1,5 @@
+import { EMPTY_MESSAGE } from '@/constants/emptyMessage'
 import type { PreviewFont } from '@/entity/font'
-
-import { EMPTY_MESSAGE } from '../config'
 
 import { FontPreviewCard } from './FontPreviewCard'
 

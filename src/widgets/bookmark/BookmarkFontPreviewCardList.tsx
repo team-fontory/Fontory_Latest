@@ -1,8 +1,8 @@
 import { FontPreviewCardList } from '@/components/FontPreviewCardList'
 import { SORT_OPTIONS, type SortKey } from '@/components/SortTab'
+import { EMPTY_MESSAGE } from '@/constants/emptyMessage'
 import { useBookmarkFontList } from '@/entity/font'
 import { useTypedSearchParam } from '@/hooks/useTypedSearchParam'
-import { EMPTY_MESSAGE } from '@/shared/config'
 
 export const BookmarkFontPreviewCardList = () => {
   const [page] = useTypedSearchParam<number>('page', 1)

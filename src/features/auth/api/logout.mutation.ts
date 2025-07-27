@@ -2,7 +2,7 @@ import { useQueryClient } from '@tanstack/react-query'
 
 import { apiClient } from '@/app/api'
 import { authQueryKeys } from '@/entity/user'
-import { useAxiosMutation } from '@/shared/hooks'
+import { useAxiosMutation } from '@/hooks/useAxiosQuery'
 
 export const endpoints = {
   logout: '/auth/logout',
